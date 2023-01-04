@@ -22,7 +22,7 @@ class APIGWStack(Stack):
         # SNS Topic Creation
         # Our API Gateway posts messages directly to this
         ###
-        topic = Topic(self, 'theBigFanTopic', display_name='The Big Fan CDK Pattern Topic')
+        topic = Topic(self, 'ApiGWFanTopic', display_name='The Big Fan CDK Pattern Topic')
 
         ###
         # SQS Subscribers creation for our SNS Topic
@@ -79,7 +79,7 @@ class APIGWStack(Stack):
         # this url is used to post the payload to sns without a lambda inbetween
         ###
 
-        gateway = RestApi(self, 'theBigFanAPI',
+        gateway = RestApi(self, 'ApiGWFanAPI',
                           deploy_options=StageOptions(metrics_enabled=True,
                                                       logging_level=MethodLoggingLevel.INFO,
                                                       data_trace_enabled=True,
