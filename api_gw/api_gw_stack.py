@@ -4,7 +4,7 @@ from constructs import Construct
 from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
-    IntegrationResponse, DomainName, BasePathMapping
+    IntegrationResponse, DomainName, BasePathMapping, DomainNameOptions
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
 from aws_cdk.aws_lambda_event_sources import SqsEventSource
@@ -12,7 +12,8 @@ from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
 from aws_cdk.aws_certificatemanager import Certificate, CertificateValidation
-from aws_cdk.aws_route53 import HostedZone
+from aws_cdk.aws_route53 import HostedZone, ARecord, RecordTarget
+from aws_cdk.aws_route53_targets import ApiGateway
 
 
 class APIGWStack(Stack):
@@ -80,24 +81,20 @@ class APIGWStack(Stack):
         sqs_other_status_subscriber.add_event_source(SqsEventSource(other_status_queue))
 
         ###
-        # Provision our custom domain
+        # Provision the custom domain
         ###
-        route53_zone = HostedZone(self, "APIDNSZone",
-                                  zone_name=props["domain_name"],
-                                  comment="Provisioned by AWS CDK",
-                                  )
+        split_domain = props["hosted_zone_id"]
+        route53_zone = HostedZone.from_hosted_zone_id(self, "ImportedZone", hosted_zone_id=props["hosted_zone_id"])
+        route53_zone_creation = HostedZone.from_hosted_zone_attributes(self, "ImportedZone",
+                                                                       hosted_zone_id=props["hosted_zone_id"],
+                                                                       zone_name=split_domain.split(".")[-1:])
+        cert = Certificate.from_certificate_arn(self, "ImportedWildcardCert", certificate_arn=props["cert_arn"])
 
-        cert = Certificate(self, "SiteCertificate",
-                           domain_name=props["domain_name"],
-                           validation=CertificateValidation.from_dns(route53_zone)
-                           )
-
-        domain_name = DomainName(self, "DomainName",
-                                 domain_name=props["domain_name"],
-                                 certificate=Certificate.from_certificate_arn(self, "APIGWCert", cert.certificate_arn),
-                                 # domain_name_alias_hosted_zone_id=route53_zone.hosted_zone_id,
-                                 # domain_name_alias_target="domainNameAliasTarget"
-                                 )
+        custom_domain_name = DomainName(self, "DomainName",
+                                        domain_name=props["custom_domain_name"],
+                                        certificate=Certificate.from_certificate_arn(self, "APIGWCert",
+                                                                                     cert.certificate_arn),
+                                        )
 
         ###
         # API Gateway Creation
@@ -110,8 +107,10 @@ class APIGWStack(Stack):
                                                       logging_level=MethodLoggingLevel.INFO,
                                                       data_trace_enabled=True,
                                                       stage_name='prod'
-                                                      ))
-        BasePathMapping(self, "BasePathMapping", domain_name=domain_name, rest_api=gateway)
+                                                      ),
+                          domain_name=DomainNameOptions(domain_name=custom_domain_name.domain_name, certificate=cert))
+
+        BasePathMapping(self, "BasePathMapping", domain_name=custom_domain_name, rest_api=gateway)
 
         # Give our gateway permissions to interact with SNS
         api_gw_sns_role = Role(self, 'DefaultLambdaHanderRole',
@@ -219,3 +218,9 @@ class APIGWStack(Stack):
                                            }),
                         ]
                         )
+
+        # Add the DNS record
+        self.r53_dns_record(gateway, route53_zone_creation)
+
+    def r53_dns_record(self, gateway, route53_zone_creation):
+        ARecord(self, "AliasRecord", zone=route53_zone_creation, target=RecordTarget.from_alias(ApiGateway(gateway)))

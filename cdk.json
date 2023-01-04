@@ -2,6 +2,8 @@
   "app": "python3 app.py",
   "context": {
     "namespace": "apigw_fanout",
-    "domain_name": "api.troydieter.com"
+    "hosted_zone_id": "XX",
+    "cert_arn": "arn:aws:acm:us-east-1:XX:certificate/bf155d92-d495-4ac2-XX-b2db396c1182",
+    "custom_domain_name": "api.XX.com"
   }
 }
