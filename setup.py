@@ -15,8 +15,8 @@ setuptools.setup(
 
     author="author",
 
-    package_dir={"": "the_big_fan"},
-    packages=setuptools.find_packages(where="the_big_fan"),
+    package_dir={"": "api_gw"},
+    packages=setuptools.find_packages(where="api_gw"),
 
     install_requires=[
     ],

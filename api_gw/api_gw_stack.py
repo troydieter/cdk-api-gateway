@@ -13,7 +13,7 @@ from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
 
 
-class TheBigFanStack(Stack):
+class APIGWStack(Stack):
 
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)

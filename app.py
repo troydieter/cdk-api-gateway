@@ -2,9 +2,9 @@
 
 from aws_cdk import App
 
-from the_big_fan.the_big_fan_stack import TheBigFanStack
+from api_gw.api_gw_stack import APIGWStack
 
 app = App()
-TheBigFanStack(app, "the-big-fan")
+APIGWStack(app, "api-gw")
 
 app.synth()
