@@ -1,7 +1,7 @@
 
 # An AWS Well-Architected Deployment of an AWS API-Gateway + Fanout
 
-![architecture](../img/the-big-fan-arch.png)
+![architecture](img/the-big-fan-arch.png)
 
 In this example we have an API Gateway with a "/SendEvent" endpoint that takes a POST request with a JSON payload. The payload formats are beneath.
 
@@ -16,7 +16,7 @@ To send to the second lambda
 `{ "message": "hello", "status": "not created" }`
 
 ### Postman Example
-![postman](../img/postman.png)
+![postman](img/postman.png)
 
 ## Useful CDK Commands
 
