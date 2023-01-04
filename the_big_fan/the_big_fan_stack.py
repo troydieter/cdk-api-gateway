@@ -3,7 +3,8 @@ import json
 from constructs import Construct
 from aws_cdk import Stack, Duration
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
-    IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel
+    IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
+    IntegrationResponse
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
 from aws_cdk.aws_lambda_event_sources import SqsEventSource
@@ -34,7 +35,7 @@ class TheBigFanStack(Stack):
                                      queue_name='BigFanTopicStatusCreatedSubscriberQueue')
 
         # Only send messages to our created_status_queue with a status of created
-        created_filter = SubscriptionFilter.string_filter(whitelist=['created'])
+        created_filter = SubscriptionFilter.string_filter(allowlist=['created'])
         topic.add_subscription(SqsSubscription(created_status_queue,
                                                raw_message_delivery=True,
                                                filter_policy={'status': created_filter}))
@@ -45,7 +46,7 @@ class TheBigFanStack(Stack):
                                    queue_name='BigFanTopicAnyOtherStatusSubscriberQueue')
 
         # Only send messages to our other_status_queue that do not have a status of created
-        other_filter = SubscriptionFilter.string_filter(blacklist=['created'])
+        other_filter = SubscriptionFilter.string_filter(denylist=['created'])
         topic.add_subscription(SqsSubscription(other_status_queue,
                                                raw_message_delivery=True,
                                                filter_policy={'status': other_filter}))
@@ -142,13 +143,13 @@ class TheBigFanStack(Stack):
             },
             passthrough_behavior=PassthroughBehavior.NEVER,
             integration_responses=[
-                api_gw.IntegrationResponse(
+                IntegrationResponse(
                     status_code='200',
                     response_templates={
                         "application/json": json.dumps(
                             {"message": 'message added to topic'})
                     }),
-                api_gw.IntegrationResponse(
+                IntegrationResponse(
                     selection_pattern="^\[Error\].*",
                     status_code='400',
                     response_templates={
