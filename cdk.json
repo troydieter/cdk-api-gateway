@@ -1,6 +1,7 @@
 {
   "app": "python3 app.py",
   "context": {
+    "namespace": "apigw_fanout",
     "domain_name": "api.troydieter.com"
   }
 }

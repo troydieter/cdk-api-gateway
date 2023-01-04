@@ -6,6 +6,7 @@ from api_gw.api_gw_stack import APIGWStack
 
 app = App()
 props = {
+    "namespace": app.node.try_get_context("namespace"),
     "domain_name": app.node.try_get_context("domain_name")
 }
 APIGWStack(app, "ApiGatewayFanOut", props=props)

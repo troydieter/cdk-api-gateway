@@ -1,7 +1,7 @@
 import json
 
 from constructs import Construct
-from aws_cdk import Stack, Duration
+from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
     IntegrationResponse, DomainName, BasePathMapping
@@ -19,6 +19,10 @@ class APIGWStack(Stack):
 
     def __init__(self, scope: Construct, id: str, props, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
+
+        ###
+        # Tag everything
+        Tags.of(self).add("project", props["namespace"])
 
         ###
         # SNS Topic Creation
