@@ -83,11 +83,11 @@ class APIGWStack(Stack):
         ###
         # Provision the custom domain
         ###
-        split_domain = props["hosted_zone_id"]
-        route53_zone = HostedZone.from_hosted_zone_id(self, "ImportedZone", hosted_zone_id=props["hosted_zone_id"])
-        route53_zone_creation = HostedZone.from_hosted_zone_attributes(self, "ImportedZone",
-                                                                       hosted_zone_id=props["hosted_zone_id"],
-                                                                       zone_name=split_domain.split(".")[-1:])
+        split_domain_zone = props["hosted_zone_id"]
+        split_domain = str(split_domain_zone.split(".")[-1:])
+        route53_zone_import = HostedZone.from_hosted_zone_attributes(self, "ImportedZone",
+                                                                     hosted_zone_id=props["hosted_zone_id"],
+                                                                     zone_name=split_domain)
         cert = Certificate.from_certificate_arn(self, "ImportedWildcardCert", certificate_arn=props["cert_arn"])
 
         custom_domain_name = DomainName(self, "DomainName",
@@ -220,7 +220,7 @@ class APIGWStack(Stack):
                         )
 
         # Add the DNS record
-        self.r53_dns_record(gateway, route53_zone_creation)
+        self.r53_dns_record(gateway, route53_zone_import)
 
     def r53_dns_record(self, gateway, route53_zone_creation):
         ARecord(self, "AliasRecord", zone=route53_zone_creation, target=RecordTarget.from_alias(ApiGateway(gateway)))
