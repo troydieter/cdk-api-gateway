@@ -1,19 +1,19 @@
 import json
 
-from constructs import Construct
 from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
-    IntegrationResponse, DomainName, BasePathMapping, DomainNameOptions
+    IntegrationResponse, DomainName, BasePathMapping, SecurityPolicy, EndpointType
+from aws_cdk.aws_certificatemanager import Certificate
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
 from aws_cdk.aws_lambda_event_sources import SqsEventSource
+from aws_cdk.aws_route53 import HostedZone, ARecord, RecordTarget
+from aws_cdk.aws_route53_targets import ApiGateway
 from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
-from aws_cdk.aws_certificatemanager import Certificate, CertificateValidation
-from aws_cdk.aws_route53 import HostedZone, ARecord, RecordTarget
-from aws_cdk.aws_route53_targets import ApiGateway
+from constructs import Construct
 
 
 class APIGWStack(Stack):
@@ -92,8 +92,9 @@ class APIGWStack(Stack):
 
         custom_domain_name = DomainName(self, "DomainName",
                                         domain_name=props["custom_domain_name"],
+                                        security_policy=SecurityPolicy.TLS_1_2,
                                         certificate=Certificate.from_certificate_arn(self, "APIGWCert",
-                                                                                     cert.certificate_arn),
+                                                                                     cert.certificate_arn)
                                         )
 
         ###
@@ -107,8 +108,10 @@ class APIGWStack(Stack):
                                                       logging_level=MethodLoggingLevel.INFO,
                                                       data_trace_enabled=True,
                                                       stage_name='prod'
-                                                      ),
-                          domain_name=DomainNameOptions(domain_name=custom_domain_name.domain_name, certificate=cert))
+                                                      ))
+
+        gateway.add_domain_name("AddDomain", domain_name=custom_domain_name.domain_name, security_policy=SecurityPolicy.TLS_1_2,
+                                certificate=cert)
 
         BasePathMapping(self, "BasePathMapping", domain_name=custom_domain_name, rest_api=gateway)
 
