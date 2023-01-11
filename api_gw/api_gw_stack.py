@@ -3,7 +3,7 @@ import json
 from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
-    IntegrationResponse, DomainName, BasePathMapping, SecurityPolicy, EndpointType, ApiKey, UsagePlan
+    IntegrationResponse, BasePathMapping, SecurityPolicy, UsagePlan
 from aws_cdk.aws_certificatemanager import Certificate
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
