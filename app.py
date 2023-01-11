@@ -8,6 +8,7 @@ app = App()
 props = {
     "namespace": app.node.try_get_context("namespace"),
     "hosted_zone_id": app.node.try_get_context("hosted_zone_id"),
+    "hosted_zone_name": app.node.try_get_context("hosted_zone_name"),
     "cert_arn": app.node.try_get_context("cert_arn"),
     "custom_domain_name": app.node.try_get_context("custom_domain_name")
 }

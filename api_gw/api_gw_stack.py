@@ -83,11 +83,10 @@ class APIGWStack(Stack):
         ###
         # Provision the custom domain
         ###
-        split_domain_zone = props["hosted_zone_id"]
-        split_domain = str(split_domain_zone.split(".")[-1:])
+        zone_name = props["hosted_zone_name"]
         route53_zone_import = HostedZone.from_hosted_zone_attributes(self, "ImportedZone",
                                                                      hosted_zone_id=props["hosted_zone_id"],
-                                                                     zone_name=split_domain)
+                                                                     zone_name=zone_name)
         cert = Certificate.from_certificate_arn(self, "ImportedWildcardCert", certificate_arn=props["cert_arn"])
 
         ###
