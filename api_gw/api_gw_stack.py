@@ -90,13 +90,6 @@ class APIGWStack(Stack):
                                                                      zone_name=split_domain)
         cert = Certificate.from_certificate_arn(self, "ImportedWildcardCert", certificate_arn=props["cert_arn"])
 
-        custom_domain_name = DomainName(self, "DomainName",
-                                        domain_name=props["custom_domain_name"],
-                                        security_policy=SecurityPolicy.TLS_1_2,
-                                        certificate=Certificate.from_certificate_arn(self, "APIGWCert",
-                                                                                     cert.certificate_arn)
-                                        )
-
         ###
         # API Gateway Creation
         # This is complicated because it transforms the incoming json payload into a query string url
@@ -110,10 +103,18 @@ class APIGWStack(Stack):
                                                       stage_name='prod'
                                                       ))
 
-        gateway.add_domain_name("AddDomain", domain_name=custom_domain_name.domain_name, security_policy=SecurityPolicy.TLS_1_2,
-                                certificate=cert)
+        custom_domain_name = gateway.add_domain_name("DomainName",
+                                                     domain_name=props["custom_domain_name"],
+                                                     security_policy=SecurityPolicy.TLS_1_2,
+                                                     certificate=Certificate.from_certificate_arn(self, "APIGWCert",
+                                                                                                  cert.certificate_arn)
+                                                     )
 
-        BasePathMapping(self, "BasePathMapping", domain_name=custom_domain_name, rest_api=gateway)
+        # gateway.add_domain_name("AddDomain", domain_name=custom_domain_name.domain_name, security_policy=SecurityPolicy.TLS_1_2,
+        #                         certificate=cert)
+
+        path_mapping = BasePathMapping(self, "APIGwMapping", base_path=props["namespace"],
+                                       domain_name=custom_domain_name, rest_api=gateway)
 
         # Give our gateway permissions to interact with SNS
         api_gw_sns_role = Role(self, 'DefaultLambdaHanderRole',
