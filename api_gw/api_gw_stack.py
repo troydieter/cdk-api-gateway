@@ -3,7 +3,7 @@ import json
 from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
-    IntegrationResponse, DomainName, BasePathMapping, SecurityPolicy, EndpointType
+    IntegrationResponse, DomainName, BasePathMapping, SecurityPolicy, EndpointType, ApiKey, UsagePlan
 from aws_cdk.aws_certificatemanager import Certificate
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
@@ -101,6 +101,11 @@ class APIGWStack(Stack):
                                                       data_trace_enabled=True,
                                                       stage_name='prod'
                                                       ))
+
+        gateway_usage_plan = UsagePlan(self, "GWUsagePlan", name=f"{gateway.rest_api_name}-usageplan", description="API Gateway Unlimited Use")
+
+        gateway_api_key = gateway.add_api_key(props["custom_domain_name"], description=f"{gateway.rest_api_name}-apikey")
+        gateway_usage_plan.add_api_key(gateway_api_key)
 
         custom_domain_name = self.apigw_custom_domain(cert, gateway, props)
 
