@@ -216,7 +216,7 @@ class APIGWStack(Stack):
                         )
 
         # Add the DNS record
-        self.r53_dns_record(gateway, route53_zone_import)
+        self.r53_dns_record(gateway, route53_zone_import, props)
 
     def apigw_custom_domain(self, cert, gateway, props):
         custom_domain_name = gateway.add_domain_name("DomainName",
