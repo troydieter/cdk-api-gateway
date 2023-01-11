@@ -1,3 +1,10 @@
 {
-  "app": "python3 app.py"
+  "app": "python3 app.py",
+  "context": {
+    "namespace": "apigw_fanout",
+    "hosted_zone_id": "ZZ4353459fghEXAMPLE",
+    "hosted_zone_name": "example.com",
+    "cert_arn": "arn:aws:acm:us-east-?:replaceme:certificate/bf155d92-d49sdfg4353b2db396c1182",
+    "custom_domain_name": "api.example.com"
+  }
 }

@@ -1,22 +1,29 @@
 import json
 
-from constructs import Construct
-from aws_cdk import Stack, Duration
+from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
-    IntegrationResponse
+    IntegrationResponse, BasePathMapping, SecurityPolicy, UsagePlan
+from aws_cdk.aws_certificatemanager import Certificate
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
 from aws_cdk.aws_lambda_event_sources import SqsEventSource
+from aws_cdk.aws_route53 import HostedZone, ARecord, RecordTarget
+from aws_cdk.aws_route53_targets import ApiGateway
 from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
+from constructs import Construct
 
 
 class APIGWStack(Stack):
 
-    def __init__(self, scope: Construct, id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, props, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
+
+        ###
+        # Tag everything
+        Tags.of(self).add("project", props["namespace"])
 
         ###
         # SNS Topic Creation
@@ -74,6 +81,15 @@ class APIGWStack(Stack):
         sqs_other_status_subscriber.add_event_source(SqsEventSource(other_status_queue))
 
         ###
+        # Provision the custom domain
+        ###
+        zone_name = props["hosted_zone_name"]
+        route53_zone_import = HostedZone.from_hosted_zone_attributes(self, "ImportedZone",
+                                                                     hosted_zone_id=props["hosted_zone_id"],
+                                                                     zone_name=zone_name)
+        cert = Certificate.from_certificate_arn(self, "ImportedWildcardCert", certificate_arn=props["cert_arn"])
+
+        ###
         # API Gateway Creation
         # This is complicated because it transforms the incoming json payload into a query string url
         # this url is used to post the payload to sns without a lambda inbetween
@@ -85,6 +101,16 @@ class APIGWStack(Stack):
                                                       data_trace_enabled=True,
                                                       stage_name='prod'
                                                       ))
+
+        gateway_usage_plan = UsagePlan(self, "GWUsagePlan", name=f"{gateway.rest_api_name}-usageplan", description="API Gateway Unlimited Use")
+
+        gateway_api_key = gateway.add_api_key(props["custom_domain_name"], description=f"{gateway.rest_api_name}-apikey")
+        gateway_usage_plan.add_api_key(gateway_api_key)
+
+        custom_domain_name = self.apigw_custom_domain(cert, gateway, props)
+
+        BasePathMapping(self, "APIGwMapping", base_path=props["namespace"],
+                        domain_name=custom_domain_name, rest_api=gateway)
 
         # Give our gateway permissions to interact with SNS
         api_gw_sns_role = Role(self, 'DefaultLambdaHanderRole',
@@ -192,3 +218,19 @@ class APIGWStack(Stack):
                                            }),
                         ]
                         )
+
+        # Add the DNS record
+        self.r53_dns_record(gateway, route53_zone_import, props)
+
+    def apigw_custom_domain(self, cert, gateway, props):
+        custom_domain_name = gateway.add_domain_name("DomainName",
+                                                     domain_name=props["custom_domain_name"],
+                                                     security_policy=SecurityPolicy.TLS_1_2,
+                                                     certificate=Certificate.from_certificate_arn(self, "APIGWCert",
+                                                                                                  cert.certificate_arn)
+                                                     )
+        return custom_domain_name
+
+    def r53_dns_record(self, gateway, route53_zone_creation, props):
+        ARecord(self, "AliasRecord", zone=route53_zone_creation, target=RecordTarget.from_alias(ApiGateway(gateway)),
+                record_name=props["custom_domain_name"])
