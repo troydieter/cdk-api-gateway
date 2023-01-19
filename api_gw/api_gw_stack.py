@@ -205,7 +205,7 @@ class APIGWStack(Stack):
         gateway.root.add_resource('SendEvent') \
             .add_method('POST', Integration(type=IntegrationType.HTTP_PROXY,
                                             integration_http_method='POST',
-                                            uri='arn:aws:apigateway:us-east-1:sns:path//',
+                                            # uri='arn:aws:apigateway:us-east-1:sns:path//',
                                             options=integration_options
                                             ),
                         method_responses=[
