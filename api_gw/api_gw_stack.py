@@ -3,7 +3,7 @@ import json
 from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
-    IntegrationResponse, BasePathMapping, SecurityPolicy, UsagePlan
+    IntegrationResponse, BasePathMapping, SecurityPolicy, UsagePlan, VpcLink, ConnectionType
 from aws_cdk.aws_certificatemanager import Certificate
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
@@ -13,6 +13,8 @@ from aws_cdk.aws_route53_targets import ApiGateway
 from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
+from aws_cdk.aws_ec2 import Vpc
+from aws_cdk.aws_elasticloadbalancingv2 import NetworkLoadBalancer
 from constructs import Construct
 
 
@@ -24,6 +26,13 @@ class APIGWStack(Stack):
         ###
         # Tag everything
         Tags.of(self).add("project", props["namespace"])
+
+        ###
+        # Import the current VPC, set a NLB and privatelink
+        vpc = Vpc.from_lookup(self, "VPC", is_default=False, vpc_id=props["vpc_id"])
+        nlb = NetworkLoadBalancer(self, "NLB", vpc=vpc)
+        link = VpcLink(self, "PrivateLink", targets=[nlb])
+        
 
         ###
         # SNS Topic Creation
@@ -160,6 +169,8 @@ class APIGWStack(Stack):
 
         # This is how our gateway chooses what response to send based on selection_pattern
         integration_options = IntegrationOptions(
+            connection_type=ConnectionType.VPC_LINK,
+            vpc_link=link,
             credentials_role=api_gw_sns_role,
             request_parameters={
                 'integration.request.header.Content-Type': "'application/x-www-form-urlencoded'"
@@ -192,7 +203,7 @@ class APIGWStack(Stack):
 
         # Add an SendEvent endpoint onto the gateway
         gateway.root.add_resource('SendEvent') \
-            .add_method('POST', Integration(type=IntegrationType.AWS,
+            .add_method('POST', Integration(type=IntegrationType.HTTP_PROXY,
                                             integration_http_method='POST',
                                             uri='arn:aws:apigateway:us-east-1:sns:path//',
                                             options=integration_options
@@ -218,6 +229,8 @@ class APIGWStack(Stack):
                                            }),
                         ]
                         )
+
+        Integration(type=IntegrationType.HTTP_PROXY, options=integration_options)
 
         # Add the DNS record
         self.r53_dns_record(gateway, route53_zone_import, props)
