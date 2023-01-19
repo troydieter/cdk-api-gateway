@@ -18,6 +18,9 @@ To send to the second lambda
 ### Postman Example
 ![postman](img/postman.png)
 
+### Private API Gateway
+![privateAPI](img/diagram.png)
+
 ## Useful CDK Commands
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
