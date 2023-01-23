@@ -13,26 +13,26 @@ class VpcStack(Stack):
         # Tag everything
         Tags.of(self).add("project", props["namespace"])
 
-        self.vpc = Vpc(self, 'ApiGWVPC',
-                       cidr='192.168.31.0/20',
-                       max_azs=2,
-                       enable_dns_hostnames=True,
-                       enable_dns_support=True,
-                       subnet_configuration=[
-                           SubnetConfiguration(
-                               name='Public-Subnet',
-                               subnet_type=SubnetType.PUBLIC,
-                               cidr_mask=26
-                           ),
-                           SubnetConfiguration(
-                               name='Private-Subnet',
-                               subnet_type=SubnetType.PRIVATE_WITH_NAT,
-                               cidr_mask=26
-                           )
-                       ],
-                       nat_gateways=1,
-
-                       )
+        vpc = Vpc(self, 'ApiGWVPC',
+                  cidr='192.168.31.0/20',
+                  max_azs=2,
+                  enable_dns_hostnames=True,
+                  enable_dns_support=True,
+                  subnet_configuration=[
+                      SubnetConfiguration(
+                          name='Public-Subnet',
+                          subnet_type=SubnetType.PUBLIC,
+                          cidr_mask=26
+                      ),
+                      SubnetConfiguration(
+                          name='Private-Subnet',
+                          subnet_type=SubnetType.PRIVATE_WITH_EGRESS,
+                          cidr_mask=26
+                      )
+                  ],
+                  nat_gateways=1,
+                  )
+        self.vpc = vpc
         priv_subnets = [subnet.subnet_id for subnet in self.vpc.private_subnets]
 
         count = 1

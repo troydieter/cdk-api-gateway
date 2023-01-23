@@ -19,6 +19,6 @@ props = {
     "custom_domain_name": app.node.try_get_context("custom_domain_name")
 }
 VpcStack(app, "VPCStack", props=props, env=env_data)
-APIGWStack(app, "ApiGatewayFanOut", props=props, env=env_data)
+APIGWStack(app, "ApiGatewayFanOut", props=props, env=env_data, vpc=VpcStack)
 
 app.synth()

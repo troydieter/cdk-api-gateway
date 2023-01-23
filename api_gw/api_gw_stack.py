@@ -22,7 +22,7 @@ from vpc.vpc_stack import VpcStack
 
 class APIGWStack(Stack):
 
-    def __init__(self, scope: Construct, id: str, props, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, props, vpc: Vpc, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         ###
@@ -31,7 +31,7 @@ class APIGWStack(Stack):
 
         ###
         # Import the VPCStack, set a NLB and privatelink
-        vpc = VpcStack.vpc
+        vpc = vpc
         nlb = NetworkLoadBalancer(self, "NLB", vpc=vpc)
         link = VpcLink(self, "PrivateLink", targets=[nlb])
         
