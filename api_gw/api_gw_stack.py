@@ -17,6 +17,8 @@ from aws_cdk.aws_ec2 import Vpc
 from aws_cdk.aws_elasticloadbalancingv2 import NetworkLoadBalancer
 from constructs import Construct
 
+from vpc.vpc_stack import VpcStack
+
 
 class APIGWStack(Stack):
 
@@ -28,8 +30,8 @@ class APIGWStack(Stack):
         Tags.of(self).add("project", props["namespace"])
 
         ###
-        # Import the current VPC, set a NLB and privatelink
-        vpc = Vpc.from_lookup(self, "VPC", is_default=False, vpc_id=props["vpc_id"])
+        # Import the VPCStack, set a NLB and privatelink
+        vpc = VpcStack.vpc
         nlb = NetworkLoadBalancer(self, "NLB", vpc=vpc)
         link = VpcLink(self, "PrivateLink", targets=[nlb])
         

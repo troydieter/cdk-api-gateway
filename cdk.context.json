@@ -1,3 +1,70 @@
 {
-  "aws-cdk:enableDiffNoFail": "true"
+  "aws-cdk:enableDiffNoFail": "true",
+  "vpc-provider:account=550767824695:filter.isDefault=false:filter.vpc-id=vpc-0a2a83d4e068c74c6:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0a2a83d4e068c74c6",
+    "vpcCidrBlock": "10.16.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-07350c44836266baf",
+            "cidr": "10.16.0.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-036a9ee6cc1d33221"
+          },
+          {
+            "subnetId": "subnet-0c86b986978390648",
+            "cidr": "10.16.32.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0749ec3e4e7ed67b4"
+          },
+          {
+            "subnetId": "subnet-03e97e0882eae5d8c",
+            "cidr": "10.16.64.0/20",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-0b4b29e15fcb1bf6a"
+          },
+          {
+            "subnetId": "subnet-0427d4869db47d5ce",
+            "cidr": "10.16.96.0/20",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-009b42ed61d6c68ee"
+          }
+        ]
+      },
+      {
+        "name": "Isolated",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-0815efd0f0efc17ed",
+            "cidr": "10.16.16.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0339447e428075dd1"
+          },
+          {
+            "subnetId": "subnet-00ed798ceea94acf3",
+            "cidr": "10.16.48.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-06e13e37bda8a12e2"
+          },
+          {
+            "subnetId": "subnet-004b9bc74ec059f88",
+            "cidr": "10.16.80.0/20",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-0479e372d93d401f4"
+          },
+          {
+            "subnetId": "subnet-05a4413e1075d5452",
+            "cidr": "10.16.112.0/20",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-032cc43130f5985eb"
+          }
+        ]
+      }
+    ]
+  }
 }
