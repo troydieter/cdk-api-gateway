@@ -1,6 +1,6 @@
 import json
 
-from aws_cdk import Stack, Duration, Tags
+from aws_cdk import Stack, Duration, Tags, CfnOutput
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
     IntegrationResponse, BasePathMapping, SecurityPolicy, UsagePlan, VpcLink, ConnectionType
@@ -13,8 +13,9 @@ from aws_cdk.aws_route53_targets import ApiGateway
 from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
-from aws_cdk.aws_ec2 import Vpc
+from aws_cdk.aws_ec2 import Vpc, SubnetConfiguration, SubnetType, IpAddresses, InterfaceVpcEndpoint, InterfaceVpcEndpointService, SubnetSelection, InterfaceVpcEndpointAwsService
 from aws_cdk.aws_elasticloadbalancingv2 import NetworkLoadBalancer
+from aws_cdk.aws_ssm import StringParameter
 from constructs import Construct
 
 
@@ -28,11 +29,48 @@ class APIGWStack(Stack):
         Tags.of(self).add("project", props["namespace"])
 
         ###
-        # Import the current VPC, set a NLB and privatelink
-        vpc = Vpc.from_lookup(self, "VPC", is_default=False, vpc_id=props["vpc_id"])
+        # Provision the VPC
+        vpc = Vpc(self, 'ApiGWVPC',
+                  ip_addresses=IpAddresses.cidr(props["vpc_cidr"]),
+                  max_azs=2,
+                  enable_dns_hostnames=True,
+                  enable_dns_support=True,
+                  subnet_configuration=[
+                      SubnetConfiguration(
+                          name='Public-Subnet',
+                          subnet_type=SubnetType.PUBLIC,
+                          cidr_mask=26
+                      ),
+                      SubnetConfiguration(
+                          name='Private-Subnet',
+                          subnet_type=SubnetType.PRIVATE_WITH_EGRESS,
+                          cidr_mask=26
+                      )
+                  ],
+                  nat_gateways=1,
+                  )
+
+        priv_subnets = [subnet.subnet_id for subnet in vpc.private_subnets]
+
+        count = 1
+        for psub in priv_subnets:
+            StringParameter(self, 'private-subnet-' + str(count),
+                            string_value=psub,
+                            parameter_name='/' + props["namespace"] + '/private-subnet-' + str(count)
+                            )
+            count += 1
+
+        ###
+        # Create the NLB and privatelink
         nlb = NetworkLoadBalancer(self, "NLB", vpc=vpc)
         link = VpcLink(self, "PrivateLink", targets=[nlb])
-        
+
+        ###
+        # Create the VPC Endpoints
+        InterfaceVpcEndpoint(self, "SNSVPCEndpoint", vpc=vpc, service=InterfaceVpcEndpointAwsService.SNS)
+        InterfaceVpcEndpoint(self, "SQSVPCEndpoint", vpc=vpc, service=InterfaceVpcEndpointAwsService.SQS)
+        InterfaceVpcEndpoint(self, "LambdaVPCEndpoint", vpc=vpc, service=InterfaceVpcEndpointAwsService.LAMBDA_)
+        InterfaceVpcEndpoint(self, "ELBVPCEndpoint", vpc=vpc, service=InterfaceVpcEndpointAwsService.ELASTIC_LOAD_BALANCING)
 
         ###
         # SNS Topic Creation
@@ -234,6 +272,13 @@ class APIGWStack(Stack):
 
         # Add the DNS record
         self.r53_dns_record(gateway, route53_zone_import, props)
+
+        ##
+        # Outputs
+        #
+        # VPC
+        CfnOutput(self, "VPC_ID", description="VPC ID", export_name="vpcid", value=vpc.vpc_id)
+        CfnOutput(self, "VPC_ARN", description="VPC ARN", export_name="vpcarn", value=vpc.vpc_arn)
 
     def apigw_custom_domain(self, cert, gateway, props):
         custom_domain_name = gateway.add_domain_name("DomainName",

@@ -5,6 +5,7 @@ from aws_cdk import App
 
 from api_gw.api_gw_stack import APIGWStack
 
+
 env_data = {
     'account': os.environ['CDK_DEFAULT_ACCOUNT'],
     'region': os.environ['CDK_DEFAULT_REGION']
@@ -16,7 +17,7 @@ props = {
     "hosted_zone_name": app.node.try_get_context("hosted_zone_name"),
     "cert_arn": app.node.try_get_context("cert_arn"),
     "custom_domain_name": app.node.try_get_context("custom_domain_name"),
-    "vpc_id": app.node.try_get_context("vpc_id")
+    "vpc_cidr": app.node.try_get_context("vpc_cidr")
 }
 APIGWStack(app, "ApiGatewayFanOut", props=props, env=env_data)
 
