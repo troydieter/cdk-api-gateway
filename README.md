@@ -1,7 +1,7 @@
 
 # An AWS Well-Architected Deployment of an AWS VPC + WS API-Gateway (Private API) + Fanout
 
-![architecture](img/the-big-fan-arch.png)
+![architecture](img/diagram.png)
 
 In this example we have an API Gateway with a "/SendEvent" endpoint that takes a POST request with a JSON payload. The payload formats are beneath.
 
@@ -18,8 +18,6 @@ To send to the second lambda
 ### Postman Example
 ![postman](img/postman.png)
 
-### Private API Gateway
-![privateAPI](img/diagram.png)
 
 ## Useful CDK Commands
 
