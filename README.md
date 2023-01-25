@@ -22,13 +22,11 @@
 - (2) `AWS Lambda` functions that are invoked by the `Amazon SQS` queues 
 
 ## Fanout Details
-The "/SendEvent" endpoint will take a POST request with a JSON payload. The payload formats are beneath.
+The `"/SendEvent"` endpoint will take a POST request with a JSON payload. The payload formats are beneath.
 
 When API Gateway receives the json it automatically through VTL routes it to an SNS Topic, this Topic then has two subscribers which are SQS Queues. The difference between the two subscribers is that one looks for a property of "status":"created" in the json and the other subscriber looks for any message that doesn't have that property. Each queue has a lambda that subscribes to it and prints whatever message it recieves to cloudwatch.
 
 ![architecture](img/diagram.png)
-
-
 
 ### JSON Payload Format
 
