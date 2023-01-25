@@ -1,5 +1,5 @@
 
-# An AWS Well-Architected Deployment of an AWS API-Gateway + Fanout
+# An AWS Well-Architected Deployment of an AWS VPC + WS API-Gateway (Private API) + Fanout
 
 ![architecture](img/the-big-fan-arch.png)
 

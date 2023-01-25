@@ -13,7 +13,7 @@ from aws_cdk.aws_route53_targets import ApiGateway
 from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
-from aws_cdk.aws_ec2 import Vpc, SubnetConfiguration, SubnetType, IpAddresses
+from aws_cdk.aws_ec2 import Vpc, SubnetConfiguration, SubnetType, IpAddresses, InterfaceVpcEndpoint, InterfaceVpcEndpointService, SubnetSelection
 from aws_cdk.aws_elasticloadbalancingv2 import NetworkLoadBalancer
 from aws_cdk.aws_ssm import StringParameter
 from constructs import Construct
@@ -61,10 +61,13 @@ class APIGWStack(Stack):
             count += 1
 
         ###
-        # Import the VPCStack, set a NLB and privatelink
+        # Create the NLB and privatelink
         nlb = NetworkLoadBalancer(self, "NLB", vpc=vpc)
         link = VpcLink(self, "PrivateLink", targets=[nlb])
-        
+
+        ###
+        # Create the VPC Endpoints
+        InterfaceVpcEndpoint(self, "SNSVPCEndpoint", vpc=vpc, service=f'com.amazonaws.{self.region}.sns', subnets=SubnetSelection(availability_zones=[vpc.availability_zones]))
 
         ###
         # SNS Topic Creation
