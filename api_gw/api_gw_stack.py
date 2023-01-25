@@ -13,7 +13,7 @@ from aws_cdk.aws_route53_targets import ApiGateway
 from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
-from aws_cdk.aws_ec2 import Vpc, SubnetConfiguration, SubnetType, IpAddresses, InterfaceVpcEndpoint, InterfaceVpcEndpointService, SubnetSelection
+from aws_cdk.aws_ec2 import Vpc, SubnetConfiguration, SubnetType, IpAddresses, InterfaceVpcEndpoint, InterfaceVpcEndpointService, SubnetSelection, InterfaceVpcEndpointAwsService
 from aws_cdk.aws_elasticloadbalancingv2 import NetworkLoadBalancer
 from aws_cdk.aws_ssm import StringParameter
 from constructs import Construct
@@ -67,7 +67,10 @@ class APIGWStack(Stack):
 
         ###
         # Create the VPC Endpoints
-        InterfaceVpcEndpoint(self, "SNSVPCEndpoint", vpc=vpc, service=f'com.amazonaws.{self.region}.sns', subnets=SubnetSelection(availability_zones=[vpc.availability_zones]))
+        InterfaceVpcEndpoint(self, "SNSVPCEndpoint", vpc=vpc, service=InterfaceVpcEndpointAwsService.SNS)
+        InterfaceVpcEndpoint(self, "SQSVPCEndpoint", vpc=vpc, service=InterfaceVpcEndpointAwsService.SQS)
+        InterfaceVpcEndpoint(self, "LambdaVPCEndpoint", vpc=vpc, service=InterfaceVpcEndpointAwsService.LAMBDA_)
+        InterfaceVpcEndpoint(self, "ELBVPCEndpoint", vpc=vpc, service=InterfaceVpcEndpointAwsService.ELASTIC_LOAD_BALANCING)
 
         ###
         # SNS Topic Creation
