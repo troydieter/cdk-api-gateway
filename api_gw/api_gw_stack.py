@@ -31,7 +31,7 @@ class APIGWStack(Stack):
         ###
         # Provision the VPC
         vpc = Vpc(self, 'ApiGWVPC',
-                  ip_addresses=IpAddresses.cidr("192.168.31.0/20"),
+                  ip_addresses=IpAddresses.cidr(props["vpc_cidr"]),
                   max_azs=2,
                   enable_dns_hostnames=True,
                   enable_dns_support=True,

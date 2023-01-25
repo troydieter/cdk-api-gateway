@@ -1,11 +1,30 @@
 
-# An AWS Well-Architected Deployment of an AWS VPC + WS API-Gateway (Private API) + Fanout
+# An AWS Well-Architected Deployment of an AWS VPC + AWS API-Gateway (Private API) + Fanout
+
+## Setup
+
+1. You will need a top-level domain, such as `example.com` in `Amazon Route53` preferably to ensure proper execution of the `Amazon Route53` record-set creation and validation of the `Amazon Certificate Manager` certicate validation
+2. 
+
+
+## Inventory
+
+- (1) `Amazon VPC` that is provisioned with private subnets
+- (4) `Amazon VPC` Interface Endpoints for the services deployed (SNS, SQS, Lambda, NLB)
+- (1) `AWS API Gateway` (using a Private API) that will route traffic to the respective endpoints
+- (1) `AWS API Gateway` mapping
+- (1) `Amazon Route53` record-set for the custom domain
+- (1) `Amazon SNS` Topic
+- (2) `Amazon SQS` Queues
+- (2) `AWS Lambda` functions that are invoked by the `Amazon SQS` queues 
+
+The "/SendEvent" endpoint will take a POST request with a JSON payload. The payload formats are beneath.
+
+When API Gateway receives the json it automatically through VTL routes it to an SNS Topic, this Topic then has two subscribers which are SQS Queues. The difference between the two subscribers is that one looks for a property of "status":"created" in the json and the other subscriber looks for any message that doesn't have that property. Each queue has a lambda that subscribes to it and prints whatever message it recieves to cloudwatch.
 
 ![architecture](img/diagram.png)
 
-In this example we have an API Gateway with a "/SendEvent" endpoint that takes a POST request with a JSON payload. The payload formats are beneath.
 
-When API Gateway receives the json it automatically through VTL routes it to an SNS Topic, this Topic then has two subscribers which are SQS Queues. The difference between the two subscribers is that one looks for a property of "status":"created" in the json and the other subscriber looks for any message that doesn't have that property. Each queue has a lambda that subscribes to it and prints whatever message it recieves to cloudwatch.
 
 ### JSON Payload Format
 
