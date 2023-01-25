@@ -269,7 +269,10 @@ class APIGWStack(Stack):
 
         ##
         # Outputs
-        vpc_id = CfnOutput(self, "VPC_ID", description="VPC ID", export_name="vpcid", value=vpc.vpc_id)
+        #
+        # VPC
+        CfnOutput(self, "VPC_ID", description="VPC ID", export_name="vpcid", value=vpc.vpc_id)
+        CfnOutput(self, "VPC_ARN", description="VPC ARN", export_name="vpcarn", value=vpc.vpc_arn)
 
     def apigw_custom_domain(self, cert, gateway, props):
         custom_domain_name = gateway.add_domain_name("DomainName",
