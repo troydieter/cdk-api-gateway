@@ -1,6 +1,6 @@
 import json
 
-from aws_cdk import Stack, Duration, Tags
+from aws_cdk import Stack, Duration, Tags, CfnOutput
 from aws_cdk.aws_apigateway import StageOptions, RestApi, JsonSchema, JsonSchemaType, JsonSchemaVersion, \
     IntegrationOptions, PassthroughBehavior, Integration, IntegrationType, MethodResponse, MethodLoggingLevel, \
     IntegrationResponse, BasePathMapping, SecurityPolicy, UsagePlan, VpcLink, ConnectionType
@@ -266,6 +266,10 @@ class APIGWStack(Stack):
 
         # Add the DNS record
         self.r53_dns_record(gateway, route53_zone_import, props)
+
+        ##
+        # Outputs
+        vpc_id = CfnOutput(self, "VPC_ID", description="VPC ID", export_name="vpcid", value=vpc.vpc_id)
 
     def apigw_custom_domain(self, cert, gateway, props):
         custom_domain_name = gateway.add_domain_name("DomainName",
