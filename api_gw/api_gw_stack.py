@@ -13,6 +13,7 @@ from aws_cdk.aws_route53_targets import ApiGateway
 from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
+from cdk_watchful import Watchful
 from constructs import Construct
 
 
@@ -24,6 +25,12 @@ class APIGWStack(Stack):
         ###
         # Tag everything
         Tags.of(self).add("project", props["namespace"])
+
+        ###
+        # Monitor everything
+        # Learn more: https://github.com/cdklabs/cdk-watchful
+        wf = Watchful(self, "Watchful", alarm_email=props["alarm_email"])
+        wf.watch_scope(self)
 
         ###
         # SNS Topic Creation
