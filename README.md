@@ -1,7 +1,24 @@
 
 # An AWS Well-Architected Deployment of an AWS API-Gateway + Fanout
 
-![architecture](img/the-big-fan-arch.png)
+![diagram](img/diagram.png)
+## Overview
+This solution will deploy an AWS API Gateway, multiple AWS SNS topics and AWS SQS queues that will fan out incoming requests. It will utilize a custom domain and certificate
+for incoming requests.
+
+## Pre-requisites 
+1. An Amazon Route 53 (public) forward zone, that has its respective nameservers pointed to it (e.g. you've registered a domain with your preferred registrar and have pointed the `nameserver` entries to the Amazon Route53 public forward zone)
+2. An Amazon Certificate Manager wildcard certificate (OR a certificate issued to the `custom_domain_name` value set in `cdk.json`) issued to the value `hosted_zone_name` in `cdk.json`
+3. Set the following in `cdk.json`:
+   1. Set the Amazon Route53 forward `zone name` that was defined in step #1 (e.g. `troydieter.com`) as `hosted_zone_name`
+   2. Set the Amazon Route53 forward `ID` name that was defined in step #1 as `hosted_zone_id` 
+   3. Set the Amazon Certificate Manager `ARN` defined in step #2 as `cert_arn`
+   4. Set the `custom_domain_name` to the preferred custom domain name, that aligns to the value set in `3.1` (e.g. api.troydieter.com)
+   5. Set the `alarm_email` to your email address, which will subscribe to the Amazon SNS topic that handles alerts
+
+If you have any questions, need clarification a step -- please open a Github issue! I'm always open to feedback and here to help.
+
+### Message Handling
 
 In this example we have an API Gateway with a "/SendEvent" endpoint that takes a POST request with a JSON payload. The payload formats are beneath.
 
