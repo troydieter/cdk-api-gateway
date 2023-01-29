@@ -1,0 +1,412 @@
+digraph "Diagram" {
+  splines = "ortho";
+  pad = "1.0";
+  nodesep = "0.60";
+  ranksep = "0.75";
+  fontname = "Sans-Serif";
+  fontsize = "15";
+  dpi = "200";
+  rankdir = "BT";
+  compound = "true";
+  fontcolor = "#222222";
+  edge [
+    color = "#D5871488",
+    penwidth = 2,
+    arrowhead = "dot",
+    arrowtail = "dot",
+  ];
+  node [
+    shape = "box",
+    style = "rounded",
+    fixedsize = true,
+    width = 1.7,
+    height = 1.7,
+    labelloc = "c",
+    imagescale = true,
+    fontname = "Sans-Serif",
+    fontsize = 8,
+    margin = 8,
+  ];
+  subgraph "ApiGatewayFanOut" {
+    subgraph "cluster-SubGraph.ApiGatewayFanOut" {
+      graph [
+        label = "ApiGatewayFanOut",
+        labelloc = "b",
+        labeljust = "l",
+        margin = "10",
+        fontsize = "16",
+        penwidth = "2",
+        pencolor = "#888888",
+        style = "filled,rounded",
+        fillcolor = "#e4e4e4",
+      ];
+      "ApiGatewayFanOut/ApiGWFanTopic" [
+        label = " ApiGWFanTopic",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Notification-Service_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 2,
+        height = 2.266,
+      ];
+      "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue" [
+        label = "\nBigFanTopicStatusCrea",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Queue-Service_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 2,
+        height = 2.4819999999999998,
+      ];
+      "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue" [
+        label = "\nBigFanTopicAnyOtherSt",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Queue-Service_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 2,
+        height = 2.4819999999999998,
+      ];
+      "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler" [
+        label = "\nSQSCreatedStatusSubsc",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 2,
+        height = 2.4819999999999998,
+      ];
+      "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler" [
+        label = "\nSQSAnyOtherStatusSubs",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 2,
+        height = 2.4819999999999998,
+      ];
+      "ApiGatewayFanOut/ApiGWFanAPI" [
+        label = " ApiGWFanAPI",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 1.2,
+        height = 1.466,
+      ];
+      "ApiGatewayFanOut/GWUsagePlan" [
+        label = " GWUsagePlan",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 1.2,
+        height = 1.466,
+      ];
+      "ApiGatewayFanOut/APIGwMapping" [
+        label = " APIGwMapping",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 1.2,
+        height = 1.466,
+      ];
+      "ApiGatewayFanOut/DefaultLambdaHanderRole" [
+        label = "\nDefaultLambdaHanderRo",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 1.2,
+        height = 1.682,
+      ];
+      "ApiGatewayFanOut/AliasRecord" [
+        label = " AliasRecord",
+        fontsize = 12,
+        image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Resource/Res_Networking-and-Content-Delivery/Res_48_Dark/Res_Amazon-Route-53-Hosted-Zone_48_Dark_gen.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 1.2,
+        height = 1.466,
+      ];
+      subgraph "cluster-SubGraph.Watchful" {
+        graph [
+          label = "Watchful",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#d6d6d6",
+        ];
+        "ApiGatewayFanOut/Watchful/AlarmTopic" [
+          label = " AlarmTopic",
+          fontsize = 12,
+          image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Notification-Service_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ApiGatewayFanOut/Watchful/Dashboard" [
+          label = " Dashboard",
+          fontsize = 12,
+          image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ApiGatewayFanOut/Watchful/ApiGatewayFanOutApiGWFanAPID0FF20CE/5XXErrorAlarm" [
+          label = " 5XXErrorAlarm",
+          fontsize = 12,
+          image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        subgraph "cluster-SubGraph.ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D" {
+          graph [
+            label = "ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D",
+            labelloc = "b",
+            labeljust = "l",
+            margin = "10",
+            fontsize = "16",
+            penwidth = "2",
+            pencolor = "#888888",
+            style = "filled,rounded",
+            fillcolor = "#c7c7c7",
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ErrorsAlarm" [
+            label = " ErrorsAlarm",
+            fontsize = 12,
+            image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ThrottlesAlarm" [
+            label = " ThrottlesAlarm",
+            fontsize = 12,
+            image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/DurationAlarm" [
+            label = " DurationAlarm",
+            fontsize = 12,
+            image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+        }
+        subgraph "cluster-SubGraph.ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F" {
+          graph [
+            label = "ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F",
+            labelloc = "b",
+            labeljust = "l",
+            margin = "10",
+            fontsize = "16",
+            penwidth = "2",
+            pencolor = "#888888",
+            style = "filled,rounded",
+            fillcolor = "#c7c7c7",
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ErrorsAlarm" [
+            label = " ErrorsAlarm",
+            fontsize = 12,
+            image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ThrottlesAlarm" [
+            label = " ThrottlesAlarm",
+            fontsize = 12,
+            image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/DurationAlarm" [
+            label = " DurationAlarm",
+            fontsize = 12,
+            image = "/home/tdieter/.nvm/versions/node/v16.17.0/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+        }
+      }
+    }
+  }
+  "ApiGatewayFanOut/Watchful/Dashboard" -> "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/Dashboard" -> "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/Dashboard" -> "ApiGatewayFanOut/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ErrorsAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ErrorsAlarm" -> "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ThrottlesAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ThrottlesAlarm" -> "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/DurationAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/DurationAlarm" -> "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ErrorsAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ErrorsAlarm" -> "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ThrottlesAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ThrottlesAlarm" -> "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/DurationAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/DurationAlarm" -> "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutApiGWFanAPID0FF20CE/5XXErrorAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutApiGWFanAPID0FF20CE/5XXErrorAlarm" -> "ApiGatewayFanOut/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue" -> "ApiGatewayFanOut/ApiGWFanTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue" -> "ApiGatewayFanOut/ApiGWFanTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler" -> "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler" -> "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/ApiGWFanAPI" -> "ApiGatewayFanOut/ApiGWFanTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/ApiGWFanAPI" -> "ApiGatewayFanOut/DefaultLambdaHanderRole" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/GWUsagePlan" -> "ApiGatewayFanOut/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/APIGwMapping" -> "ApiGatewayFanOut/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/DefaultLambdaHanderRole" -> "ApiGatewayFanOut/ApiGWFanTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/AliasRecord" -> "ApiGatewayFanOut/ApiGWFanAPI" [
+    dir = "both",
+  ];
+}
