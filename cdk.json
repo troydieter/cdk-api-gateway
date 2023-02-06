@@ -6,6 +6,7 @@
     "hosted_zone_name": "example.com",
     "cert_arn": "arn:aws:acm:us-east-?:replaceme:certificate/bf155d92-d49sdfg4353b2db396c1182",
     "custom_domain_name": "api.example.com",
+    "alarm_email": "example@me.com",
     "vpc_cidr": "192.142.0.0/22"
   }
 }

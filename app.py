@@ -17,6 +17,7 @@ props = {
     "hosted_zone_name": app.node.try_get_context("hosted_zone_name"),
     "cert_arn": app.node.try_get_context("cert_arn"),
     "custom_domain_name": app.node.try_get_context("custom_domain_name"),
+    "alarm_email": app.node.try_get_context("alarm_email"),
     "vpc_cidr": app.node.try_get_context("vpc_cidr")
 }
 APIGWStack(app, "ApiGatewayFanOut", props=props, env=env_data)

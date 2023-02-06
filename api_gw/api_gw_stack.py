@@ -15,6 +15,7 @@ from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue
 from aws_cdk.aws_ec2 import Vpc, SubnetConfiguration, SubnetType, IpAddresses, InterfaceVpcEndpoint, InterfaceVpcEndpointService, SubnetSelection, InterfaceVpcEndpointAwsService
 from aws_cdk.aws_elasticloadbalancingv2 import NetworkLoadBalancer
+from cdk_watchful import Watchful
 from aws_cdk.aws_ssm import StringParameter
 from constructs import Construct
 
@@ -27,6 +28,12 @@ class APIGWStack(Stack):
         ###
         # Tag everything
         Tags.of(self).add("project", props["namespace"])
+
+        ###
+        # Monitor everything
+        # Learn more: https://github.com/cdklabs/cdk-watchful
+        wf = Watchful(self, "Watchful", alarm_email=props["alarm_email"])
+        wf.watch_scope(self)
 
         ###
         # Provision the VPC
