@@ -286,6 +286,9 @@ class APIGWStack(Stack):
         # VPC
         CfnOutput(self, "VPC_ID", description="VPC ID", export_name="vpcid", value=vpc.vpc_id)
         CfnOutput(self, "VPC_ARN", description="VPC ARN", export_name="vpcarn", value=vpc.vpc_arn)
+        # Custom Domain Name
+        CfnOutput(self, "CUSTOM_DOMAIN_ADDR", description="CUSTOM DOMAIN ADDRESS", export_name="cust-domain-addr",
+                  value="https://" + custom_domain_name.domain_name + "/")
 
     def apigw_custom_domain(self, cert, gateway, props):
         custom_domain_name = gateway.add_domain_name("DomainName",
