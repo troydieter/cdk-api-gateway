@@ -16,3 +16,4 @@ cdk.out
 /.idea/cdk-api-gateway.iml
 /.idea/workspace.xml
 local_cdk.json
+.idea
