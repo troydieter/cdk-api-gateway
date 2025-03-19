@@ -70,17 +70,17 @@ class APIGWStack(Stack):
         ###
 
         # Created status queue lambda
-        sqs_created_status_subscriber = Function(self, "SQSCreatedStatusSubscribeLambdaHandler",
-                                                 runtime=Runtime.PYTHON_3_8,
+        created_status_queue = Function(self, "SQSCreatedStatusSubscribeLambdaHandler",
+                                                 runtime=Runtime.PYTHON_3_13,
                                                  handler="createdStatus.handler",
                                                  code=Code.from_asset("lambda_fns/subscribe")
                                                  )
-        created_status_queue.grant_consume_messages(sqs_created_status_subscriber)
-        sqs_created_status_subscriber.add_event_source(SqsEventSource(created_status_queue))
+        created_status_queue.grant_consume_messages(created_status_queue)
+        created_status_queue.add_event_source(SqsEventSource(created_status_queue))
 
         # Any other status queue lambda
         sqs_other_status_subscriber = Function(self, "SQSAnyOtherStatusSubscribeLambdaHandler",
-                                               runtime=Runtime.PYTHON_3_8,
+                                               runtime=Runtime.PYTHON_3_13,
                                                handler="anyOtherStatus.handler",
                                                code=Code.from_asset("lambda_fns/subscribe")
                                                )
