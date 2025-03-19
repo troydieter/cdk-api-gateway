@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 from aws_cdk import App
 from api_gw.api_gw_stack import APIGWStack
