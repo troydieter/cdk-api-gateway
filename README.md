@@ -1,6 +1,10 @@
 
 # An AWS Well-Architected Deployment of an AWS API-Gateway + Fanout
 
+## Simplified Diagram
+![cad_diagram](img/cad_diagram.jpg)
+
+## Programmatic Diagram (rendered using cdk-dia)
 ![diagram](img/diagram.png)
 ## Overview
 This solution will deploy an AWS API Gateway, multiple AWS SNS topics and AWS SQS queues that will fan out incoming requests. It will utilize a custom domain and certificate
