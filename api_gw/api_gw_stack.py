@@ -2,7 +2,8 @@ import json
 from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import (RestApi, StageOptions, MethodLoggingLevel,
                                     Integration, IntegrationType, IntegrationOptions,
-                                    PassthroughBehavior, IntegrationResponse, UsagePlan)
+                                    PassthroughBehavior, IntegrationResponse, UsagePlan, 
+                                    SecurityPolicy, BasePathMapping)
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
 from aws_cdk.aws_lambda_event_sources import SqsEventSource
@@ -11,6 +12,7 @@ from aws_cdk.aws_route53_targets import ApiGateway
 from aws_cdk.aws_sns import Topic, SubscriptionFilter
 from aws_cdk.aws_sns_subscriptions import SqsSubscription
 from aws_cdk.aws_sqs import Queue, DeadLetterQueue
+from aws_cdk.aws_certificatemanager import Certificate
 from cdk_watchful import Watchful
 from constructs import Construct
 
@@ -128,7 +130,21 @@ class APIGatewayConstruct(Construct):
                                                            integration_http_method="POST",
                                                            uri="arn:aws:apigateway:us-east-1:sns:path//",
                                                            options=integration_options))
+        
+        # Import the domain certificate
+        cert = Certificate.from_certificate_arn(self, "ImportedWildcardCert", certificate_arn=props["cert_arn"])
 
+        # Define the custom domain name
+        custom_domain_name = self.gateway.add_domain_name("CustomDomain",
+                                                                    domain_name=props["custom_domain_name"],
+                                                                    security_policy=SecurityPolicy.TLS_1_2,
+                                                                    certificate=cert)
+
+        # Ensure API Gateway uses this domain
+        BasePathMapping(self, "APIGwMapping",
+                        base_path=props["namespace"],
+                        domain_name=custom_domain_name,
+                        rest_api=self.gateway)
 
 class APIGWStack(Stack):
     def __init__(self, scope: Construct, id: str, props, **kwargs) -> None:
@@ -149,6 +165,5 @@ class APIGWStack(Stack):
                                                              zone_name=props["hosted_zone_name"])
 
         ARecord(self, "AliasRecord", zone=hosted_zone,
-                target=RecordTarget.from_alias(
-                    ApiGateway(api_gw_construct.gateway)),
+                target=RecordTarget.from_alias(ApiGateway(api_gw_construct.gateway)),
                 record_name=props["custom_domain_name"])
