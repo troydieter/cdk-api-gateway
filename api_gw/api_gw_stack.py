@@ -3,7 +3,7 @@ from aws_cdk import Stack, Duration, Tags
 from aws_cdk.aws_apigateway import (RestApi, StageOptions, MethodLoggingLevel,
                                     Integration, IntegrationType, IntegrationOptions,
                                     PassthroughBehavior, IntegrationResponse, UsagePlan,
-                                    SecurityPolicy, BasePathMapping)
+                                    SecurityPolicy, BasePathMapping, MethodResponse)
 from aws_cdk.aws_iam import Role, ServicePrincipal
 from aws_cdk.aws_lambda import Function, Runtime, Code
 from aws_cdk.aws_lambda_event_sources import SqsEventSource
@@ -128,10 +128,20 @@ class APIGatewayConstruct(Construct):
         )
 
         send_event_resource = self.gateway.root.add_resource("SendEvent")
-        send_event_resource.add_method("POST", Integration(type=IntegrationType.AWS,
-                                                           integration_http_method="POST",
-                                                           uri="arn:aws:apigateway:us-east-1:sns:path//",
-                                                           options=integration_options))
+        send_event_resource.add_method(
+            "POST",
+            Integration(
+                type=IntegrationType.AWS,
+                integration_http_method="POST",
+                uri=f"arn:aws:apigateway:{Stack.of(self).region}:sns:path//",
+                options=integration_options
+            ),
+            method_responses=[
+                MethodResponse(status_code="200"),
+                MethodResponse(status_code="400")
+            ],
+            api_key_required=True
+        )
 
         # Import the domain certificate
         cert = Certificate.from_certificate_arn(
