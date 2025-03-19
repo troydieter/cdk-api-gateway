@@ -1,0 +1,493 @@
+digraph "Diagram" {
+  splines = "ortho";
+  pad = "1.0";
+  nodesep = "0.60";
+  ranksep = "0.75";
+  fontname = "Sans-Serif";
+  fontsize = "15";
+  dpi = "200";
+  rankdir = "BT";
+  compound = "true";
+  fontcolor = "#222222";
+  edge [
+    color = "#D5871488",
+    penwidth = 2,
+    arrowhead = "dot",
+    arrowtail = "dot",
+  ];
+  node [
+    shape = "box",
+    style = "rounded",
+    fixedsize = true,
+    width = 1.7,
+    height = 1.7,
+    labelloc = "c",
+    imagescale = true,
+    fontname = "Sans-Serif",
+    fontsize = 8,
+    margin = 8,
+  ];
+  subgraph "ApiGatewayFanOut" {
+    subgraph "cluster-SubGraph.ApiGatewayFanOut" {
+      graph [
+        label = "ApiGatewayFanOut",
+        labelloc = "b",
+        labeljust = "l",
+        margin = "10",
+        fontsize = "16",
+        penwidth = "2",
+        pencolor = "#888888",
+        style = "filled,rounded",
+        fillcolor = "#e4e4e4",
+      ];
+      "ApiGatewayFanOut/AliasRecord" [
+        label = " AliasRecord",
+        fontsize = 12,
+        image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Resource/Res_Networking-and-Content-Delivery/Res_48_Dark/Res_Amazon-Route-53-Hosted-Zone_48_Dark_gen.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 1.2,
+        height = 1.466,
+      ];
+      subgraph "cluster-SubGraph.Watchful" {
+        graph [
+          label = "Watchful",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#d6d6d6",
+        ];
+        "ApiGatewayFanOut/Watchful/AlarmTopic" [
+          label = " AlarmTopic",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Notification-Service_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ApiGatewayFanOut/Watchful/Dashboard" [
+          label = " Dashboard",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ApiGatewayFanOut/Watchful/ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/5XXErrorAlarm" [
+          label = " 5XXErrorAlarm",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        subgraph "cluster-SubGraph.ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56" {
+          graph [
+            label = "ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56",
+            labelloc = "b",
+            labeljust = "l",
+            margin = "10",
+            fontsize = "16",
+            penwidth = "2",
+            pencolor = "#888888",
+            style = "filled,rounded",
+            fillcolor = "#c7c7c7",
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ErrorsAlarm" [
+            label = " ErrorsAlarm",
+            fontsize = 12,
+            image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ThrottlesAlarm" [
+            label = " ThrottlesAlarm",
+            fontsize = 12,
+            image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/DurationAlarm" [
+            label = " DurationAlarm",
+            fontsize = 12,
+            image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+        }
+        subgraph "cluster-SubGraph.ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908" {
+          graph [
+            label = "ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908",
+            labelloc = "b",
+            labeljust = "l",
+            margin = "10",
+            fontsize = "16",
+            penwidth = "2",
+            pencolor = "#888888",
+            style = "filled,rounded",
+            fillcolor = "#c7c7c7",
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ErrorsAlarm" [
+            label = " ErrorsAlarm",
+            fontsize = 12,
+            image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ThrottlesAlarm" [
+            label = " ThrottlesAlarm",
+            fontsize = 12,
+            image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+          "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/DurationAlarm" [
+            label = " DurationAlarm",
+            fontsize = 12,
+            image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64@5x.png",
+            imagescale = "true",
+            imagepos = "tc",
+            penwidth = "0",
+            shape = "node",
+            fixedsize = "true",
+            labelloc = "b",
+            width = 1.2,
+            height = 1.466,
+          ];
+        }
+      }
+      subgraph "cluster-SubGraph.SNSConstruct" {
+        graph [
+          label = "SNSConstruct",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#d6d6d6",
+        ];
+        "ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic" [
+          label = " ApiGWFanTopic",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Notification-Service_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ApiGatewayFanOut/SNSConstruct/SNSDLQ" [
+          label = " SNSDLQ",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Queue-Service_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue" [
+          label = "\nBigFanStatusCreatedQu",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Queue-Service_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue" [
+          label = "\nBigFanAnyOtherStatusQ",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Queue-Service_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+      }
+      subgraph "cluster-SubGraph.LambdaConstruct" {
+        graph [
+          label = "LambdaConstruct",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#d6d6d6",
+        ];
+        "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber" [
+          label = "\nSQSCreatedStatusSubsc",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber" [
+          label = "\nSQSOtherStatusSubscri",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+      }
+      subgraph "cluster-SubGraph.APIGatewayConstruct" {
+        graph [
+          label = "APIGatewayConstruct",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#d6d6d6",
+        ];
+        "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" [
+          label = " ApiGWFanAPI",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan" [
+          label = " GWUsagePlan",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole" [
+          label = " APIGatewaySNSRole",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ApiGatewayFanOut/APIGatewayConstruct/APIGwMapping" [
+          label = " APIGwMapping",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ApiGatewayFanOut/APIGatewayConstruct/ApiWebACL" [
+          label = " WAFv2 WebACL\nApiWebACL",
+          fontsize = 12,
+          image = "/mnt/c/coderepo/cdk-api-gateway/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-WAF_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ApiGatewayFanOut/APIGatewayConstruct/WafAssociation" [
+          label = " WAFV2\nWEBACLASSOCIATION\nWafAssociation",
+          fontsize = 12,
+        ];
+      }
+    }
+  }
+  "ApiGatewayFanOut/Watchful/Dashboard" -> "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/Dashboard" -> "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/Dashboard" -> "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ErrorsAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ErrorsAlarm" -> "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ThrottlesAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ThrottlesAlarm" -> "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/DurationAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/DurationAlarm" -> "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ErrorsAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ErrorsAlarm" -> "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ThrottlesAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ThrottlesAlarm" -> "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/DurationAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/DurationAlarm" -> "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/5XXErrorAlarm" -> "ApiGatewayFanOut/Watchful/AlarmTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/Watchful/ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/5XXErrorAlarm" -> "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue" -> "ApiGatewayFanOut/SNSConstruct/SNSDLQ" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue" -> "ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue" -> "ApiGatewayFanOut/SNSConstruct/SNSDLQ" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue" -> "ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber" -> "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber" -> "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" -> "ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" -> "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan" -> "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole" -> "ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/APIGatewayConstruct/APIGwMapping" -> "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/APIGatewayConstruct/WafAssociation" -> "ApiGatewayFanOut/APIGatewayConstruct/ApiWebACL" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/APIGatewayConstruct/WafAssociation" -> "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" [
+    dir = "both",
+  ];
+  "ApiGatewayFanOut/AliasRecord" -> "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI" [
+    dir = "both",
+  ];
+}
