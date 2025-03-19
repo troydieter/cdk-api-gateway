@@ -22,7 +22,7 @@ class SNSConstruct(Construct):
         super().__init__(scope, id)
 
         self.topic = Topic(self, "ApiGWFanTopic",
-                           display_name="The Big Fan CDK Pattern Topic")
+                           display_name="APIGW Incoming SNS Topic")
 
         # Dead Letter Queue (DLQ)
         self.dlq = Queue(self, "SNSDLQ",
