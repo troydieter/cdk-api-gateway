@@ -83,7 +83,8 @@ class APIGatewayConstruct(Construct):
                                deploy_options=StageOptions(metrics_enabled=True,
                                                            logging_level=MethodLoggingLevel.INFO,
                                                            data_trace_enabled=True,
-                                                           stage_name='prod'))
+                                                           stage_name='prod'),
+                                                           description="API GW Fanout Example")
 
         self.usage_plan = UsagePlan(self, "GWUsagePlan",
                                     name=f"{self.gateway.rest_api_name}-usageplan",
@@ -151,6 +152,7 @@ class APIGWStack(Stack):
         super().__init__(scope, id, **kwargs)
 
         Tags.of(self).add("project", props["namespace"])
+        Tags.of(self).add("api_endpoint", props["custom_domain_name"])
         Watchful(self, "Watchful",
                  alarm_email=props["alarm_email"]).watch_scope(self)
 
