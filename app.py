@@ -14,7 +14,7 @@ props = {
     "custom_domain_name": app.node.try_get_context("custom_domain_name"),
     "alarm_email": app.node.try_get_context("alarm_email")
 }
-APIGWStack(app, "ApiGatewayFanOut", props=props)
-UrlShortenerStack(app, "UrlShortenerStack", api=APIGWStack.api, props=props)
+api_stack = APIGWStack(app, "ApiGatewayFanOut", props=props)
+UrlShortenerStack(app, "UrlShortenerStack", api=api_stack.api, props=props)
 
 app.synth()
