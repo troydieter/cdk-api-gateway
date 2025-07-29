@@ -2,6 +2,7 @@
 
 from aws_cdk import App
 from api_gw.api_gw_stack import APIGWStack
+from url_short.url_shortener_stack import UrlShortenerStack
 
 
 app = App()
@@ -14,5 +15,6 @@ props = {
     "alarm_email": app.node.try_get_context("alarm_email")
 }
 APIGWStack(app, "ApiGatewayFanOut", props=props)
+UrlShortenerStack(app, "UrlShortenerStack", api=APIGWStack.api, props=props)
 
 app.synth()
