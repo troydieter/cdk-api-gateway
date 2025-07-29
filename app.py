@@ -12,7 +12,8 @@ props = {
     "hosted_zone_name": app.node.try_get_context("hosted_zone_name"),
     "cert_arn": app.node.try_get_context("cert_arn"),
     "custom_domain_name": app.node.try_get_context("custom_domain_name"),
-    "alarm_email": app.node.try_get_context("alarm_email")
+    "alarm_email": app.node.try_get_context("alarm_email"),
+    "short_url_day_retention": app.node.try_get_context("short_url_day_retention")
 }
 api_stack = APIGWStack(app, "ApiGatewayFanOut", props=props)
 UrlShortenerStack(app, "UrlShortenerStack", api=api_stack.api, props=props)

@@ -10,8 +10,11 @@ class UrlShortenerStack(Stack):
         table = ddb.Table(self, "UrlShortenerTable",
                           partition_key=ddb.Attribute(
                               name="shortCode", type=ddb.AttributeType.STRING),
-                          removal_policy=RemovalPolicy.DESTROY
+                          removal_policy=RemovalPolicy.DESTROY,
+                          time_to_live_attribute="ttl"
                           )
+
+        ttl_days = props.get("ttl_days", 30)  # default 30 days
 
         gen_fn = _lambda.Function(self, "ShortenUrlFunction",
                                   runtime=_lambda.Runtime.PYTHON_3_9,
@@ -20,7 +23,8 @@ class UrlShortenerStack(Stack):
                                       "lambda_fns/url_redirect"),
                                   environment={
                                       "TABLE_NAME": table.table_name,
-                                      "DOMAIN": props["custom_domain_name"]
+                                      "DOMAIN": props["custom_domain_name"],
+                                      "TTL_DAYS": str(ttl_days)
                                   }
                                   )
         table.grant_write_data(gen_fn)
