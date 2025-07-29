@@ -1,7 +1,6 @@
 from aws_cdk import Stack, aws_apigateway as apigw, aws_lambda as _lambda, aws_dynamodb as ddb, RemovalPolicy
 from constructs import Construct
 
-
 class UrlShortenerStack(Stack):
 
     def __init__(self, scope: Construct, id: str, api: apigw.IRestApi, props, **kwargs):
