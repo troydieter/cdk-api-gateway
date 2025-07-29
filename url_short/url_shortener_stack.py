@@ -17,7 +17,7 @@ class UrlShortenerStack(Stack):
         ttl_days = props.get("ttl_days", 30)  # default 30 days
 
         gen_fn = _lambda.Function(self, "ShortenUrlFunction",
-                                  runtime=_lambda.Runtime.PYTHON_3_9,
+                                  runtime=_lambda.Runtime.PYTHON_3_11,
                                   handler="generate.handler",
                                   code=_lambda.Code.from_asset(
                                       "lambda_fns/url_redirect"),
@@ -30,7 +30,7 @@ class UrlShortenerStack(Stack):
         table.grant_write_data(gen_fn)
 
         redir_fn = _lambda.Function(self, "RedirectFunction",
-                                    runtime=_lambda.Runtime.PYTHON_3_9,
+                                    runtime=_lambda.Runtime.PYTHON_3_11,
                                     handler="redirect.handler",
                                     code=_lambda.Code.from_asset(
                                         "lambda_fns/url_redirect"),

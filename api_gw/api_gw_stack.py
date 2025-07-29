@@ -57,7 +57,7 @@ class LambdaConstruct(Construct):
 
         # Created status queue lambda
         self.sqs_created_status_subscriber = Function(self, "SQSCreatedStatusSubscriber",
-                                                      runtime=Runtime.PYTHON_3_8,
+                                                      runtime=Runtime.PYTHON_3_11,
                                                       handler="createdStatus.handler",
                                                       code=Code.from_asset("lambda_fns/subscribe"))
         sns_construct.created_status_queue.grant_consume_messages(
@@ -67,7 +67,7 @@ class LambdaConstruct(Construct):
 
         # Other status queue lambda
         self.sqs_other_status_subscriber = Function(self, "SQSOtherStatusSubscriber",
-                                                    runtime=Runtime.PYTHON_3_8,
+                                                    runtime=Runtime.PYTHON_3_11,
                                                     handler="anyOtherStatus.handler",
                                                     code=Code.from_asset("lambda_fns/subscribe"))
         sns_construct.other_status_queue.grant_consume_messages(

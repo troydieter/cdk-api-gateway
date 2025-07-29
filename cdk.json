@@ -6,6 +6,7 @@
     "hosted_zone_name": "troydieter.com",
     "cert_arn": "arn:aws:acm:us-east-1:550767824695:certificate/bf155d92-d495-4ac2-afe7-b2db396c1182",
     "custom_domain_name": "api.troydieter.com",
-    "alarm_email": "troydieter@gmail.com"
+    "alarm_email": "troydieter@gmail.com",
+    "short_url_day_retention": 30
   }
 }
