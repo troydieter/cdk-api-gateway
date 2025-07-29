@@ -227,6 +227,8 @@ class APIGWStack(Stack):
             self, "LambdaConstruct", sns_construct)
         api_gw_construct = APIGatewayConstruct(
             self, "APIGatewayConstruct", sns_construct.topic, props)
+        
+        self.api = api_gw_construct.gateway
 
         hosted_zone = HostedZone.from_hosted_zone_attributes(self, "ImportedZone",
                                                              hosted_zone_id=props["hosted_zone_id"],

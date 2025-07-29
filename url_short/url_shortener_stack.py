@@ -17,7 +17,7 @@ class UrlShortenerStack(Stack):
                                   runtime=_lambda.Runtime.PYTHON_3_9,
                                   handler="generate.handler",
                                   code=_lambda.Code.from_asset(
-                                      "lambda_fns/url_short"),
+                                      "lambda_fns/url_redirect"),
                                   environment={
                                       "TABLE_NAME": table.table_name,
                                       "DOMAIN": props["custom_domain_name"]
@@ -29,7 +29,7 @@ class UrlShortenerStack(Stack):
                                     runtime=_lambda.Runtime.PYTHON_3_9,
                                     handler="redirect.handler",
                                     code=_lambda.Code.from_asset(
-                                        "lambda_fns/url_short"),
+                                        "lambda_fns/url_redirect"),
                                     environment={
                                         "TABLE_NAME": table.table_name}
                                     )
