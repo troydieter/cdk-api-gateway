@@ -6,11 +6,27 @@
     "DisplayName": "Watchful Alarms",
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ]
@@ -19,17 +35,17 @@
     "aws:cdk:path": "ApiGatewayFanOut/Watchful/AlarmTopic/Resource"
    }
   },
-  "WatchfulAlarmTopictroydietergmailcom74531F45": {
+  "WatchfulAlarmTopicexamplemecomDBF0636C": {
    "Type": "AWS::SNS::Subscription",
    "Properties": {
-    "Endpoint": "troydieter@gmail.com",
+    "Endpoint": "example@me.com",
     "Protocol": "email",
     "TopicArn": {
      "Ref": "WatchfulAlarmTopic152D7EE5"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/AlarmTopic/troydieter@gmail.com/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/Watchful/AlarmTopic/example@me.com/Resource"
    }
   },
   "WatchfulDashboard1A69A5BC": {
@@ -39,21 +55,13 @@
      "Fn::Join": [
       "",
       [
-       "{\"widgets\":[{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":0,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber\\n\\n[button:AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=",
+       "{\"widgets\":[{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":0,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler\\n\\n[button:AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/",
        {
-        "Ref": "AWS::Region"
+        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
        },
-       "#/functions/",
+       "?tab=graph) [button:CloudWatch Logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEventViewer:group=/aws/lambda/",
        {
-        "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
-       },
-       "?tab=graph) [button:CloudWatch Logs](https://console.aws.amazon.com/cloudwatch/home?region=",
-       {
-        "Ref": "AWS::Region"
-       },
-       "#logEventViewer:group=/aws/lambda/",
-       {
-        "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
        },
        ")\"}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":0,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Invocations/5min\",\"region\":\"",
        {
@@ -61,7 +69,7 @@
        },
        "\",\"metrics\":[[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"",
        {
-        "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
        },
        "\",{\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":6,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Errors/5min\",\"region\":\"",
        {
@@ -69,7 +77,7 @@
        },
        "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"",
        {
-        "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
        },
        "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Errors > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":12,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Throttles/5min\",\"region\":\"",
        {
@@ -77,7 +85,7 @@
        },
        "\",\"metrics\":[[\"AWS/Lambda\",\"Throttles\",\"FunctionName\",\"",
        {
-        "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
        },
        "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Throttles > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":18,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Duration/5min\",\"region\":\"",
        {
@@ -85,23 +93,15 @@
        },
        "\",\"metrics\":[[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
        {
-        "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
        },
-       "\",{\"label\":\"p99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"p99 > 2000 for 3 datapoints within 15 minutes\",\"value\":2000,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":8,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber\\n\\n[button:AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=",
+       "\",{\"label\":\"p99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"p99 > 24000 for 3 datapoints within 15 minutes\",\"value\":24000,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":8,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler\\n\\n[button:AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/",
        {
-        "Ref": "AWS::Region"
+        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
        },
-       "#/functions/",
+       "?tab=graph) [button:CloudWatch Logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEventViewer:group=/aws/lambda/",
        {
-        "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
-       },
-       "?tab=graph) [button:CloudWatch Logs](https://console.aws.amazon.com/cloudwatch/home?region=",
-       {
-        "Ref": "AWS::Region"
-       },
-       "#logEventViewer:group=/aws/lambda/",
-       {
-        "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
        },
        ")\"}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":0,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Invocations/5min\",\"region\":\"",
        {
@@ -109,7 +109,7 @@
        },
        "\",\"metrics\":[[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"",
        {
-        "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
        },
        "\",{\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":6,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Errors/5min\",\"region\":\"",
        {
@@ -117,7 +117,7 @@
        },
        "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"",
        {
-        "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
        },
        "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Errors > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":12,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Throttles/5min\",\"region\":\"",
        {
@@ -125,7 +125,7 @@
        },
        "\",\"metrics\":[[\"AWS/Lambda\",\"Throttles\",\"FunctionName\",\"",
        {
-        "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
        },
        "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Throttles > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":18,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Duration/5min\",\"region\":\"",
        {
@@ -133,87 +133,83 @@
        },
        "\",\"metrics\":[[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
        {
-        "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
        },
-       "\",{\"label\":\"p99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"p99 > 2000 for 3 datapoints within 15 minutes\",\"value\":2000,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":16,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI\\n\\n[button:Amazon API Gateway Console](https://console.aws.amazon.com/apigateway/home?region=",
+       "\",{\"label\":\"p99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"p99 > 24000 for 3 datapoints within 15 minutes\",\"value\":24000,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":16,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/ApiGWFanAPI\\n\\n[button:Amazon API Gateway Console](https://console.aws.amazon.com/apigateway/home?region=us-east-1#/apis/",
        {
-        "Ref": "AWS::Region"
-       },
-       "#/apis/",
-       {
-        "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+        "Ref": "ApiGWFanAPI1E1B22E5"
        },
        ")\"}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":0,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall Calls/min\",\"region\":\"",
        {
         "Ref": "AWS::Region"
        },
-       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"Count\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"Count\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"color\":\"#1f77b4\",\"label\":\"Calls\",\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ApiGateway\",\"4XXError\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"color\":\"#1f77b4\",\"label\":\"Calls\",\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ApiGateway\",\"4XXError\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"color\":\"#ff7f0e\",\"label\":\"4XX Errors\",\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ApiGateway\",\"5XXError\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"color\":\"#ff7f0e\",\"label\":\"4XX Errors\",\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ApiGateway\",\"5XXError\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
        "\",{\"color\":\"#d62728\",\"label\":\"5XX Errors\",\"period\":60,\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"value\":1,\"color\":\"#ff0000\",\"label\":\"5XX Errors Alarm\",\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":12,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall (1-minute periods)\",\"region\":\"",
        {
         "Ref": "AWS::Region"
        },
-       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"min\",\"period\":60,\"stat\":\"Minimum\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"min\",\"period\":60,\"stat\":\"Minimum\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"avg\",\"period\":60}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"avg\",\"period\":60}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"p90\",\"period\":60,\"stat\":\"p90\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"p90\",\"period\":60,\"stat\":\"p90\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"p95\",\"period\":60,\"stat\":\"p95\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"p95\",\"period\":60,\"stat\":\"p95\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"p99\",\"period\":60,\"stat\":\"p99\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"p99\",\"period\":60,\"stat\":\"p99\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
        "\",{\"label\":\"max\",\"period\":60,\"stat\":\"Maximum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":0,\"y\":24,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall Integration (1-minute periods)\",\"region\":\"",
        {
         "Ref": "AWS::Region"
        },
-       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"min\",\"period\":60,\"stat\":\"Minimum\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"min\",\"period\":60,\"stat\":\"Minimum\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"avg\",\"period\":60}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"avg\",\"period\":60}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"p90\",\"period\":60,\"stat\":\"p90\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"p90\",\"period\":60,\"stat\":\"p90\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"p95\",\"period\":60,\"stat\":\"p95\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"p95\",\"period\":60,\"stat\":\"p95\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
-       "\",{\"label\":\"p99\",\"period\":60,\"stat\":\"p99\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+       "\",{\"label\":\"p99\",\"period\":60,\"stat\":\"p99\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
        {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
        },
        "\",{\"label\":\"max\",\"period\":60,\"stat\":\"Maximum\"}]],\"yAxis\":{}}}]}"
       ]
@@ -224,7 +220,7 @@
     "aws:cdk:path": "ApiGatewayFanOut/Watchful/Dashboard/Resource"
    }
   },
-  "WatchfulApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56ErrorsAlarmC2127C0E": {
+  "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DErrorsAlarmC4D4DB7F": {
    "Type": "AWS::CloudWatch::Alarm",
    "Properties": {
     "AlarmActions": [
@@ -238,7 +234,7 @@
      {
       "Name": "FunctionName",
       "Value": {
-       "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+       "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
       }
      }
     ],
@@ -247,23 +243,13 @@
     "Namespace": "AWS/Lambda",
     "Period": 300,
     "Statistic": "Sum",
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ],
     "Threshold": 0
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ErrorsAlarm/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ErrorsAlarm/Resource"
    }
   },
-  "WatchfulApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56ThrottlesAlarm01558829": {
+  "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DThrottlesAlarmD0324454": {
    "Type": "AWS::CloudWatch::Alarm",
    "Properties": {
     "AlarmActions": [
@@ -277,7 +263,7 @@
      {
       "Name": "FunctionName",
       "Value": {
-       "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+       "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
       }
      }
     ],
@@ -286,23 +272,13 @@
     "Namespace": "AWS/Lambda",
     "Period": 300,
     "Statistic": "Sum",
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ],
     "Threshold": 0
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ThrottlesAlarm/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ThrottlesAlarm/Resource"
    }
   },
-  "WatchfulApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56DurationAlarm5E13B581": {
+  "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DDurationAlarm00615B92": {
    "Type": "AWS::CloudWatch::Alarm",
    "Properties": {
     "AlarmActions": [
@@ -310,7 +286,7 @@
       "Ref": "WatchfulAlarmTopic152D7EE5"
      }
     ],
-    "AlarmDescription": "p99 latency >= 2s (80%)",
+    "AlarmDescription": "p99 latency >= 24s (80%)",
     "ComparisonOperator": "GreaterThanThreshold",
     "EvaluationPeriods": 3,
     "Metrics": [
@@ -323,7 +299,7 @@
          {
           "Name": "FunctionName",
           "Value": {
-           "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+           "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
           }
          }
         ],
@@ -336,23 +312,13 @@
       "ReturnData": true
      }
     ],
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ],
-    "Threshold": 2000
+    "Threshold": 24000
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/DurationAlarm/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/DurationAlarm/Resource"
    }
   },
-  "WatchfulApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908ErrorsAlarmE413D9DA": {
+  "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FErrorsAlarm198D7108": {
    "Type": "AWS::CloudWatch::Alarm",
    "Properties": {
     "AlarmActions": [
@@ -366,7 +332,7 @@
      {
       "Name": "FunctionName",
       "Value": {
-       "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+       "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
       }
      }
     ],
@@ -375,23 +341,13 @@
     "Namespace": "AWS/Lambda",
     "Period": 300,
     "Statistic": "Sum",
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ],
     "Threshold": 0
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ErrorsAlarm/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ErrorsAlarm/Resource"
    }
   },
-  "WatchfulApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908ThrottlesAlarmB53F81B7": {
+  "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FThrottlesAlarmE6472B76": {
    "Type": "AWS::CloudWatch::Alarm",
    "Properties": {
     "AlarmActions": [
@@ -405,7 +361,7 @@
      {
       "Name": "FunctionName",
       "Value": {
-       "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+       "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
       }
      }
     ],
@@ -414,23 +370,13 @@
     "Namespace": "AWS/Lambda",
     "Period": 300,
     "Statistic": "Sum",
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ],
     "Threshold": 0
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ThrottlesAlarm/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ThrottlesAlarm/Resource"
    }
   },
-  "WatchfulApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908DurationAlarm619A6513": {
+  "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FDurationAlarmF63140B6": {
    "Type": "AWS::CloudWatch::Alarm",
    "Properties": {
     "AlarmActions": [
@@ -438,7 +384,7 @@
       "Ref": "WatchfulAlarmTopic152D7EE5"
      }
     ],
-    "AlarmDescription": "p99 latency >= 2s (80%)",
+    "AlarmDescription": "p99 latency >= 24s (80%)",
     "ComparisonOperator": "GreaterThanThreshold",
     "EvaluationPeriods": 3,
     "Metrics": [
@@ -451,7 +397,7 @@
          {
           "Name": "FunctionName",
           "Value": {
-           "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+           "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
           }
          }
         ],
@@ -464,23 +410,13 @@
       "ReturnData": true
      }
     ],
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ],
-    "Threshold": 2000
+    "Threshold": 24000
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/DurationAlarm/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/DurationAlarm/Resource"
    }
   },
-  "WatchfulApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D825XXErrorAlarm2E538A72": {
+  "WatchfulApiGatewayFanOutApiGWFanAPID0FF20CE5XXErrorAlarm83D6498C": {
    "Type": "AWS::CloudWatch::Alarm",
    "Properties": {
     "AlarmActions": [
@@ -500,12 +436,12 @@
         "Dimensions": [
          {
           "Name": "ApiName",
-          "Value": "ApiGWFanAPI"
+          "Value": "apigw_fanout-private-api"
          },
          {
           "Name": "Stage",
           "Value": {
-           "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+           "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
           }
          }
         ],
@@ -518,53 +454,39 @@
       "ReturnData": true
      }
     ],
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ],
     "Threshold": 1
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/5XXErrorAlarm/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutApiGWFanAPID0FF20CE/5XXErrorAlarm/Resource"
    }
   },
-  "SNSConstructApiGWFanTopic58631C38": {
-   "Type": "AWS::SNS::Topic",
+  "VpcFlowLogsE6FFDEF9": {
+   "Type": "AWS::Logs::LogGroup",
    "Properties": {
-    "DisplayName": "APIGW Incoming SNS Topic",
+    "RetentionInDays": 30,
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
       "Value": "apigw_fanout"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic/Resource"
-   }
-  },
-  "SNSConstructSNSDLQ52513367": {
-   "Type": "AWS::SQS::Queue",
-   "Properties": {
-    "MessageRetentionPeriod": 1209600,
-    "QueueName": "SNSDLQ",
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
      },
      {
-      "Key": "project",
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ]
@@ -572,28 +494,1743 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/SNSConstruct/SNSDLQ/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/VpcFlowLogs/Resource"
    }
   },
-  "SNSConstructBigFanStatusCreatedQueue6881EDC0": {
-   "Type": "AWS::SQS::Queue",
+  "ApiGWVPC82E884FC": {
+   "Type": "AWS::EC2::VPC",
    "Properties": {
-    "RedrivePolicy": {
-     "deadLetterTargetArn": {
-      "Fn::GetAtt": [
-       "SNSConstructSNSDLQ52513367",
-       "Arn"
-      ]
-     },
-     "maxReceiveCount": 5
-    },
+    "CidrBlock": "192.142.0.0/22",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Resource"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet1SubnetD7A47212": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "CidrBlock": "192.142.0.0/26",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public-Subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1/Subnet"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet1RouteTable1B4FF168": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1/RouteTable"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet1RouteTableAssociation80D5755E": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet1RouteTable1B4FF168"
+    },
+    "SubnetId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet1SubnetD7A47212"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1/RouteTableAssociation"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet1DefaultRouteECDA3114": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "ApiGWVPCIGW82006853"
+    },
+    "RouteTableId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet1RouteTable1B4FF168"
+    }
+   },
+   "DependsOn": [
+    "ApiGWVPCVPCGWB903C55A"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1/DefaultRoute"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet1EIPFDF49DD4": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1/EIP"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet1NATGateway667C4E06": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "ApiGWVPCPublicSubnetSubnet1EIPFDF49DD4",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet1SubnetD7A47212"
+    },
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "DependsOn": [
+    "ApiGWVPCPublicSubnetSubnet1DefaultRouteECDA3114",
+    "ApiGWVPCPublicSubnetSubnet1RouteTableAssociation80D5755E"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1/NATGateway"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet2Subnet363CEBC4": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1b",
+    "CidrBlock": "192.142.0.64/26",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public-Subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet2"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet2/Subnet"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet2RouteTable22E04A08": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet2"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet2/RouteTable"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet2RouteTableAssociationA4A313CE": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet2RouteTable22E04A08"
+    },
+    "SubnetId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet2Subnet363CEBC4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet2/RouteTableAssociation"
+   }
+  },
+  "ApiGWVPCPublicSubnetSubnet2DefaultRouteC88EBC53": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "ApiGWVPCIGW82006853"
+    },
+    "RouteTableId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet2RouteTable22E04A08"
+    }
+   },
+   "DependsOn": [
+    "ApiGWVPCVPCGWB903C55A"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet2/DefaultRoute"
+   }
+  },
+  "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "CidrBlock": "192.142.0.128/26",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private-Subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet1"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet1/Subnet"
+   }
+  },
+  "ApiGWVPCPrivateSubnetSubnet1RouteTableE50A4921": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet1"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet1/RouteTable"
+   }
+  },
+  "ApiGWVPCPrivateSubnetSubnet1RouteTableAssociation577C8AD3": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "ApiGWVPCPrivateSubnetSubnet1RouteTableE50A4921"
+    },
+    "SubnetId": {
+     "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet1/RouteTableAssociation"
+   }
+  },
+  "ApiGWVPCPrivateSubnetSubnet1DefaultRoute86C1C733": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet1NATGateway667C4E06"
+    },
+    "RouteTableId": {
+     "Ref": "ApiGWVPCPrivateSubnetSubnet1RouteTableE50A4921"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet1/DefaultRoute"
+   }
+  },
+  "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "us-east-1b",
+    "CidrBlock": "192.142.0.192/26",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private-Subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet2"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet2/Subnet"
+   }
+  },
+  "ApiGWVPCPrivateSubnetSubnet2RouteTable0C247A9E": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet2"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet2/RouteTable"
+   }
+  },
+  "ApiGWVPCPrivateSubnetSubnet2RouteTableAssociationBE86D6A9": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "ApiGWVPCPrivateSubnetSubnet2RouteTable0C247A9E"
+    },
+    "SubnetId": {
+     "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet2/RouteTableAssociation"
+   }
+  },
+  "ApiGWVPCPrivateSubnetSubnet2DefaultRoute4A14FC99": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "ApiGWVPCPublicSubnetSubnet1NATGateway667C4E06"
+    },
+    "RouteTableId": {
+     "Ref": "ApiGWVPCPrivateSubnetSubnet2RouteTable0C247A9E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet2/DefaultRoute"
+   }
+  },
+  "ApiGWVPCIGW82006853": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/IGW"
+   }
+  },
+  "ApiGWVPCVPCGWB903C55A": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "ApiGWVPCIGW82006853"
+    },
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/VPCGW"
+   }
+  },
+  "ApiGWVPCflowlogsIAMRole2B2ADC91": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "vpc-flow-logs.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/flow-logs"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/flow-logs/IAMRole/Resource"
+   }
+  },
+  "ApiGWVPCflowlogsIAMRoleDefaultPolicy3DF6E464": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:DescribeLogStreams",
+        "logs:PutLogEvents"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "VpcFlowLogsE6FFDEF9",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": "iam:PassRole",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "ApiGWVPCflowlogsIAMRole2B2ADC91",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ApiGWVPCflowlogsIAMRoleDefaultPolicy3DF6E464",
+    "Roles": [
+     {
+      "Ref": "ApiGWVPCflowlogsIAMRole2B2ADC91"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/flow-logs/IAMRole/DefaultPolicy/Resource"
+   }
+  },
+  "ApiGWVPCflowlogsFlowLog1CAE355C": {
+   "Type": "AWS::EC2::FlowLog",
+   "Properties": {
+    "DeliverLogsPermissionArn": {
+     "Fn::GetAtt": [
+      "ApiGWVPCflowlogsIAMRole2B2ADC91",
+      "Arn"
+     ]
+    },
+    "LogDestinationType": "cloud-watch-logs",
+    "LogGroupName": {
+     "Ref": "VpcFlowLogsE6FFDEF9"
+    },
+    "ResourceId": {
+     "Ref": "ApiGWVPC82E884FC"
+    },
+    "ResourceType": "VPC",
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "ApiGatewayFanOut/ApiGWVPC/flow-logs"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "TrafficType": "ALL"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/flow-logs/FlowLog"
+   }
+  },
+  "ApiGWVPCRestrictDefaultSecurityGroupCustomResource59FA274B": {
+   "Type": "Custom::VpcRestrictDefaultSG",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomVpcRestrictDefaultSGCustomResourceProviderHandlerDC833E5E",
+      "Arn"
+     ]
+    },
+    "DefaultSecurityGroupId": {
+     "Fn::GetAtt": [
+      "ApiGWVPC82E884FC",
+      "DefaultSecurityGroup"
+     ]
+    },
+    "Account": "550767824695"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWVPC/RestrictDefaultSecurityGroupCustomResource/Default"
+   }
+  },
+  "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ],
+    "Policies": [
+     {
+      "PolicyName": "Inline",
+      "PolicyDocument": {
+       "Version": "2012-10-17",
+       "Statement": [
+        {
+         "Effect": "Allow",
+         "Action": [
+          "ec2:AuthorizeSecurityGroupIngress",
+          "ec2:AuthorizeSecurityGroupEgress",
+          "ec2:RevokeSecurityGroupIngress",
+          "ec2:RevokeSecurityGroupEgress"
+         ],
+         "Resource": [
+          {
+           "Fn::Join": [
+            "",
+            [
+             "arn:aws:ec2:us-east-1:550767824695:security-group/",
+             {
+              "Fn::GetAtt": [
+               "ApiGWVPC82E884FC",
+               "DefaultSecurityGroup"
+              ]
+             }
+            ]
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/Custom::VpcRestrictDefaultSGCustomResourceProvider/Role"
+   }
+  },
+  "CustomVpcRestrictDefaultSGCustomResourceProviderHandlerDC833E5E": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-550767824695-us-east-1",
+     "S3Key": "dd5711540f04e06aa955d7f4862fc04e8cdea464cb590dae91ed2976bb78098e.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Description": "Lambda function for removing all inbound/outbound rules from the VPC default security group"
+   },
+   "DependsOn": [
+    "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/Custom::VpcRestrictDefaultSGCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.dd5711540f04e06aa955d7f4862fc04e8cdea464cb590dae91ed2976bb78098e",
+    "aws:asset:property": "Code"
+   }
+  },
+  "privatesubnet1ABCDFA53": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Description": "Private subnet 1 ID for apigw_fanout",
+    "Name": "/apigw_fanout/private-subnet-1",
+    "Tags": {
+     "created-by": "aws-cdk",
+     "environment": "dev",
+     "ManagedBy": "AWS CDK",
+     "owner": "cdk-deployment",
+     "project": "apigw_fanout",
+     "Project": "apigw_fanout"
+    },
+    "Tier": "Standard",
+    "Type": "String",
+    "Value": {
+     "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/private-subnet-1/Resource"
+   }
+  },
+  "privatesubnet2260E229D": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Description": "Private subnet 2 ID for apigw_fanout",
+    "Name": "/apigw_fanout/private-subnet-2",
+    "Tags": {
+     "created-by": "aws-cdk",
+     "environment": "dev",
+     "ManagedBy": "AWS CDK",
+     "owner": "cdk-deployment",
+     "project": "apigw_fanout",
+     "Project": "apigw_fanout"
+    },
+    "Tier": "Standard",
+    "Type": "String",
+    "Value": {
+     "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/private-subnet-2/Resource"
+   }
+  },
+  "NLB55158F82": {
+   "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties": {
+    "LoadBalancerAttributes": [
+     {
+      "Key": "deletion_protection.enabled",
+      "Value": "false"
+     },
+     {
+      "Key": "load_balancing.cross_zone.enabled",
+      "Value": "true"
+     }
+    ],
+    "Scheme": "internal",
+    "Subnets": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "Type": "network"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/NLB/Resource"
+   }
+  },
+  "NLBHealthListener8A7F6804": {
+   "Type": "AWS::ElasticLoadBalancingV2::Listener",
+   "Properties": {
+    "DefaultActions": [
+     {
+      "TargetGroupArn": {
+       "Ref": "HealthTargetGroup0BD8EEB5"
+      },
+      "Type": "forward"
+     }
+    ],
+    "LoadBalancerArn": {
+     "Ref": "NLB55158F82"
+    },
+    "Port": 80,
+    "Protocol": "TCP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/NLB/HealthListener/Resource"
+   }
+  },
+  "HealthTargetGroup0BD8EEB5": {
+   "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+   "Properties": {
+    "HealthCheckEnabled": true,
+    "HealthCheckProtocol": "TCP",
+    "HealthyThresholdCount": 2,
+    "Port": 80,
+    "Protocol": "TCP",
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "UnhealthyThresholdCount": 2,
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/HealthTargetGroup/Resource"
+   }
+  },
+  "PrivateLinkE5A825BA": {
+   "Type": "AWS::ApiGateway::VpcLink",
+   "Properties": {
+    "Description": {
+     "Fn::Join": [
+      "",
+      [
+       "VPC Link for Private API Gateway in ",
+       {
+        "Ref": "ApiGWVPC82E884FC"
+       }
+      ]
+     ]
+    },
+    "Name": "ApiGatewayFanOutPrivateLinkECF0CA84",
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "TargetArns": [
+     {
+      "Ref": "NLB55158F82"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/PrivateLink/Resource"
+   }
+  },
+  "VpcEndpointSG69334BC7": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Security Group for VPC Endpoints",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "ApiGWVPC82E884FC",
+        "CidrBlock"
+       ]
+      },
+      "Description": "Allow all traffic from within VPC",
+      "IpProtocol": "-1"
+     },
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "ApiGWVPC82E884FC",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "ApiGWVPC82E884FC",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/VpcEndpointSG/Resource"
+   }
+  },
+  "SNSVPCEndpointB4C38F35": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "VpcEndpointSG69334BC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.sns",
+    "SubnetIds": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SNSVPCEndpoint/Resource"
+   }
+  },
+  "SQSVPCEndpoint98C6F732": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "VpcEndpointSG69334BC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.sqs",
+    "SubnetIds": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SQSVPCEndpoint/Resource"
+   }
+  },
+  "LambdaVPCEndpoint47C13594": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "VpcEndpointSG69334BC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.lambda",
+    "SubnetIds": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/LambdaVPCEndpoint/Resource"
+   }
+  },
+  "ELBVPCEndpoint604AEEF7": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "VpcEndpointSG69334BC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.elasticloadbalancing",
+    "SubnetIds": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ELBVPCEndpoint/Resource"
+   }
+  },
+  "APIGatewayVPCEndpointFE62E69D": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "VpcEndpointSG69334BC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.execute-api",
+    "SubnetIds": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayVPCEndpoint/Resource"
+   }
+  },
+  "CloudWatchVPCEndpoint81B35F31": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "VpcEndpointSG69334BC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.monitoring",
+    "SubnetIds": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/CloudWatchVPCEndpoint/Resource"
+   }
+  },
+  "CloudWatchLogsVPCEndpointDF8801E7": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "VpcEndpointSG69334BC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.logs",
+    "SubnetIds": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/CloudWatchLogsVPCEndpoint/Resource"
+   }
+  },
+  "KMSVPCEndpoint4C36925C": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "VpcEndpointSG69334BC7",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.kms",
+    "SubnetIds": [
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet1Subnet1FBBF6F1"
+     },
+     {
+      "Ref": "ApiGWVPCPrivateSubnetSubnet2SubnetA3392E06"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "ApiGWVPC82E884FC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/KMSVPCEndpoint/Resource"
+   }
+  },
+  "MessageEncryptionKeyA6D15192": {
+   "Type": "AWS::KMS::Key",
+   "Properties": {
+    "Description": "Key for encrypting SNS and SQS messages",
+    "EnableKeyRotation": true,
+    "KeyPolicy": {
+     "Statement": [
+      {
+       "Action": "kms:*",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": "arn:aws:iam::550767824695:root"
+       },
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "kms:Decrypt",
+        "kms:GenerateDataKey*"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "Service": [
+         "lambda.amazonaws.com",
+         "sns.amazonaws.com",
+         "sqs.amazonaws.com"
+        ]
+       },
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "kms:Decrypt",
+        "kms:GenerateDataKey"
+       ],
+       "Condition": {
+        "ArnEquals": {
+         "aws:SourceArn": {
+          "Ref": "ApiGWFanTopic683A97E9"
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "sns.amazonaws.com"
+       },
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/MessageEncryptionKey/Resource"
+   }
+  },
+  "MessageEncryptionKeyAliasAFFD3BE1": {
+   "Type": "AWS::KMS::Alias",
+   "Properties": {
+    "AliasName": "alias/api-gateway-fanout-key",
+    "TargetKeyId": {
+     "Fn::GetAtt": [
+      "MessageEncryptionKeyA6D15192",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/MessageEncryptionKeyAlias/Resource"
+   }
+  },
+  "ApiGWFanTopic683A97E9": {
+   "Type": "AWS::SNS::Topic",
+   "Properties": {
+    "ContentBasedDeduplication": false,
+    "DisplayName": "The Big Fan CDK Pattern Topic",
+    "FifoTopic": false,
+    "KmsMasterKeyId": {
+     "Fn::GetAtt": [
+      "MessageEncryptionKeyA6D15192",
+      "Arn"
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "TopicName": "api-gateway-fan-out-topic"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanTopic/Resource"
+   }
+  },
+  "ApiGWFanTopicPolicyB697A435": {
+   "Type": "AWS::SNS::TopicPolicy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "sns:Publish",
+        "sns:Subscribe"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       },
+       "Resource": {
+        "Ref": "ApiGWFanTopic683A97E9"
+       },
+       "Sid": "0"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Topics": [
+     {
+      "Ref": "ApiGWFanTopic683A97E9"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanTopic/Policy/Resource"
+   }
+  },
+  "CreatedStatusDLQ90970758": {
+   "Type": "AWS::SQS::Queue",
+   "Properties": {
+    "KmsMasterKeyId": {
+     "Fn::GetAtt": [
+      "MessageEncryptionKeyA6D15192",
+      "Arn"
+     ]
+    },
+    "MessageRetentionPeriod": 1209600,
+    "QueueName": "BigFanTopicStatusCreatedDLQ",
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/CreatedStatusDLQ/Resource"
+   }
+  },
+  "BigFanTopicStatusCreatedSubscriberQueue589E974E": {
+   "Type": "AWS::SQS::Queue",
+   "Properties": {
+    "KmsMasterKeyId": {
+     "Fn::GetAtt": [
+      "MessageEncryptionKeyA6D15192",
+      "Arn"
+     ]
+    },
+    "QueueName": "BigFanTopicStatusCreatedSubscriberQueue",
+    "RedrivePolicy": {
+     "deadLetterTargetArn": {
+      "Fn::GetAtt": [
+       "CreatedStatusDLQ90970758",
+       "Arn"
+      ]
+     },
+     "maxReceiveCount": 3
+    },
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ],
@@ -602,10 +2239,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/Resource"
    }
   },
-  "SNSConstructBigFanStatusCreatedQueuePolicyABAF1B37": {
+  "BigFanTopicStatusCreatedSubscriberQueuePolicy92D53255": {
    "Type": "AWS::SQS::QueuePolicy",
    "Properties": {
     "PolicyDocument": {
@@ -615,7 +2252,7 @@
        "Condition": {
         "ArnEquals": {
          "aws:SourceArn": {
-          "Ref": "SNSConstructApiGWFanTopic58631C38"
+          "Ref": "ApiGWFanTopic683A97E9"
          }
         }
        },
@@ -625,7 +2262,7 @@
        },
        "Resource": {
         "Fn::GetAtt": [
-         "SNSConstructBigFanStatusCreatedQueue6881EDC0",
+         "BigFanTopicStatusCreatedSubscriberQueue589E974E",
          "Arn"
         ]
        }
@@ -635,20 +2272,20 @@
     },
     "Queues": [
      {
-      "Ref": "SNSConstructBigFanStatusCreatedQueue6881EDC0"
+      "Ref": "BigFanTopicStatusCreatedSubscriberQueue589E974E"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/Policy/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/Policy/Resource"
    }
   },
-  "SNSConstructBigFanStatusCreatedQueueApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1FDECEBBE": {
+  "BigFanTopicStatusCreatedSubscriberQueueApiGatewayFanOutApiGWFanTopicD84CAD2D6B607CC7": {
    "Type": "AWS::SNS::Subscription",
    "Properties": {
     "Endpoint": {
      "Fn::GetAtt": [
-      "SNSConstructBigFanStatusCreatedQueue6881EDC0",
+      "BigFanTopicStatusCreatedSubscriberQueue589E974E",
       "Arn"
      ]
     },
@@ -660,35 +2297,102 @@
     "Protocol": "sqs",
     "RawMessageDelivery": true,
     "TopicArn": {
-     "Ref": "SNSConstructApiGWFanTopic58631C38"
+     "Ref": "ApiGWFanTopic683A97E9"
     }
    },
    "DependsOn": [
-    "SNSConstructBigFanStatusCreatedQueuePolicyABAF1B37"
+    "BigFanTopicStatusCreatedSubscriberQueuePolicy92D53255"
    ],
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource"
    }
   },
-  "SNSConstructBigFanAnyOtherStatusQueueD2B0033D": {
+  "OtherStatusDLQ7EF5C078": {
    "Type": "AWS::SQS::Queue",
    "Properties": {
-    "RedrivePolicy": {
-     "deadLetterTargetArn": {
-      "Fn::GetAtt": [
-       "SNSConstructSNSDLQ52513367",
-       "Arn"
-      ]
-     },
-     "maxReceiveCount": 5
+    "KmsMasterKeyId": {
+     "Fn::GetAtt": [
+      "MessageEncryptionKeyA6D15192",
+      "Arn"
+     ]
     },
+    "MessageRetentionPeriod": 1209600,
+    "QueueName": "BigFanTopicAnyOtherStatusDLQ",
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/OtherStatusDLQ/Resource"
+   }
+  },
+  "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76": {
+   "Type": "AWS::SQS::Queue",
+   "Properties": {
+    "KmsMasterKeyId": {
+     "Fn::GetAtt": [
+      "MessageEncryptionKeyA6D15192",
+      "Arn"
+     ]
+    },
+    "QueueName": "BigFanTopicAnyOtherStatusSubscriberQueue",
+    "RedrivePolicy": {
+     "deadLetterTargetArn": {
+      "Fn::GetAtt": [
+       "OtherStatusDLQ7EF5C078",
+       "Arn"
+      ]
+     },
+     "maxReceiveCount": 3
+    },
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ],
@@ -697,10 +2401,10 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/Resource"
    }
   },
-  "SNSConstructBigFanAnyOtherStatusQueuePolicy7C8CB668": {
+  "BigFanTopicAnyOtherStatusSubscriberQueuePolicy38415694": {
    "Type": "AWS::SQS::QueuePolicy",
    "Properties": {
     "PolicyDocument": {
@@ -710,7 +2414,7 @@
        "Condition": {
         "ArnEquals": {
          "aws:SourceArn": {
-          "Ref": "SNSConstructApiGWFanTopic58631C38"
+          "Ref": "ApiGWFanTopic683A97E9"
          }
         }
        },
@@ -720,7 +2424,7 @@
        },
        "Resource": {
         "Fn::GetAtt": [
-         "SNSConstructBigFanAnyOtherStatusQueueD2B0033D",
+         "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
          "Arn"
         ]
        }
@@ -730,20 +2434,20 @@
     },
     "Queues": [
      {
-      "Ref": "SNSConstructBigFanAnyOtherStatusQueueD2B0033D"
+      "Ref": "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/Policy/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/Policy/Resource"
    }
   },
-  "SNSConstructBigFanAnyOtherStatusQueueApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B15B4DB8EE": {
+  "BigFanTopicAnyOtherStatusSubscriberQueueApiGatewayFanOutApiGWFanTopicD84CAD2D16F01B7D": {
    "Type": "AWS::SNS::Subscription",
    "Properties": {
     "Endpoint": {
      "Fn::GetAtt": [
-      "SNSConstructBigFanAnyOtherStatusQueueD2B0033D",
+      "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
       "Arn"
      ]
     },
@@ -759,17 +2463,17 @@
     "Protocol": "sqs",
     "RawMessageDelivery": true,
     "TopicArn": {
-     "Ref": "SNSConstructApiGWFanTopic58631C38"
+     "Ref": "ApiGWFanTopic683A97E9"
     }
    },
    "DependsOn": [
-    "SNSConstructBigFanAnyOtherStatusQueuePolicy7C8CB668"
+    "BigFanTopicAnyOtherStatusSubscriberQueuePolicy38415694"
    ],
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource"
    }
   },
-  "LambdaConstructSQSCreatedStatusSubscriberServiceRole9A1F391F": {
+  "SQSCreatedStatusSubscribeLambdaHandlerServiceRole36576A8A": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -800,36 +2504,70 @@
     ],
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/ServiceRole/Resource"
    }
   },
-  "LambdaConstructSQSCreatedStatusSubscriberServiceRoleDefaultPolicy38B1A3C6": {
+  "SQSCreatedStatusSubscribeLambdaHandlerServiceRoleDefaultPolicyF668D64A": {
    "Type": "AWS::IAM::Policy",
    "Properties": {
     "PolicyDocument": {
      "Statement": [
       {
        "Action": [
-        "sqs:ReceiveMessage",
+        "xray:PutTelemetryRecords",
+        "xray:PutTraceSegments"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
         "sqs:ChangeMessageVisibility",
-        "sqs:GetQueueUrl",
         "sqs:DeleteMessage",
-        "sqs:GetQueueAttributes"
+        "sqs:GetQueueAttributes",
+        "sqs:GetQueueUrl",
+        "sqs:ReceiveMessage"
        ],
        "Effect": "Allow",
        "Resource": {
         "Fn::GetAtt": [
-         "SNSConstructBigFanStatusCreatedQueue6881EDC0",
+         "BigFanTopicStatusCreatedSubscriberQueue589E974E",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": "kms:Decrypt",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "MessageEncryptionKeyA6D15192",
          "Arn"
         ]
        }
@@ -837,84 +2575,144 @@
      ],
      "Version": "2012-10-17"
     },
-    "PolicyName": "LambdaConstructSQSCreatedStatusSubscriberServiceRoleDefaultPolicy38B1A3C6",
+    "PolicyName": "SQSCreatedStatusSubscribeLambdaHandlerServiceRoleDefaultPolicyF668D64A",
     "Roles": [
      {
-      "Ref": "LambdaConstructSQSCreatedStatusSubscriberServiceRole9A1F391F"
+      "Ref": "SQSCreatedStatusSubscribeLambdaHandlerServiceRole36576A8A"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole/DefaultPolicy/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/ServiceRole/DefaultPolicy/Resource"
    }
   },
-  "LambdaConstructSQSCreatedStatusSubscriber3E301D30": {
+  "SQSCreatedStatusSubscribeLambdaHandler0467DB95": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Code": {
-     "S3Bucket": {
-      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
-     },
-     "S3Key": "75d027e594cff42ee3153e2634a15c4b9599cb076ec24e8c853d05619a12bc63.zip"
+     "S3Bucket": "cdk-hnb659fds-assets-550767824695-us-east-1",
+     "S3Key": "33a61ebc2a5053d55175aabdbbbfcadd9d8594df265ea083f7cc30ea321086ee.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "LOG_LEVEL": "INFO",
+      "POWERTOOLS_SERVICE_NAME": "created-status-processor",
+      "POWERTOOLS_METRICS_NAMESPACE": "ApiGatewayFanOut"
+     }
     },
     "Handler": "createdStatus.handler",
+    "MemorySize": 128,
     "Role": {
      "Fn::GetAtt": [
-      "LambdaConstructSQSCreatedStatusSubscriberServiceRole9A1F391F",
+      "SQSCreatedStatusSubscribeLambdaHandlerServiceRole36576A8A",
       "Arn"
      ]
     },
     "Runtime": "python3.11",
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
       "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
      }
-    ]
+    ],
+    "Timeout": 30,
+    "TracingConfig": {
+     "Mode": "Active"
+    }
    },
    "DependsOn": [
-    "LambdaConstructSQSCreatedStatusSubscriberServiceRoleDefaultPolicy38B1A3C6",
-    "LambdaConstructSQSCreatedStatusSubscriberServiceRole9A1F391F"
+    "SQSCreatedStatusSubscribeLambdaHandlerServiceRoleDefaultPolicyF668D64A",
+    "SQSCreatedStatusSubscribeLambdaHandlerServiceRole36576A8A"
    ],
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/Resource",
-    "aws:asset:path": "asset.75d027e594cff42ee3153e2634a15c4b9599cb076ec24e8c853d05619a12bc63",
+    "aws:cdk:path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/Resource",
+    "aws:asset:path": "asset.33a61ebc2a5053d55175aabdbbbfcadd9d8594df265ea083f7cc30ea321086ee",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
   },
-  "LambdaConstructSQSCreatedStatusSubscriberSqsEventSourceApiGatewayFanOutSNSConstructBigFanStatusCreatedQueueFCF0F6C0659DF0E7": {
+  "SQSCreatedStatusSubscribeLambdaHandlerLogRetentionB473EA73": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 7
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/LogRetention/Resource"
+   }
+  },
+  "SQSCreatedStatusSubscribeLambdaHandlerEventInvokeConfig1415C3F0": {
+   "Type": "AWS::Lambda::EventInvokeConfig",
+   "Properties": {
+    "FunctionName": {
+     "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
+    },
+    "MaximumRetryAttempts": 2,
+    "Qualifier": "$LATEST"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/EventInvokeConfig/Resource"
+   }
+  },
+  "SQSCreatedStatusSubscribeLambdaHandlerSqsEventSourceApiGatewayFanOutBigFanTopicStatusCreatedSubscriberQueueE27E1C237A234625": {
    "Type": "AWS::Lambda::EventSourceMapping",
    "Properties": {
+    "BatchSize": 10,
     "EventSourceArn": {
      "Fn::GetAtt": [
-      "SNSConstructBigFanStatusCreatedQueue6881EDC0",
+      "BigFanTopicStatusCreatedSubscriberQueue589E974E",
       "Arn"
      ]
     },
     "FunctionName": {
-     "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+     "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
     },
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ]
+    "FunctionResponseTypes": [
+     "ReportBatchItemFailures"
+    ],
+    "MaximumBatchingWindowInSeconds": 5
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/SqsEventSource:ApiGatewayFanOutSNSConstructBigFanStatusCreatedQueueFCF0F6C0/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutBigFanTopicStatusCreatedSubscriberQueueE27E1C23/Resource"
    }
   },
-  "LambdaConstructSQSOtherStatusSubscriberServiceRole95C39C6B": {
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -945,141 +2743,117 @@
     ],
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource"
    }
   },
-  "LambdaConstructSQSOtherStatusSubscriberServiceRoleDefaultPolicyD9640CCE": {
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
    "Type": "AWS::IAM::Policy",
    "Properties": {
     "PolicyDocument": {
      "Statement": [
       {
        "Action": [
-        "sqs:ReceiveMessage",
-        "sqs:ChangeMessageVisibility",
-        "sqs:GetQueueUrl",
-        "sqs:DeleteMessage",
-        "sqs:GetQueueAttributes"
+        "logs:DeleteRetentionPolicy",
+        "logs:PutRetentionPolicy"
        ],
        "Effect": "Allow",
-       "Resource": {
-        "Fn::GetAtt": [
-         "SNSConstructBigFanAnyOtherStatusQueueD2B0033D",
-         "Arn"
-        ]
-       }
+       "Resource": "*"
       }
      ],
      "Version": "2012-10-17"
     },
-    "PolicyName": "LambdaConstructSQSOtherStatusSubscriberServiceRoleDefaultPolicyD9640CCE",
+    "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
     "Roles": [
      {
-      "Ref": "LambdaConstructSQSOtherStatusSubscriberServiceRole95C39C6B"
+      "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole/DefaultPolicy/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource"
    }
   },
-  "LambdaConstructSQSOtherStatusSubscriberD6485005": {
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
+    "Handler": "index.handler",
+    "Runtime": "nodejs18.x",
+    "Timeout": 900,
     "Code": {
-     "S3Bucket": {
-      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
-     },
-     "S3Key": "75d027e594cff42ee3153e2634a15c4b9599cb076ec24e8c853d05619a12bc63.zip"
+     "S3Bucket": "cdk-hnb659fds-assets-550767824695-us-east-1",
+     "S3Key": "4e26bf2d0a26f2097fb2b261f22bb51e3f6b4b52635777b1e54edbd8e2d58c35.zip"
     },
-    "Handler": "anyOtherStatus.handler",
     "Role": {
      "Fn::GetAtt": [
-      "LambdaConstructSQSOtherStatusSubscriberServiceRole95C39C6B",
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
       "Arn"
      ]
     },
-    "Runtime": "python3.11",
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ]
    },
    "DependsOn": [
-    "LambdaConstructSQSOtherStatusSubscriberServiceRoleDefaultPolicyD9640CCE",
-    "LambdaConstructSQSOtherStatusSubscriberServiceRole95C39C6B"
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
    ],
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/Resource",
-    "aws:asset:path": "asset.75d027e594cff42ee3153e2634a15c4b9599cb076ec24e8c853d05619a12bc63",
+    "aws:cdk:path": "ApiGatewayFanOut/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource",
+    "aws:asset:path": "asset.4e26bf2d0a26f2097fb2b261f22bb51e3f6b4b52635777b1e54edbd8e2d58c35",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
   },
-  "LambdaConstructSQSOtherStatusSubscriberSqsEventSourceApiGatewayFanOutSNSConstructBigFanAnyOtherStatusQueue49A97B16FEE74F17": {
-   "Type": "AWS::Lambda::EventSourceMapping",
-   "Properties": {
-    "EventSourceArn": {
-     "Fn::GetAtt": [
-      "SNSConstructBigFanAnyOtherStatusQueueD2B0033D",
-      "Arn"
-     ]
-    },
-    "FunctionName": {
-     "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
-    },
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/SqsEventSource:ApiGatewayFanOutSNSConstructBigFanAnyOtherStatusQueue49A97B16/Resource"
-   }
-  },
-  "APIGatewayConstructApiGWFanAPI5DC6EA23": {
-   "Type": "AWS::ApiGateway::RestApi",
-   "Properties": {
-    "Description": "API GW Fanout Example",
-    "Name": "ApiGWFanAPI",
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Resource"
-   }
-  },
-  "APIGatewayConstructApiGWFanAPICloudWatchRole722A9082": {
+  "SQSAnyOtherStatusSubscribeLambdaHandlerServiceRole395E81EB": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -1088,7 +2862,7 @@
        "Action": "sts:AssumeRole",
        "Effect": "Allow",
        "Principal": {
-        "Service": "apigateway.amazonaws.com"
+        "Service": "lambda.amazonaws.com"
        }
       }
      ],
@@ -1103,68 +2877,352 @@
         {
          "Ref": "AWS::Partition"
         },
-        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
        ]
       ]
      }
     ],
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
       "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
      }
     ]
    },
-   "UpdateReplacePolicy": "Retain",
-   "DeletionPolicy": "Retain",
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CloudWatchRole/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/ServiceRole/Resource"
    }
   },
-  "APIGatewayConstructApiGWFanAPIAccount5F3AFA68": {
-   "Type": "AWS::ApiGateway::Account",
+  "SQSAnyOtherStatusSubscribeLambdaHandlerServiceRoleDefaultPolicy7E448E8B": {
+   "Type": "AWS::IAM::Policy",
    "Properties": {
-    "CloudWatchRoleArn": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "xray:PutTelemetryRecords",
+        "xray:PutTraceSegments"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "sqs:ChangeMessageVisibility",
+        "sqs:DeleteMessage",
+        "sqs:GetQueueAttributes",
+        "sqs:GetQueueUrl",
+        "sqs:ReceiveMessage"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": "kms:Decrypt",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "MessageEncryptionKeyA6D15192",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "SQSAnyOtherStatusSubscribeLambdaHandlerServiceRoleDefaultPolicy7E448E8B",
+    "Roles": [
+     {
+      "Ref": "SQSAnyOtherStatusSubscribeLambdaHandlerServiceRole395E81EB"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "SQSAnyOtherStatusSubscribeLambdaHandler4037E293": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-550767824695-us-east-1",
+     "S3Key": "33a61ebc2a5053d55175aabdbbbfcadd9d8594df265ea083f7cc30ea321086ee.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "LOG_LEVEL": "INFO",
+      "POWERTOOLS_SERVICE_NAME": "other-status-processor",
+      "POWERTOOLS_METRICS_NAMESPACE": "ApiGatewayFanOut"
+     }
+    },
+    "Handler": "anyOtherStatus.handler",
+    "MemorySize": 128,
+    "Role": {
      "Fn::GetAtt": [
-      "APIGatewayConstructApiGWFanAPICloudWatchRole722A9082",
+      "SQSAnyOtherStatusSubscribeLambdaHandlerServiceRole395E81EB",
       "Arn"
      ]
+    },
+    "Runtime": "python3.11",
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "Timeout": 30,
+    "TracingConfig": {
+     "Mode": "Active"
     }
    },
    "DependsOn": [
-    "APIGatewayConstructApiGWFanAPI5DC6EA23"
+    "SQSAnyOtherStatusSubscribeLambdaHandlerServiceRoleDefaultPolicy7E448E8B",
+    "SQSAnyOtherStatusSubscribeLambdaHandlerServiceRole395E81EB"
    ],
-   "UpdateReplacePolicy": "Retain",
-   "DeletionPolicy": "Retain",
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Account"
+    "aws:cdk:path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/Resource",
+    "aws:asset:path": "asset.33a61ebc2a5053d55175aabdbbbfcadd9d8594df265ea083f7cc30ea321086ee",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
    }
   },
-  "APIGatewayConstructApiGWFanAPIDeploymentD1732884c123b61605290780fec35be840e5b8c2": {
+  "SQSAnyOtherStatusSubscribeLambdaHandlerLogRetentionFC4247F7": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 7
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/LogRetention/Resource"
+   }
+  },
+  "SQSAnyOtherStatusSubscribeLambdaHandlerEventInvokeConfig5137FA02": {
+   "Type": "AWS::Lambda::EventInvokeConfig",
+   "Properties": {
+    "FunctionName": {
+     "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
+    },
+    "MaximumRetryAttempts": 2,
+    "Qualifier": "$LATEST"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/EventInvokeConfig/Resource"
+   }
+  },
+  "SQSAnyOtherStatusSubscribeLambdaHandlerSqsEventSourceApiGatewayFanOutBigFanTopicAnyOtherStatusSubscriberQueue995168D24195A840": {
+   "Type": "AWS::Lambda::EventSourceMapping",
+   "Properties": {
+    "BatchSize": 10,
+    "EventSourceArn": {
+     "Fn::GetAtt": [
+      "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
+      "Arn"
+     ]
+    },
+    "FunctionName": {
+     "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
+    },
+    "FunctionResponseTypes": [
+     "ReportBatchItemFailures"
+    ],
+    "MaximumBatchingWindowInSeconds": 5
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutBigFanTopicAnyOtherStatusSubscriberQueue995168D2/Resource"
+   }
+  },
+  "ApiGatewayAccessLogsFB871B4C": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "RetentionInDays": 30,
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGatewayAccessLogs/Resource"
+   }
+  },
+  "ApiGWFanAPI1E1B22E5": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Description": "Private API Gateway with fan-out pattern",
+    "EndpointConfiguration": {
+     "Types": [
+      "PRIVATE"
+     ]
+    },
+    "Name": "apigw_fanout-private-api",
+    "Policy": {
+     "Statement": [
+      {
+       "Action": "execute-api:Invoke",
+       "Condition": {
+        "StringEquals": {
+         "aws:SourceVpc": "${aws:SourceVpc}"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": "*"
+       },
+       "Resource": "execute-api:/*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/Resource"
+   }
+  },
+  "ApiGWFanAPIDeployment98220019a78390f854370e7dec72c190a685215f": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
-    "Description": "API GW Fanout Example",
+    "Description": "Private API Gateway with fan-out pattern",
     "RestApiId": {
-     "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+     "Ref": "ApiGWFanAPI1E1B22E5"
     }
    },
    "DependsOn": [
-    "APIGatewayConstructApiGWFanAPISendEventPOST72B443D1",
-    "APIGatewayConstructApiGWFanAPISendEvent3800DDB1"
+    "ApiGWFanAPISendEventOPTIONSD53E9D50",
+    "ApiGWFanAPISendEventPOST9777E65E",
+    "ApiGWFanAPISendEventEED0E5CA",
+    "ApiGWFanAPIErrorResponseModel0E9B74D8",
+    "ApiGWFanAPIRequestModelDFC3FD85",
+    "ApiGWFanAPIRequestValidator67F0867C",
+    "ApiGWFanAPIResponseModel17683740"
    ],
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Deployment/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/Deployment/Resource"
    }
   },
-  "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894": {
+  "ApiGWFanAPIDeploymentStageprod03A9DB9D": {
    "Type": "AWS::ApiGateway::Stage",
    "Properties": {
+    "AccessLogSetting": {
+     "DestinationArn": {
+      "Fn::GetAtt": [
+       "ApiGatewayAccessLogsFB871B4C",
+       "Arn"
+      ]
+     },
+     "Format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"caller\":\"$context.identity.caller\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
+    },
     "DeploymentId": {
-     "Ref": "APIGatewayConstructApiGWFanAPIDeploymentD1732884c123b61605290780fec35be840e5b8c2"
+     "Ref": "ApiGWFanAPIDeployment98220019a78390f854370e7dec72c190a685215f"
     },
     "MethodSettings": [
      {
@@ -1172,73 +3230,146 @@
       "HttpMethod": "*",
       "LoggingLevel": "INFO",
       "MetricsEnabled": true,
-      "ResourcePath": "/*"
+      "ResourcePath": "/*",
+      "ThrottlingBurstLimit": 500,
+      "ThrottlingRateLimit": 1000
      }
     ],
     "RestApiId": {
-     "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+     "Ref": "ApiGWFanAPI1E1B22E5"
     },
     "StageName": "prod",
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
       "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
      }
-    ]
+    ],
+    "TracingEnabled": true
    },
-   "DependsOn": [
-    "APIGatewayConstructApiGWFanAPIAccount5F3AFA68"
-   ],
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/DeploymentStage.prod/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/DeploymentStage.prod/Resource"
    }
   },
-  "APIGatewayConstructApiGWFanAPISendEvent3800DDB1": {
+  "ApiGWFanAPISendEventEED0E5CA": {
    "Type": "AWS::ApiGateway::Resource",
    "Properties": {
     "ParentId": {
      "Fn::GetAtt": [
-      "APIGatewayConstructApiGWFanAPI5DC6EA23",
+      "ApiGWFanAPI1E1B22E5",
       "RootResourceId"
      ]
     },
     "PathPart": "SendEvent",
     "RestApiId": {
-     "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+     "Ref": "ApiGWFanAPI1E1B22E5"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default/SendEvent/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/Default/SendEvent/Resource"
    }
   },
-  "APIGatewayConstructApiGWFanAPISendEventPOST72B443D1": {
+  "ApiGWFanAPISendEventOPTIONSD53E9D50": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "PassthroughBehavior": "NEVER",
+     "RequestTemplates": {
+      "application/json": "{\"statusCode\": 200}"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "ApiGWFanAPISendEventEED0E5CA"
+    },
+    "RestApiId": {
+     "Ref": "ApiGWFanAPI1E1B22E5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/Default/SendEvent/OPTIONS/Resource"
+   }
+  },
+  "ApiGWFanAPISendEventPOST9777E65E": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "ApiKeyRequired": true,
     "AuthorizationType": "NONE",
     "HttpMethod": "POST",
     "Integration": {
+     "ConnectionId": {
+      "Ref": "PrivateLinkE5A825BA"
+     },
+     "ConnectionType": "VPC_LINK",
      "Credentials": {
       "Fn::GetAtt": [
-       "APIGatewayConstructAPIGatewaySNSRole7DEAD9A8",
+       "ApiGatewaySNSRole1BAAAE75",
        "Arn"
       ]
      },
      "IntegrationHttpMethod": "POST",
      "IntegrationResponses": [
       {
+       "ResponseParameters": {
+        "method.response.header.Content-Type": "'application/json'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
        "ResponseTemplates": {
         "application/json": "{\"message\": \"message added to topic\"}"
        },
        "StatusCode": "200"
       },
       {
+       "ResponseParameters": {
+        "method.response.header.Content-Type": "'application/json'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
        "ResponseTemplates": {
-        "application/json": "{\"state\": \"error\", \"message\": \"$util.escapeJavaScript($input.path('$.errorMessage'))\"}"
+        "application/json": "{\"state\":\"error\",\"message\":\"$util.escapeJavaScript($input.path('$.errorMessage'))\"}"
        },
        "SelectionPattern": "^\\[Error\\].*",
        "StatusCode": "400"
@@ -1253,157 +3384,353 @@
        "Fn::Join": [
         "",
         [
-         "Action=Publish&\n            TargetArn=$util.urlEncode('",
+         "Action=Publish&TargetArn=$util.urlEncode('",
          {
-          "Ref": "SNSConstructApiGWFanTopic58631C38"
+          "Ref": "ApiGWFanTopic683A97E9"
          },
-         "')&\n            Message=$util.urlEncode($input.path('$.message'))&\n            Version=2010-03-31&\n            MessageAttributes.entry.1.Name=status&\n            MessageAttributes.entry.1.Value.DataType=String&\n            MessageAttributes.entry.1.Value.StringValue=$util.urlEncode($input.path('$.status'))"
+         "')&Message=$util.urlEncode($input.path('$.message'))&Version=2010-03-31&MessageAttributes.entry.1.Name=status&MessageAttributes.entry.1.Value.DataType=String&MessageAttributes.entry.1.Value.StringValue=$util.urlEncode($input.path('$.status'))"
         ]
        ]
       }
      },
-     "Type": "AWS",
+     "Type": "HTTP_PROXY",
      "Uri": {
       "Fn::Join": [
        "",
        [
-        "arn:aws:apigateway:",
+        "http://",
         {
-         "Ref": "AWS::Region"
-        },
-        ":sns:path//"
+         "Fn::GetAtt": [
+          "NLB55158F82",
+          "DNSName"
+         ]
+        }
        ]
       ]
      }
     },
     "MethodResponses": [
      {
+      "ResponseModels": {
+       "application/json": {
+        "Ref": "ApiGWFanAPIResponseModel17683740"
+       }
+      },
+      "ResponseParameters": {
+       "method.response.header.Content-Type": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
       "StatusCode": "200"
      },
      {
+      "ResponseModels": {
+       "application/json": {
+        "Ref": "ApiGWFanAPIErrorResponseModel0E9B74D8"
+       }
+      },
+      "ResponseParameters": {
+       "method.response.header.Content-Type": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
       "StatusCode": "400"
      }
     ],
+    "RequestModels": {
+     "application/json": {
+      "Ref": "ApiGWFanAPIRequestModelDFC3FD85"
+     }
+    },
+    "RequestValidatorId": {
+     "Ref": "ApiGWFanAPIRequestValidator67F0867C"
+    },
     "ResourceId": {
-     "Ref": "APIGatewayConstructApiGWFanAPISendEvent3800DDB1"
+     "Ref": "ApiGWFanAPISendEventEED0E5CA"
     },
     "RestApiId": {
-     "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+     "Ref": "ApiGWFanAPI1E1B22E5"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default/SendEvent/POST/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/Default/SendEvent/POST/Resource"
    }
   },
-  "APIGatewayConstructApiGWFanAPIapitroydietercomF9BF3FF4": {
+  "ApiGWFanAPIRequestValidator67F0867C": {
+   "Type": "AWS::ApiGateway::RequestValidator",
+   "Properties": {
+    "RestApiId": {
+     "Ref": "ApiGWFanAPI1E1B22E5"
+    },
+    "ValidateRequestBody": true,
+    "ValidateRequestParameters": true
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/RequestValidator/Resource"
+   }
+  },
+  "ApiGWFanAPIapiexamplecomD40F936F": {
    "Type": "AWS::ApiGateway::ApiKey",
    "Properties": {
-    "Description": "ApiGWFanAPI-apikey",
+    "Description": "apigw_fanout-private-api-apikey",
     "Enabled": true,
     "StageKeys": [
      {
       "RestApiId": {
-       "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+       "Ref": "ApiGWFanAPI1E1B22E5"
       },
       "StageName": {
-       "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+       "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
       }
      }
     ],
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/api.troydieter.com/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/api.example.com/Resource"
    }
   },
-  "APIGatewayConstructApiGWFanAPICustomDomain0D18E659": {
+  "ApiGWFanAPIDomainName6128E02F": {
    "Type": "AWS::ApiGateway::DomainName",
    "Properties": {
-    "DomainName": "api.troydieter.com",
+    "DomainName": "api.example.com",
     "EndpointConfiguration": {
      "Types": [
       "REGIONAL"
      ]
     },
-    "RegionalCertificateArn": "arn:aws:acm:us-east-1:550767824695:certificate/bf155d92-d495-4ac2-afe7-b2db396c1182",
+    "RegionalCertificateArn": "arn:aws:acm:us-east-?:replaceme:certificate/bf155d92-d49sdfg4353b2db396c1182",
     "SecurityPolicy": "TLS_1_2",
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CustomDomain/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/DomainName/Resource"
    }
   },
-  "APIGatewayConstructApiGWFanAPICustomDomainMapApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82B77D62BA": {
+  "ApiGWFanAPIDomainNameMapApiGatewayFanOutApiGWFanAPID0FF20CE610FEC22": {
    "Type": "AWS::ApiGateway::BasePathMapping",
    "Properties": {
     "DomainName": {
-     "Ref": "APIGatewayConstructApiGWFanAPICustomDomain0D18E659"
+     "Ref": "ApiGWFanAPIDomainName6128E02F"
     },
     "RestApiId": {
-     "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+     "Ref": "ApiGWFanAPI1E1B22E5"
     },
     "Stage": {
-     "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+     "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CustomDomain/Map:--=>ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/DomainName/Map:--=>ApiGatewayFanOutApiGWFanAPID0FF20CE/Resource"
    }
   },
-  "APIGatewayConstructGWUsagePlan7281BC4C": {
+  "ApiGWFanAPIRequestModelDFC3FD85": {
+   "Type": "AWS::ApiGateway::Model",
+   "Properties": {
+    "ContentType": "application/json",
+    "Name": "RequestModel",
+    "RestApiId": {
+     "Ref": "ApiGWFanAPI1E1B22E5"
+    },
+    "Schema": {
+     "properties": {
+      "message": {
+       "type": "string"
+      },
+      "status": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "message",
+      "status"
+     ],
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "title": "messageRequest",
+     "type": "object"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/RequestModel/Resource"
+   }
+  },
+  "ApiGWFanAPIResponseModel17683740": {
+   "Type": "AWS::ApiGateway::Model",
+   "Properties": {
+    "ContentType": "application/json",
+    "Name": "ResponseModel",
+    "RestApiId": {
+     "Ref": "ApiGWFanAPI1E1B22E5"
+    },
+    "Schema": {
+     "properties": {
+      "message": {
+       "type": "string"
+      }
+     },
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "title": "pollResponse",
+     "type": "object"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/ResponseModel/Resource"
+   }
+  },
+  "ApiGWFanAPIErrorResponseModel0E9B74D8": {
+   "Type": "AWS::ApiGateway::Model",
+   "Properties": {
+    "ContentType": "application/json",
+    "Name": "ErrorResponseModel",
+    "RestApiId": {
+     "Ref": "ApiGWFanAPI1E1B22E5"
+    },
+    "Schema": {
+     "properties": {
+      "state": {
+       "type": "string"
+      },
+      "message": {
+       "type": "string"
+      }
+     },
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "title": "errorResponse",
+     "type": "object"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/ErrorResponseModel/Resource"
+   }
+  },
+  "GWUsagePlanB7D9547B": {
    "Type": "AWS::ApiGateway::UsagePlan",
    "Properties": {
     "Description": "API Gateway Unlimited Use",
+    "Quota": {
+     "Limit": 10000,
+     "Period": "DAY"
+    },
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
       "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
      }
     ],
-    "UsagePlanName": "ApiGWFanAPI-usageplan"
+    "Throttle": {
+     "BurstLimit": 500,
+     "RateLimit": 1000
+    },
+    "UsagePlanName": "apigw_fanout-private-api-usageplan"
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/GWUsagePlan/Resource"
    }
   },
-  "APIGatewayConstructGWUsagePlanUsagePlanKeyResourceApiGatewayFanOutAPIGatewayConstructApiGWFanAPIapitroydietercom9E48BC50EA0F17BD": {
+  "GWUsagePlanUsagePlanKeyResourceApiGatewayFanOutApiGWFanAPIapiexamplecom9153D56CFB061BEC": {
    "Type": "AWS::ApiGateway::UsagePlanKey",
    "Properties": {
     "KeyId": {
-     "Ref": "APIGatewayConstructApiGWFanAPIapitroydietercomF9BF3FF4"
+     "Ref": "ApiGWFanAPIapiexamplecomD40F936F"
     },
     "KeyType": "API_KEY",
     "UsagePlanId": {
-     "Ref": "APIGatewayConstructGWUsagePlan7281BC4C"
+     "Ref": "GWUsagePlanB7D9547B"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan/UsagePlanKeyResource:ApiGatewayFanOutAPIGatewayConstructApiGWFanAPIapitroydietercom9E48BC50"
+    "aws:cdk:path": "ApiGatewayFanOut/GWUsagePlan/UsagePlanKeyResource:ApiGatewayFanOutApiGWFanAPIapiexamplecom9153D56C"
    }
   },
-  "APIGatewayConstructAPIGatewaySNSRole7DEAD9A8": {
+  "APIGwMappingB7C2CB83": {
+   "Type": "AWS::ApiGateway::BasePathMapping",
+   "Properties": {
+    "BasePath": "apigw_fanout",
+    "DomainName": {
+     "Ref": "ApiGWFanAPIDomainName6128E02F"
+    },
+    "RestApiId": {
+     "Ref": "ApiGWFanAPI1E1B22E5"
+    },
+    "Stage": {
+     "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/APIGwMapping/Resource"
+   }
+  },
+  "ApiGatewaySNSRole1BAAAE75": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -1418,22 +3745,39 @@
      ],
      "Version": "2012-10-17"
     },
+    "Description": "Role for API Gateway to publish to SNS",
     "Tags": [
      {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
      },
      {
       "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
       "Value": "apigw_fanout"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGatewaySNSRole/Resource"
    }
   },
-  "APIGatewayConstructAPIGatewaySNSRoleDefaultPolicy83C97BAB": {
+  "ApiGatewaySNSRoleDefaultPolicyCA5D0260": {
    "Type": "AWS::IAM::Policy",
    "Properties": {
     "PolicyDocument": {
@@ -1442,142 +3786,21 @@
        "Action": "sns:Publish",
        "Effect": "Allow",
        "Resource": {
-        "Ref": "SNSConstructApiGWFanTopic58631C38"
+        "Ref": "ApiGWFanTopic683A97E9"
        }
       }
      ],
      "Version": "2012-10-17"
     },
-    "PolicyName": "APIGatewayConstructAPIGatewaySNSRoleDefaultPolicy83C97BAB",
+    "PolicyName": "ApiGatewaySNSRoleDefaultPolicyCA5D0260",
     "Roles": [
      {
-      "Ref": "APIGatewayConstructAPIGatewaySNSRole7DEAD9A8"
+      "Ref": "ApiGatewaySNSRole1BAAAE75"
      }
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole/DefaultPolicy/Resource"
-   }
-  },
-  "APIGatewayConstructAPIGwMapping738BFB8C": {
-   "Type": "AWS::ApiGateway::BasePathMapping",
-   "Properties": {
-    "BasePath": "apigw_fanout",
-    "DomainName": {
-     "Ref": "APIGatewayConstructApiGWFanAPICustomDomain0D18E659"
-    },
-    "RestApiId": {
-     "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
-    },
-    "Stage": {
-     "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/APIGwMapping/Resource"
-   }
-  },
-  "APIGatewayConstructApiWebACL2C7C8E5D": {
-   "Type": "AWS::WAFv2::WebACL",
-   "Properties": {
-    "DefaultAction": {
-     "Allow": {}
-    },
-    "Description": "API Gateway WAF WEB ACL",
-    "Rules": [
-     {
-      "Name": "AWSManagedRulesCommonRuleSet",
-      "OverrideAction": {
-       "None": {}
-      },
-      "Priority": 1,
-      "Statement": {
-       "ManagedRuleGroupStatement": {
-        "Name": "AWSManagedRulesCommonRuleSet",
-        "VendorName": "AWS"
-       }
-      },
-      "VisibilityConfig": {
-       "CloudWatchMetricsEnabled": true,
-       "MetricName": "AWSManagedRulesCommonRuleSetMetric",
-       "SampledRequestsEnabled": true
-      }
-     },
-     {
-      "Action": {
-       "Block": {}
-      },
-      "Name": "LimitRequests100",
-      "Priority": 2,
-      "Statement": {
-       "RateBasedStatement": {
-        "AggregateKeyType": "IP",
-        "Limit": 100
-       }
-      },
-      "VisibilityConfig": {
-       "CloudWatchMetricsEnabled": true,
-       "MetricName": "LimitRequests100Metric",
-       "SampledRequestsEnabled": true
-      }
-     }
-    ],
-    "Scope": "REGIONAL",
-    "Tags": [
-     {
-      "Key": "api_endpoint",
-      "Value": "api.troydieter.com"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     }
-    ],
-    "VisibilityConfig": {
-     "CloudWatchMetricsEnabled": true,
-     "MetricName": "ApiWebACLMetric",
-     "SampledRequestsEnabled": true
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/ApiWebACL"
-   }
-  },
-  "APIGatewayConstructWafAssociation442667EB": {
-   "Type": "AWS::WAFv2::WebACLAssociation",
-   "Properties": {
-    "ResourceArn": {
-     "Fn::Join": [
-      "",
-      [
-       "arn:",
-       {
-        "Ref": "AWS::Partition"
-       },
-       ":apigateway:",
-       {
-        "Ref": "AWS::Region"
-       },
-       "::/restapis/",
-       {
-        "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
-       },
-       "/stages/",
-       {
-        "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
-       }
-      ]
-     ]
-    },
-    "WebACLArn": {
-     "Fn::GetAtt": [
-      "APIGatewayConstructApiWebACL2C7C8E5D",
-      "Arn"
-     ]
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/APIGatewayConstruct/WafAssociation"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGatewaySNSRole/DefaultPolicy/Resource"
    }
   },
   "AliasRecord851000D2": {
@@ -1586,34 +3809,311 @@
     "AliasTarget": {
      "DNSName": {
       "Fn::GetAtt": [
-       "APIGatewayConstructApiGWFanAPICustomDomain0D18E659",
+       "ApiGWFanAPIDomainName6128E02F",
        "RegionalDomainName"
       ]
      },
      "HostedZoneId": {
       "Fn::GetAtt": [
-       "APIGatewayConstructApiGWFanAPICustomDomain0D18E659",
+       "ApiGWFanAPIDomainName6128E02F",
        "RegionalHostedZoneId"
       ]
      }
     },
-    "HostedZoneId": "Z10057183MLGVY8QQ2VGK",
-    "Name": "api.troydieter.com.",
+    "HostedZoneId": "ZZ4353459fghEXAMPLE",
+    "Name": "api.example.com.",
     "Type": "A"
    },
    "Metadata": {
     "aws:cdk:path": "ApiGatewayFanOut/AliasRecord/Resource"
    }
   },
+  "ApiGatewayWAF": {
+   "Type": "AWS::WAFv2::WebACL",
+   "Properties": {
+    "DefaultAction": {
+     "Allow": {}
+    },
+    "Rules": [
+     {
+      "Action": {
+       "Block": {}
+      },
+      "Name": "RateLimitRule",
+      "Priority": 1,
+      "Statement": {
+       "RateBasedStatement": {
+        "AggregateKeyType": "IP",
+        "Limit": 1000
+       }
+      },
+      "VisibilityConfig": {
+       "CloudWatchMetricsEnabled": true,
+       "MetricName": "RateLimitRule",
+       "SampledRequestsEnabled": true
+      }
+     },
+     {
+      "Name": "AWSManagedRulesCommonRuleSet",
+      "OverrideAction": {
+       "None": {}
+      },
+      "Priority": 2,
+      "Statement": {
+       "ManagedRuleGroupStatement": {
+        "Name": "AWSManagedRulesCommonRuleSet",
+        "VendorName": "AWS"
+       }
+      },
+      "VisibilityConfig": {
+       "CloudWatchMetricsEnabled": true,
+       "MetricName": "AWSManagedRulesCommonRuleSet",
+       "SampledRequestsEnabled": true
+      }
+     },
+     {
+      "Name": "AWSManagedRulesSQLiRuleSet",
+      "OverrideAction": {
+       "None": {}
+      },
+      "Priority": 3,
+      "Statement": {
+       "ManagedRuleGroupStatement": {
+        "Name": "AWSManagedRulesSQLiRuleSet",
+        "VendorName": "AWS"
+       }
+      },
+      "VisibilityConfig": {
+       "CloudWatchMetricsEnabled": true,
+       "MetricName": "AWSManagedRulesSQLiRuleSet",
+       "SampledRequestsEnabled": true
+      }
+     }
+    ],
+    "Scope": "REGIONAL",
+    "Tags": [
+     {
+      "Key": "created-by",
+      "Value": "aws-cdk"
+     },
+     {
+      "Key": "environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "AWS CDK"
+     },
+     {
+      "Key": "owner",
+      "Value": "cdk-deployment"
+     },
+     {
+      "Key": "project",
+      "Value": "apigw_fanout"
+     },
+     {
+      "Key": "Project",
+      "Value": "apigw_fanout"
+     }
+    ],
+    "VisibilityConfig": {
+     "CloudWatchMetricsEnabled": true,
+     "MetricName": "ApiGatewayWAF",
+     "SampledRequestsEnabled": true
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGatewayWAF"
+   }
+  },
+  "ApiGatewayWAFAssociation": {
+   "Type": "AWS::WAFv2::WebACLAssociation",
+   "Properties": {
+    "ResourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:apigateway:us-east-1::/restapis/",
+       {
+        "Ref": "ApiGWFanAPI1E1B22E5"
+       },
+       "/stages/prod"
+      ]
+     ]
+    },
+    "WebACLArn": {
+     "Fn::GetAtt": [
+      "ApiGatewayWAF",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGatewayWAFAssociation"
+   }
+  },
+  "ApiGateway4XXErrorsAlarmB8F2E965": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmDescription": "Alarm if API Gateway returns too many 4XX errors",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "ApiName",
+      "Value": "apigw_fanout-private-api"
+     }
+    ],
+    "EvaluationPeriods": 1,
+    "MetricName": "4XXError",
+    "Namespace": "AWS/ApiGateway",
+    "Period": 300,
+    "Statistic": "Sum",
+    "Threshold": 10,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGateway4XXErrorsAlarm/Resource"
+   }
+  },
+  "ApiGateway5XXErrorsAlarm1F074977": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmDescription": "Alarm if API Gateway returns too many 5XX errors",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "ApiName",
+      "Value": "apigw_fanout-private-api"
+     }
+    ],
+    "EvaluationPeriods": 1,
+    "MetricName": "5XXError",
+    "Namespace": "AWS/ApiGateway",
+    "Period": 300,
+    "Statistic": "Sum",
+    "Threshold": 5,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGateway5XXErrorsAlarm/Resource"
+   }
+  },
+  "ApiGatewayLatencyAlarm5559E5F5": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmDescription": "Alarm if API Gateway latency is too high",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "ApiName",
+      "Value": "apigw_fanout-private-api"
+     }
+    ],
+    "EvaluationPeriods": 3,
+    "MetricName": "Latency",
+    "Namespace": "AWS/ApiGateway",
+    "Period": 300,
+    "Statistic": "Average",
+    "Threshold": 1000,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGatewayLatencyAlarm/Resource"
+   }
+  },
+  "SNSThrottledAlarm5EC350CC": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmDescription": "Alarm if SNS messages are being throttled",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "TopicName",
+      "Value": {
+       "Fn::GetAtt": [
+        "ApiGWFanTopic683A97E9",
+        "TopicName"
+       ]
+      }
+     }
+    ],
+    "EvaluationPeriods": 1,
+    "MetricName": "NumberOfNotificationsFilteredOut",
+    "Namespace": "AWS/SNS",
+    "Period": 300,
+    "Statistic": "Sum",
+    "Threshold": 5,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/SNSThrottledAlarm/Resource"
+   }
+  },
+  "CreatedStatusQueueAgeAlarm6CEE7D38": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmDescription": "Alarm if messages in created status queue are too old",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "QueueName",
+      "Value": {
+       "Fn::GetAtt": [
+        "BigFanTopicStatusCreatedSubscriberQueue589E974E",
+        "QueueName"
+       ]
+      }
+     }
+    ],
+    "EvaluationPeriods": 1,
+    "MetricName": "ApproximateAgeOfOldestMessage",
+    "Namespace": "AWS/SQS",
+    "Period": 300,
+    "Statistic": "Maximum",
+    "Threshold": 300,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/CreatedStatusQueueAgeAlarm/Resource"
+   }
+  },
+  "OtherStatusQueueAgeAlarm8EA7C687": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmDescription": "Alarm if messages in other status queue are too old",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "QueueName",
+      "Value": {
+       "Fn::GetAtt": [
+        "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
+        "QueueName"
+       ]
+      }
+     }
+    ],
+    "EvaluationPeriods": 1,
+    "MetricName": "ApproximateAgeOfOldestMessage",
+    "Namespace": "AWS/SQS",
+    "Period": 300,
+    "Statistic": "Maximum",
+    "Threshold": 300,
+    "TreatMissingData": "notBreaching"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayFanOut/OtherStatusQueueAgeAlarm/Resource"
+   }
+  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22SQXObMBCFf0vusjqOk0mvxG4uaRIX2ukxs8hroxoklV2FYTT8944k23jaXtjvPWB3eehWLj/fyeUNDLRQu+Oi1bUMFYM6ChjoPZAhGb5bp5VY702Gytekeu1YWxPdaz0J1Vq/G4BVI8MGqKkt9Lv42CyKFvouWgkmQb9Jhm8ePUYzQ7pubavVeDGznEQLXb0DGZ68UeclLvzlAw1X1vcKX8A5bQ7x9r/uJDR0MpS2TVNTneedR9HqHYiQSRaxCFrJR6+OyI9AKMDpAzAOMMpQInHhdOo1Y6GU9YbFBl1rxw4NpyhmVTEc0gIZSqS0ZGp/FqeemV+QG5sCPVHh9DOmpU+0sR1o8wpdevFKxaZb4OYql7+tHwQH3LaQMv2/eMZxEgPsP25lWO/NT6yL9VdxoYLIKg35MPTWM96vZChKVDafg0wV8jRF+ebZeZ6/NeUcw0j/aDtyY82nlVwu5cPNL9J60XvDukNZ5voHtEk9QcICAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/21UTXOjMAz9Lb273m0yu3um6cd0mnZZ6KbHjjAK8cbY1JaTyTD89x0bCEnbC3rvSQjJkpnxq9lP/v0C9u5SlNtLJQve5gRiy2Dv3lqnHW9fTCMFW6x1D3JfOGFlQ9LooJ7xGJIaJcXh+EZPOyaU8eUeSGx4ewNuUxiwZYiaSKLA1kGKoGPKVI63S1PdW+Ob4DjipakyJNThsx1DMePtqollrtIFS32hpMh9oZGGIgeUGU/4AoXCSZ+0xDkjJIy9RUcAtw9pMM9A90C4hwNLrdwB4ZT4QRNajceAvpKBJUQgNjVqYnfK7JemCv4R5ii8lXQ4dnkuxMxrELhqxK0uGyM1DelH2jEJNW8z07cV7TSGcQLO1WG8VuoqBQs1EtroH0nHUIEjKZSBsgAFWkhd7Wa8fUbaG7tdGiivo96/ecbHGOkI9eAf8eB7AVshHfs8oR2DRlb9acVRLqXexi4HmKGjpJGxvQHeYKPMIZ5qWKOJ5QRVP98IMnTGW4HX4CYyJOrxE9LGxGUcUIbvHh2tQMkSyNg++oOWNPIR4wkP6MbUIPUz1DH7CQtfToE2T9A0Usfhf5SeTIkqVhDBXwcVpgriHn5NHvHQsW3teDtUEUyiJLj+CklwHXPvjrd/PPpYUg/ic1qPE9oxBXVRAm/vvBbjNTji2x1qetA7s8WF0WsZG/ksRiWPJ3vS8Ge1Y27+Bs4hOZ4Ew9ycX3uxRYqjsuH6/ZjzNslQmP5n0aMcqWN7WIfVXKz1KxbJYsmO6OQad12Qf3tqPJ3M3jsy9ZercO5KrdnJEm2sJ9YYVirWnh5oY/S3Ob+64r8u/jkpL63XJGvkWW//AxDQAZlfBQAA"
    },
    "Metadata": {
     "aws:cdk:path": "ApiGatewayFanOut/CDKMetadata/Default"
-   },
-   "Condition": "CDKMetadataAvailable"
+   }
   }
  },
  "Outputs": {
@@ -1622,11 +4122,7 @@
     "Fn::Join": [
      "",
      [
-      "https://console.aws.amazon.com/cloudwatch/home?region=",
-      {
-       "Ref": "AWS::Region"
-      },
-      "#dashboards:name=",
+      "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards:name=",
       {
        "Ref": "WatchfulDashboard1A69A5BC"
       }
@@ -1634,297 +4130,89 @@
     ]
    }
   },
-  "APIGatewayConstructApiGWFanAPIEndpoint193A9589": {
+  "ApiGWFanAPIEndpoint3ECBB6BC": {
    "Value": {
     "Fn::Join": [
      "",
      [
       "https://",
       {
-       "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+       "Ref": "ApiGWFanAPI1E1B22E5"
       },
-      ".execute-api.",
-      {
-       "Ref": "AWS::Region"
-      },
-      ".",
+      ".execute-api.us-east-1.",
       {
        "Ref": "AWS::URLSuffix"
       },
       "/",
       {
-       "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+       "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
       },
       "/"
      ]
     ]
    }
-  }
- },
- "Conditions": {
-  "CDKMetadataAvailable": {
-   "Fn::Or": [
-    {
-     "Fn::Or": [
+  },
+  "VPCID": {
+   "Description": "VPC ID",
+   "Value": {
+    "Ref": "ApiGWVPC82E884FC"
+   },
+   "Export": {
+    "Name": "vpcid"
+   }
+  },
+  "VPCARN": {
+   "Description": "VPC ARN",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "arn:aws:ec2:us-east-1:550767824695:vpc/",
       {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "af-south-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-east-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-northeast-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-northeast-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-northeast-3"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-south-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-south-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-southeast-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-southeast-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-southeast-3"
-       ]
+       "Ref": "ApiGWVPC82E884FC"
       }
      ]
-    },
-    {
-     "Fn::Or": [
+    ]
+   },
+   "Export": {
+    "Name": "vpcarn"
+   }
+  },
+  "CUSTOMDOMAINADDR": {
+   "Description": "CUSTOM DOMAIN ADDRESS",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
       {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-southeast-4"
-       ]
+       "Ref": "ApiGWFanAPIDomainName6128E02F"
       },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ca-central-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ca-west-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "cn-north-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "cn-northwest-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-central-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-central-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-north-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-south-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-south-2"
-       ]
-      }
+      "/"
      ]
-    },
-    {
-     "Fn::Or": [
+    ]
+   },
+   "Export": {
+    "Name": "cust-domain-addr"
+   }
+  },
+  "APIENDPOINT": {
+   "Description": "API Gateway Endpoint",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
       {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-west-1"
-       ]
+       "Ref": "ApiGWFanAPIDomainName6128E02F"
       },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-west-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-west-3"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "il-central-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "me-central-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "me-south-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "sa-east-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "us-east-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "us-east-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "us-west-1"
-       ]
-      }
+      "/"
      ]
-    },
-    {
-     "Fn::Equals": [
-      {
-       "Ref": "AWS::Region"
-      },
-      "us-west-2"
-     ]
-    }
-   ]
+    ]
+   },
+   "Export": {
+    "Name": "api-endpoint"
+   }
   }
  },
  "Parameters": {

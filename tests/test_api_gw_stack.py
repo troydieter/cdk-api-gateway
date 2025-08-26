@@ -1,5 +1,5 @@
 """
-Tests for the improved API Gateway Stack
+Tests for the API Gateway Stack
 """
 
 import os
