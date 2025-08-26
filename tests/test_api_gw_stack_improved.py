@@ -10,7 +10,7 @@ import pytest
 import aws_cdk as cdk
 from aws_cdk.assertions import Template, Match
 
-from api_gw.api_gw_stack_improved import APIGWStack
+from api_gw.api_gw_stack import APIGWStack
 
 
 @pytest.fixture

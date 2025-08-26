@@ -1,17 +1,20 @@
-#!/usr/bin/env python
 """
 Main CDK application file for the API Gateway Fan-out pattern
 """
 
 import os
 from aws_cdk import App, Environment, Tags
+
+# Import only the original stack implementation
 from api_gw.api_gw_stack import APIGWStack
 
-env_data = Environment(
-    account=os.environ.get('CDK_DEFAULT_ACCOUNT', ''),
-    region=os.environ.get('CDK_DEFAULT_REGION', '')
-)
+# Set up environment
+env_data = {
+    'account': os.environ.get('CDK_DEFAULT_ACCOUNT', ''),
+    'region': os.environ.get('CDK_DEFAULT_REGION', '')
+}
 
+# Initialize CDK app
 app = App()
 
 # Get context properties
@@ -22,24 +25,14 @@ props = {
     "cert_arn": app.node.try_get_context("cert_arn"),
     "custom_domain_name": app.node.try_get_context("custom_domain_name"),
     "alarm_email": app.node.try_get_context("alarm_email"),
-    "vpc_cidr": app.node.try_get_context("vpc_cidr"),
-    "environment": app.node.try_get_context("environment") or "dev",
-    "owner": app.node.try_get_context("owner") or "cdk-deployment"
+    "vpc_cidr": app.node.try_get_context("vpc_cidr")
 }
 
-# Deploy the improved API Gateway stack
-APIGWStack(
-    app, 
-    "ApiGatewayFanOut", 
-    props=props, 
-    env=env_data,
-    description="Private API Gateway with Fan-out Pattern"
-)
+# Use the original stack implementation
+APIGWStack(app, "ApiGatewayFanOut", props=props, env=env_data)
 
 # Apply common tags to all resources
 Tags.of(app).add("Project", props["namespace"])
-Tags.of(app).add("Environment", props.get("environment", "dev"))
-Tags.of(app).add("Owner", props.get("owner", "cdk-deployment"))
 Tags.of(app).add("ManagedBy", "AWS CDK")
 
 # Synthesize the CloudFormation template
