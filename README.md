@@ -88,7 +88,6 @@ The `cdk.json` file contains the following configuration options:
 }
 ```
 
-- `use_improved_stack`: Set to "true" to use the enhanced implementation (recommended)
 - `environment`: Deployment environment (dev, test, prod)
 - `owner`: Owner of the deployment for tagging purposes
 
