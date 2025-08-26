@@ -250,8 +250,7 @@ class APIGWStack(Stack):
             display_name='The Big Fan CDK Pattern Topic',
             topic_name='api-gateway-fan-out-topic',
             master_key=kms_key,
-            fifo=False,
-            content_based_deduplication=False
+            fifo=False
         )
 
         # IMPORTANT: Do NOT attach a separate topic resource policy granting apigateway service principal.
