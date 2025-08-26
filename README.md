@@ -25,7 +25,7 @@ This architecture implements:
 - **WAF**: Web Application Firewall for API protection
 - **CloudWatch**: Comprehensive monitoring and alerting
 
-## New Features in v0.2.0
+## New Features
 
 The improved implementation includes:
 
