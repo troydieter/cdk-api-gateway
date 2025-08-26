@@ -1,8 +1,5 @@
 """
-AWS CDK Stack for Private API Gateway with Fan-out Pattern (FIXED to remove circular dependencies)
-- Uses API Gateway -> SNS (AWS service integration) -> SQS -> Lambda
-- Removes SNS<->APIGW resource-policy coupling and VPC Link to SNS
-- Preserves your VTL templates, models, alarms, WAF, etc.
+AWS CDK Stack for Private API Gateway with Fan-out Pattern
 """
 
 import json
@@ -156,6 +153,7 @@ class APIGWStack(Stack):
             vpc=vpc,
             port=80,
             protocol=elbv2.Protocol.TCP,
+            target_type=elbv2.TargetType.IP,
             health_check=elbv2.HealthCheck(
                 enabled=True,
                 protocol=elbv2.Protocol.TCP,
