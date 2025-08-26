@@ -1,5 +1,5 @@
 {
-  "app": "python3 app.py",
+  "app": "python app.py",
   "context": {
     "namespace": "apigw_fanout",
     "hosted_zone_id": "ZZ4353459fghEXAMPLE",
