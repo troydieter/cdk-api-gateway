@@ -16,17 +16,15 @@
         "templateFile": "ApiGatewayFanOut.template.json",
         "terminationProtection": false,
         "tags": {
-          "created-by": "aws-cdk",
-          "environment": "dev",
-          "ManagedBy": "AWS CDK",
-          "owner": "cdk-deployment",
-          "project": "apigw_fanout",
-          "Project": "apigw_fanout"
+          "t_created-by": "aws-cdk",
+          "t_environment": "dev",
+          "t_owner": "cdk-deployment",
+          "t_project": "apigw_fanout"
         },
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::550767824695:role/cdk-hnb659fds-deploy-role-550767824695-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::550767824695:role/cdk-hnb659fds-cfn-exec-role-550767824695-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-550767824695-us-east-1/1e5eb2b54c626c6a17e6a4ff1f1b293f76816324a701754f0e613f218d6c0d89.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-550767824695-us-east-1/314ae3bf4a05c6b476d06917e176798f366252e508352a651e7045743d98690d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -47,27 +45,19 @@
             "type": "aws:cdk:stack-tags",
             "data": [
               {
-                "Key": "created-by",
+                "Key": "t_created-by",
                 "Value": "aws-cdk"
               },
               {
-                "Key": "environment",
+                "Key": "t_environment",
                 "Value": "dev"
               },
               {
-                "Key": "ManagedBy",
-                "Value": "AWS CDK"
-              },
-              {
-                "Key": "owner",
+                "Key": "t_owner",
                 "Value": "cdk-deployment"
               },
               {
-                "Key": "project",
-                "Value": "apigw_fanout"
-              },
-              {
-                "Key": "Project",
+                "Key": "t_project",
                 "Value": "apigw_fanout"
               }
             ]
@@ -270,27 +260,27 @@
             "type": "aws:cdk:warning",
             "data": "When creating an empty TargetGroup, you should specify a 'targetType' (this warning may become an error in the future). [ack: @aws-cdk/aws-elbv2:targetGroupSpecifyTargetTypeForEmptyTargetGroup]",
             "trace": [
-              "Annotations.addMessage (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1608)",
-              "Annotations.addWarningV2 (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:825)",
-              "NetworkTargetGroup.validateTargetGroup (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\shared\\base-target-group.js:1:4578)",
-              "NetworkTargetGroup.validateTargetGroup (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\nlb\\network-target-group.js:1:4924)",
-              "Object.validate (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\shared\\base-target-group.js:1:3279)",
-              "C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\constructs\\lib\\construct.js:333:49",
+              "Annotations.addMessage (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1608)",
+              "Annotations.addWarningV2 (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:825)",
+              "NetworkTargetGroup.validateTargetGroup (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\shared\\base-target-group.js:1:4578)",
+              "NetworkTargetGroup.validateTargetGroup (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\nlb\\network-target-group.js:1:4924)",
+              "Object.validate (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\shared\\base-target-group.js:1:3279)",
+              "C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\constructs\\lib\\construct.js:333:49",
               "Array.flatMap (<anonymous>)",
-              "Node.validate (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\constructs\\lib\\construct.js:333:34)",
-              "C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:2:3675",
-              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:255)",
-              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:334)",
-              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:334)",
-              "validateTree (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:2:3610)",
-              "synthesize (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:1:1561)",
-              "App.synth (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\stage.js:1:2263)",
-              "C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:294:171",
-              "Kernel._Kernel_ensureSync (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:916:24)",
-              "Kernel.invoke (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:294:102)",
-              "KernelHost.processRequest (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:15464:36)",
-              "KernelHost.run (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:15424:22)",
-              "Immediate._onImmediate (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:15425:45)",
+              "Node.validate (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\constructs\\lib\\construct.js:333:34)",
+              "C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:2:3675",
+              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:255)",
+              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:334)",
+              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:334)",
+              "validateTree (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:2:3610)",
+              "synthesize (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:1:1561)",
+              "App.synth (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-6HIdcJ\\node_modules\\aws-cdk-lib\\core\\lib\\stage.js:1:2263)",
+              "C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpogehil7x\\lib\\program.js:294:171",
+              "Kernel._Kernel_ensureSync (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpogehil7x\\lib\\program.js:916:24)",
+              "Kernel.invoke (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpogehil7x\\lib\\program.js:294:102)",
+              "KernelHost.processRequest (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpogehil7x\\lib\\program.js:15464:36)",
+              "KernelHost.run (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpogehil7x\\lib\\program.js:15424:22)",
+              "Immediate._onImmediate (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpogehil7x\\lib\\program.js:15425:45)",
               "process.processImmediate (node:internal/timers:478:21)"
             ]
           }
@@ -373,64 +363,58 @@
             "data": "MessageEncryptionKeyAliasAFFD3BE1"
           }
         ],
+        "/ApiGatewayFanOut/ApiGatewaySNSRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiGatewaySNSRole1BAAAE75"
+          }
+        ],
+        "/ApiGatewayFanOut/ApiGatewaySNSRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiGatewaySNSRoleDefaultPolicyCA5D0260"
+          }
+        ],
         "/ApiGatewayFanOut/ApiGWFanTopic/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ApiGWFanTopic683A97E9"
           }
         ],
-        "/ApiGatewayFanOut/ApiGWFanTopic/Policy/Resource": [
+        "/ApiGatewayFanOut/CreatedStatusQueue/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ApiGWFanTopicPolicyB697A435"
+            "data": "CreatedStatusQueue434CB044"
           }
         ],
-        "/ApiGatewayFanOut/CreatedStatusDLQ/Resource": [
+        "/ApiGatewayFanOut/CreatedStatusQueue/Policy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "CreatedStatusDLQ90970758"
+            "data": "CreatedStatusQueuePolicy9479B670"
           }
         ],
-        "/ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/Resource": [
+        "/ApiGatewayFanOut/CreatedStatusQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BigFanTopicStatusCreatedSubscriberQueue589E974E"
+            "data": "CreatedStatusQueueApiGatewayFanOutApiGWFanTopicD84CAD2DB23A9642"
           }
         ],
-        "/ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/Policy/Resource": [
+        "/ApiGatewayFanOut/OtherStatusQueue/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BigFanTopicStatusCreatedSubscriberQueuePolicy92D53255"
+            "data": "OtherStatusQueueA2AF92FA"
           }
         ],
-        "/ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource": [
+        "/ApiGatewayFanOut/OtherStatusQueue/Policy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "BigFanTopicStatusCreatedSubscriberQueueApiGatewayFanOutApiGWFanTopicD84CAD2D6B607CC7"
+            "data": "OtherStatusQueuePolicy0D2D7C07"
           }
         ],
-        "/ApiGatewayFanOut/OtherStatusDLQ/Resource": [
+        "/ApiGatewayFanOut/OtherStatusQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "OtherStatusDLQ7EF5C078"
-          }
-        ],
-        "/ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76"
-          }
-        ],
-        "/ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/Policy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "BigFanTopicAnyOtherStatusSubscriberQueuePolicy38415694"
-          }
-        ],
-        "/ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "BigFanTopicAnyOtherStatusSubscriberQueueApiGatewayFanOutApiGWFanTopicD84CAD2D16F01B7D"
+            "data": "OtherStatusQueueApiGatewayFanOutApiGWFanTopicD84CAD2DB9E1295E"
           }
         ],
         "/ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/ServiceRole/Resource": [
@@ -463,10 +447,10 @@
             "data": "SQSCreatedStatusSubscribeLambdaHandlerEventInvokeConfig1415C3F0"
           }
         ],
-        "/ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutBigFanTopicStatusCreatedSubscriberQueueE27E1C23/Resource": [
+        "/ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutCreatedStatusQueueEEAD1341/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SQSCreatedStatusSubscribeLambdaHandlerSqsEventSourceApiGatewayFanOutBigFanTopicStatusCreatedSubscriberQueueE27E1C237A234625"
+            "data": "SQSCreatedStatusSubscribeLambdaHandlerSqsEventSourceApiGatewayFanOutCreatedStatusQueueEEAD1341C606F29C"
           }
         ],
         "/ApiGatewayFanOut/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
@@ -517,10 +501,10 @@
             "data": "SQSAnyOtherStatusSubscribeLambdaHandlerEventInvokeConfig5137FA02"
           }
         ],
-        "/ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutBigFanTopicAnyOtherStatusSubscriberQueue995168D2/Resource": [
+        "/ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutOtherStatusQueueF6010BFA/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SQSAnyOtherStatusSubscribeLambdaHandlerSqsEventSourceApiGatewayFanOutBigFanTopicAnyOtherStatusSubscriberQueue995168D24195A840"
+            "data": "SQSAnyOtherStatusSubscribeLambdaHandlerSqsEventSourceApiGatewayFanOutOtherStatusQueueF6010BFA601EB99F"
           }
         ],
         "/ApiGatewayFanOut/ApiGatewayAccessLogs/Resource": [
@@ -538,7 +522,7 @@
         "/ApiGatewayFanOut/ApiGWFanAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ApiGWFanAPIDeployment98220019a78390f854370e7dec72c190a685215f"
+            "data": "ApiGWFanAPIDeployment982200199ebe3861077aadc10eda253b3fbe75b1"
           }
         ],
         "/ApiGatewayFanOut/ApiGWFanAPI/DeploymentStage.prod/Resource": [
@@ -629,18 +613,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "APIGwMappingB7C2CB83"
-          }
-        ],
-        "/ApiGatewayFanOut/ApiGatewaySNSRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ApiGatewaySNSRole1BAAAE75"
-          }
-        ],
-        "/ApiGatewayFanOut/ApiGatewaySNSRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "ApiGatewaySNSRoleDefaultPolicyCA5D0260"
           }
         ],
         "/ApiGatewayFanOut/AliasRecord/Resource": [

@@ -214,6 +214,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-cdk.out
-cdk.out/manifest.json
-cdk.out/tree.json
+cdk.out/

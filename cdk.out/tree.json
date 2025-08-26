@@ -21,27 +21,19 @@
                     "retentionInDays": 30,
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ]
@@ -74,31 +66,23 @@
                     "instanceTenancy": "default",
                     "tags": [
                       {
-                        "key": "created-by",
-                        "value": "aws-cdk"
-                      },
-                      {
-                        "key": "environment",
-                        "value": "dev"
-                      },
-                      {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
                         "key": "Name",
                         "value": "ApiGatewayFanOut/ApiGWVPC"
                       },
                       {
-                        "key": "owner",
+                        "key": "t_created-by",
+                        "value": "aws-cdk"
+                      },
+                      {
+                        "key": "t_environment",
+                        "value": "dev"
+                      },
+                      {
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ]
@@ -132,31 +116,23 @@
                             "value": "Public"
                           },
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -186,31 +162,23 @@
                       "aws:cdk:cloudformation:props": {
                         "tags": [
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -272,31 +240,23 @@
                         "domain": "vpc",
                         "tags": [
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ]
@@ -324,31 +284,23 @@
                         },
                         "tags": [
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet1"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ]
@@ -388,31 +340,23 @@
                             "value": "Public"
                           },
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet2"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -442,31 +386,23 @@
                       "aws:cdk:cloudformation:props": {
                         "tags": [
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Public-SubnetSubnet2"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -548,31 +484,23 @@
                             "value": "Private"
                           },
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet1"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -602,31 +530,23 @@
                       "aws:cdk:cloudformation:props": {
                         "tags": [
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet1"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -708,31 +628,23 @@
                             "value": "Private"
                           },
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet2"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -762,31 +674,23 @@
                       "aws:cdk:cloudformation:props": {
                         "tags": [
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/Private-SubnetSubnet2"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -853,31 +757,23 @@
                   "aws:cdk:cloudformation:props": {
                     "tags": [
                       {
-                        "key": "created-by",
-                        "value": "aws-cdk"
-                      },
-                      {
-                        "key": "environment",
-                        "value": "dev"
-                      },
-                      {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
                         "key": "Name",
                         "value": "ApiGatewayFanOut/ApiGWVPC"
                       },
                       {
-                        "key": "owner",
+                        "key": "t_created-by",
+                        "value": "aws-cdk"
+                      },
+                      {
+                        "key": "t_environment",
+                        "value": "dev"
+                      },
+                      {
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ]
@@ -943,31 +839,23 @@
                             },
                             "tags": [
                               {
-                                "key": "created-by",
-                                "value": "aws-cdk"
-                              },
-                              {
-                                "key": "environment",
-                                "value": "dev"
-                              },
-                              {
-                                "key": "ManagedBy",
-                                "value": "AWS CDK"
-                              },
-                              {
                                 "key": "Name",
                                 "value": "ApiGatewayFanOut/ApiGWVPC/flow-logs"
                               },
                               {
-                                "key": "owner",
+                                "key": "t_created-by",
+                                "value": "aws-cdk"
+                              },
+                              {
+                                "key": "t_environment",
+                                "value": "dev"
+                              },
+                              {
+                                "key": "t_owner",
                                 "value": "cdk-deployment"
                               },
                               {
-                                "key": "project",
-                                "value": "apigw_fanout"
-                              },
-                              {
-                                "key": "Project",
+                                "key": "t_project",
                                 "value": "apigw_fanout"
                               }
                             ]
@@ -1064,31 +952,23 @@
                         "resourceType": "VPC",
                         "tags": [
                           {
-                            "key": "created-by",
-                            "value": "aws-cdk"
-                          },
-                          {
-                            "key": "environment",
-                            "value": "dev"
-                          },
-                          {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
                             "key": "Name",
                             "value": "ApiGatewayFanOut/ApiGWVPC/flow-logs"
                           },
                           {
-                            "key": "owner",
+                            "key": "t_created-by",
+                            "value": "aws-cdk"
+                          },
+                          {
+                            "key": "t_environment",
+                            "value": "dev"
+                          },
+                          {
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -1177,12 +1057,10 @@
                     "description": "Private subnet 1 ID for apigw_fanout",
                     "name": "/apigw_fanout/private-subnet-1",
                     "tags": {
-                      "created-by": "aws-cdk",
-                      "environment": "dev",
-                      "ManagedBy": "AWS CDK",
-                      "owner": "cdk-deployment",
-                      "project": "apigw_fanout",
-                      "Project": "apigw_fanout"
+                      "t_created-by": "aws-cdk",
+                      "t_environment": "dev",
+                      "t_owner": "cdk-deployment",
+                      "t_project": "apigw_fanout"
                     },
                     "tier": "Standard",
                     "type": "String",
@@ -1215,12 +1093,10 @@
                     "description": "Private subnet 2 ID for apigw_fanout",
                     "name": "/apigw_fanout/private-subnet-2",
                     "tags": {
-                      "created-by": "aws-cdk",
-                      "environment": "dev",
-                      "ManagedBy": "AWS CDK",
-                      "owner": "cdk-deployment",
-                      "project": "apigw_fanout",
-                      "Project": "apigw_fanout"
+                      "t_created-by": "aws-cdk",
+                      "t_environment": "dev",
+                      "t_owner": "cdk-deployment",
+                      "t_project": "apigw_fanout"
                     },
                     "tier": "Standard",
                     "type": "String",
@@ -1271,27 +1147,19 @@
                     ],
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ],
@@ -1362,27 +1230,19 @@
                     "protocol": "TCP",
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ],
@@ -1427,27 +1287,19 @@
                     "name": "ApiGatewayFanOutPrivateLinkECF0CA84",
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ],
@@ -1527,27 +1379,19 @@
                     ],
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ],
@@ -1963,51 +1807,25 @@
                             ]
                           },
                           "Resource": "*"
-                        },
-                        {
-                          "Action": [
-                            "kms:Decrypt",
-                            "kms:GenerateDataKey"
-                          ],
-                          "Condition": {
-                            "ArnEquals": {
-                              "aws:SourceArn": {
-                                "Ref": "ApiGWFanTopic683A97E9"
-                              }
-                            }
-                          },
-                          "Effect": "Allow",
-                          "Principal": {
-                            "Service": "sns.amazonaws.com"
-                          },
-                          "Resource": "*"
                         }
                       ],
                       "Version": "2012-10-17"
                     },
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ]
@@ -2054,6 +1872,109 @@
               "version": "2.126.0"
             }
           },
+          "ApiGatewaySNSRole": {
+            "id": "ApiGatewaySNSRole",
+            "path": "ApiGatewayFanOut/ApiGatewaySNSRole",
+            "children": {
+              "ImportApiGatewaySNSRole": {
+                "id": "ImportApiGatewaySNSRole",
+                "path": "ApiGatewayFanOut/ApiGatewaySNSRole/ImportApiGatewaySNSRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.126.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "ApiGatewayFanOut/ApiGatewaySNSRole/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "apigateway.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "description": "Role for API Gateway to publish to SNS",
+                    "tags": [
+                      {
+                        "key": "t_created-by",
+                        "value": "aws-cdk"
+                      },
+                      {
+                        "key": "t_environment",
+                        "value": "dev"
+                      },
+                      {
+                        "key": "t_owner",
+                        "value": "cdk-deployment"
+                      },
+                      {
+                        "key": "t_project",
+                        "value": "apigw_fanout"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.126.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "ApiGatewayFanOut/ApiGatewaySNSRole/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/ApiGatewaySNSRole/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sns:Publish",
+                              "Effect": "Allow",
+                              "Resource": {
+                                "Ref": "ApiGWFanTopic683A97E9"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "ApiGatewaySNSRoleDefaultPolicyCA5D0260",
+                        "roles": [
+                          {
+                            "Ref": "ApiGatewaySNSRole1BAAAE75"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.126.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.126.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.126.0"
+            }
+          },
           "ApiGWFanTopic": {
             "id": "ApiGWFanTopic",
             "path": "ApiGatewayFanOut/ApiGWFanTopic",
@@ -2075,27 +1996,19 @@
                     },
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ],
@@ -2106,53 +2019,6 @@
                   "fqn": "aws-cdk-lib.aws_sns.CfnTopic",
                   "version": "2.126.0"
                 }
-              },
-              "Policy": {
-                "id": "Policy",
-                "path": "ApiGatewayFanOut/ApiGWFanTopic/Policy",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "ApiGatewayFanOut/ApiGWFanTopic/Policy/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::SNS::TopicPolicy",
-                      "aws:cdk:cloudformation:props": {
-                        "policyDocument": {
-                          "Statement": [
-                            {
-                              "Action": [
-                                "sns:Publish",
-                                "sns:Subscribe"
-                              ],
-                              "Effect": "Allow",
-                              "Principal": {
-                                "Service": "apigateway.amazonaws.com"
-                              },
-                              "Resource": {
-                                "Ref": "ApiGWFanTopic683A97E9"
-                              },
-                              "Sid": "0"
-                            }
-                          ],
-                          "Version": "2012-10-17"
-                        },
-                        "topics": [
-                          {
-                            "Ref": "ApiGWFanTopic683A97E9"
-                          }
-                        ]
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_sns.CfnTopicPolicy",
-                      "version": "2.126.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_sns.TopicPolicy",
-                  "version": "2.126.0"
-                }
               }
             },
             "constructInfo": {
@@ -2160,47 +2026,31 @@
               "version": "2.126.0"
             }
           },
-          "CreatedStatusDLQ": {
-            "id": "CreatedStatusDLQ",
-            "path": "ApiGatewayFanOut/CreatedStatusDLQ",
+          "CreatedStatusQueue": {
+            "id": "CreatedStatusQueue",
+            "path": "ApiGatewayFanOut/CreatedStatusQueue",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "ApiGatewayFanOut/CreatedStatusDLQ/Resource",
+                "path": "ApiGatewayFanOut/CreatedStatusQueue/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
                   "aws:cdk:cloudformation:props": {
-                    "kmsMasterKeyId": {
-                      "Fn::GetAtt": [
-                        "MessageEncryptionKeyA6D15192",
-                        "Arn"
-                      ]
-                    },
-                    "messageRetentionPeriod": 1209600,
-                    "queueName": "BigFanTopicStatusCreatedDLQ",
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ]
@@ -2210,80 +2060,14 @@
                   "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
                   "version": "2.126.0"
                 }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_sqs.Queue",
-              "version": "2.126.0"
-            }
-          },
-          "BigFanTopicStatusCreatedSubscriberQueue": {
-            "id": "BigFanTopicStatusCreatedSubscriberQueue",
-            "path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
-                  "aws:cdk:cloudformation:props": {
-                    "kmsMasterKeyId": {
-                      "Fn::GetAtt": [
-                        "MessageEncryptionKeyA6D15192",
-                        "Arn"
-                      ]
-                    },
-                    "queueName": "BigFanTopicStatusCreatedSubscriberQueue",
-                    "redrivePolicy": {
-                      "deadLetterTargetArn": {
-                        "Fn::GetAtt": [
-                          "CreatedStatusDLQ90970758",
-                          "Arn"
-                        ]
-                      },
-                      "maxReceiveCount": 3
-                    },
-                    "tags": [
-                      {
-                        "key": "created-by",
-                        "value": "aws-cdk"
-                      },
-                      {
-                        "key": "environment",
-                        "value": "dev"
-                      },
-                      {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
-                        "value": "cdk-deployment"
-                      },
-                      {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
-                        "value": "apigw_fanout"
-                      }
-                    ],
-                    "visibilityTimeout": 300
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
-                  "version": "2.126.0"
-                }
               },
               "Policy": {
                 "id": "Policy",
-                "path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/Policy",
+                "path": "ApiGatewayFanOut/CreatedStatusQueue/Policy",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/Policy/Resource",
+                    "path": "ApiGatewayFanOut/CreatedStatusQueue/Policy/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::SQS::QueuePolicy",
                       "aws:cdk:cloudformation:props": {
@@ -2304,7 +2088,7 @@
                               },
                               "Resource": {
                                 "Fn::GetAtt": [
-                                  "BigFanTopicStatusCreatedSubscriberQueue589E974E",
+                                  "CreatedStatusQueue434CB044",
                                   "Arn"
                                 ]
                               }
@@ -2314,7 +2098,7 @@
                         },
                         "queues": [
                           {
-                            "Ref": "BigFanTopicStatusCreatedSubscriberQueue589E974E"
+                            "Ref": "CreatedStatusQueue434CB044"
                           }
                         ]
                       }
@@ -2332,27 +2116,21 @@
               },
               "ApiGatewayFanOutApiGWFanTopicD84CAD2D": {
                 "id": "ApiGatewayFanOutApiGWFanTopicD84CAD2D",
-                "path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D",
+                "path": "ApiGatewayFanOut/CreatedStatusQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "ApiGatewayFanOut/BigFanTopicStatusCreatedSubscriberQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource",
+                    "path": "ApiGatewayFanOut/CreatedStatusQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::SNS::Subscription",
                       "aws:cdk:cloudformation:props": {
                         "endpoint": {
                           "Fn::GetAtt": [
-                            "BigFanTopicStatusCreatedSubscriberQueue589E974E",
+                            "CreatedStatusQueue434CB044",
                             "Arn"
                           ]
                         },
-                        "filterPolicy": {
-                          "status": [
-                            "created"
-                          ]
-                        },
                         "protocol": "sqs",
-                        "rawMessageDelivery": true,
                         "topicArn": {
                           "Ref": "ApiGWFanTopic683A97E9"
                         }
@@ -2375,47 +2153,31 @@
               "version": "2.126.0"
             }
           },
-          "OtherStatusDLQ": {
-            "id": "OtherStatusDLQ",
-            "path": "ApiGatewayFanOut/OtherStatusDLQ",
+          "OtherStatusQueue": {
+            "id": "OtherStatusQueue",
+            "path": "ApiGatewayFanOut/OtherStatusQueue",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "ApiGatewayFanOut/OtherStatusDLQ/Resource",
+                "path": "ApiGatewayFanOut/OtherStatusQueue/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
                   "aws:cdk:cloudformation:props": {
-                    "kmsMasterKeyId": {
-                      "Fn::GetAtt": [
-                        "MessageEncryptionKeyA6D15192",
-                        "Arn"
-                      ]
-                    },
-                    "messageRetentionPeriod": 1209600,
-                    "queueName": "BigFanTopicAnyOtherStatusDLQ",
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ]
@@ -2425,80 +2187,14 @@
                   "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
                   "version": "2.126.0"
                 }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_sqs.Queue",
-              "version": "2.126.0"
-            }
-          },
-          "BigFanTopicAnyOtherStatusSubscriberQueue": {
-            "id": "BigFanTopicAnyOtherStatusSubscriberQueue",
-            "path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
-                  "aws:cdk:cloudformation:props": {
-                    "kmsMasterKeyId": {
-                      "Fn::GetAtt": [
-                        "MessageEncryptionKeyA6D15192",
-                        "Arn"
-                      ]
-                    },
-                    "queueName": "BigFanTopicAnyOtherStatusSubscriberQueue",
-                    "redrivePolicy": {
-                      "deadLetterTargetArn": {
-                        "Fn::GetAtt": [
-                          "OtherStatusDLQ7EF5C078",
-                          "Arn"
-                        ]
-                      },
-                      "maxReceiveCount": 3
-                    },
-                    "tags": [
-                      {
-                        "key": "created-by",
-                        "value": "aws-cdk"
-                      },
-                      {
-                        "key": "environment",
-                        "value": "dev"
-                      },
-                      {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
-                        "value": "cdk-deployment"
-                      },
-                      {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
-                        "value": "apigw_fanout"
-                      }
-                    ],
-                    "visibilityTimeout": 300
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
-                  "version": "2.126.0"
-                }
               },
               "Policy": {
                 "id": "Policy",
-                "path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/Policy",
+                "path": "ApiGatewayFanOut/OtherStatusQueue/Policy",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/Policy/Resource",
+                    "path": "ApiGatewayFanOut/OtherStatusQueue/Policy/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::SQS::QueuePolicy",
                       "aws:cdk:cloudformation:props": {
@@ -2519,7 +2215,7 @@
                               },
                               "Resource": {
                                 "Fn::GetAtt": [
-                                  "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
+                                  "OtherStatusQueueA2AF92FA",
                                   "Arn"
                                 ]
                               }
@@ -2529,7 +2225,7 @@
                         },
                         "queues": [
                           {
-                            "Ref": "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76"
+                            "Ref": "OtherStatusQueueA2AF92FA"
                           }
                         ]
                       }
@@ -2547,31 +2243,21 @@
               },
               "ApiGatewayFanOutApiGWFanTopicD84CAD2D": {
                 "id": "ApiGatewayFanOutApiGWFanTopicD84CAD2D",
-                "path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D",
+                "path": "ApiGatewayFanOut/OtherStatusQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "ApiGatewayFanOut/BigFanTopicAnyOtherStatusSubscriberQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource",
+                    "path": "ApiGatewayFanOut/OtherStatusQueue/ApiGatewayFanOutApiGWFanTopicD84CAD2D/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::SNS::Subscription",
                       "aws:cdk:cloudformation:props": {
                         "endpoint": {
                           "Fn::GetAtt": [
-                            "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
+                            "OtherStatusQueueA2AF92FA",
                             "Arn"
                           ]
                         },
-                        "filterPolicy": {
-                          "status": [
-                            {
-                              "anything-but": [
-                                "created"
-                              ]
-                            }
-                          ]
-                        },
                         "protocol": "sqs",
-                        "rawMessageDelivery": true,
                         "topicArn": {
                           "Ref": "ApiGWFanTopic683A97E9"
                         }
@@ -2644,27 +2330,19 @@
                         ],
                         "tags": [
                           {
-                            "key": "created-by",
+                            "key": "t_created-by",
                             "value": "aws-cdk"
                           },
                           {
-                            "key": "environment",
+                            "key": "t_environment",
                             "value": "dev"
                           },
                           {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
-                            "key": "owner",
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ]
@@ -2706,17 +2384,7 @@
                                   "Effect": "Allow",
                                   "Resource": {
                                     "Fn::GetAtt": [
-                                      "BigFanTopicStatusCreatedSubscriberQueue589E974E",
-                                      "Arn"
-                                    ]
-                                  }
-                                },
-                                {
-                                  "Action": "kms:Decrypt",
-                                  "Effect": "Allow",
-                                  "Resource": {
-                                    "Fn::GetAtt": [
-                                      "MessageEncryptionKeyA6D15192",
+                                      "CreatedStatusQueue434CB044",
                                       "Arn"
                                     ]
                                   }
@@ -2803,27 +2471,19 @@
                     "runtime": "python3.11",
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ],
@@ -2892,20 +2552,20 @@
                   "version": "2.126.0"
                 }
               },
-              "SqsEventSource:ApiGatewayFanOutBigFanTopicStatusCreatedSubscriberQueueE27E1C23": {
-                "id": "SqsEventSource:ApiGatewayFanOutBigFanTopicStatusCreatedSubscriberQueueE27E1C23",
-                "path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutBigFanTopicStatusCreatedSubscriberQueueE27E1C23",
+              "SqsEventSource:ApiGatewayFanOutCreatedStatusQueueEEAD1341": {
+                "id": "SqsEventSource:ApiGatewayFanOutCreatedStatusQueueEEAD1341",
+                "path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutCreatedStatusQueueEEAD1341",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutBigFanTopicStatusCreatedSubscriberQueueE27E1C23/Resource",
+                    "path": "ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutCreatedStatusQueueEEAD1341/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::Lambda::EventSourceMapping",
                       "aws:cdk:cloudformation:props": {
                         "batchSize": 10,
                         "eventSourceArn": {
                           "Fn::GetAtt": [
-                            "BigFanTopicStatusCreatedSubscriberQueue589E974E",
+                            "CreatedStatusQueue434CB044",
                             "Arn"
                           ]
                         },
@@ -3011,27 +2671,19 @@
                         ],
                         "tags": [
                           {
-                            "key": "created-by",
+                            "key": "t_created-by",
                             "value": "aws-cdk"
                           },
                           {
-                            "key": "environment",
+                            "key": "t_environment",
                             "value": "dev"
                           },
                           {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
-                            "key": "owner",
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ]
@@ -3154,27 +2806,19 @@
                         ],
                         "tags": [
                           {
-                            "key": "created-by",
+                            "key": "t_created-by",
                             "value": "aws-cdk"
                           },
                           {
-                            "key": "environment",
+                            "key": "t_environment",
                             "value": "dev"
                           },
                           {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
-                            "key": "owner",
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ]
@@ -3216,17 +2860,7 @@
                                   "Effect": "Allow",
                                   "Resource": {
                                     "Fn::GetAtt": [
-                                      "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
-                                      "Arn"
-                                    ]
-                                  }
-                                },
-                                {
-                                  "Action": "kms:Decrypt",
-                                  "Effect": "Allow",
-                                  "Resource": {
-                                    "Fn::GetAtt": [
-                                      "MessageEncryptionKeyA6D15192",
+                                      "OtherStatusQueueA2AF92FA",
                                       "Arn"
                                     ]
                                   }
@@ -3313,27 +2947,19 @@
                     "runtime": "python3.11",
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ],
@@ -3402,20 +3028,20 @@
                   "version": "2.126.0"
                 }
               },
-              "SqsEventSource:ApiGatewayFanOutBigFanTopicAnyOtherStatusSubscriberQueue995168D2": {
-                "id": "SqsEventSource:ApiGatewayFanOutBigFanTopicAnyOtherStatusSubscriberQueue995168D2",
-                "path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutBigFanTopicAnyOtherStatusSubscriberQueue995168D2",
+              "SqsEventSource:ApiGatewayFanOutOtherStatusQueueF6010BFA": {
+                "id": "SqsEventSource:ApiGatewayFanOutOtherStatusQueueF6010BFA",
+                "path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutOtherStatusQueueF6010BFA",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutBigFanTopicAnyOtherStatusSubscriberQueue995168D2/Resource",
+                    "path": "ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler/SqsEventSource:ApiGatewayFanOutOtherStatusQueueF6010BFA/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::Lambda::EventSourceMapping",
                       "aws:cdk:cloudformation:props": {
                         "batchSize": 10,
                         "eventSourceArn": {
                           "Fn::GetAtt": [
-                            "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
+                            "OtherStatusQueueA2AF92FA",
                             "Arn"
                           ]
                         },
@@ -3474,27 +3100,19 @@
                     "retentionInDays": 30,
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ]
@@ -3548,27 +3166,19 @@
                     },
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ]
@@ -3626,7 +3236,7 @@
                           "format": "{\"requestId\":\"$context.requestId\",\"ip\":\"$context.identity.sourceIp\",\"user\":\"$context.identity.user\",\"caller\":\"$context.identity.caller\",\"requestTime\":\"$context.requestTime\",\"httpMethod\":\"$context.httpMethod\",\"resourcePath\":\"$context.resourcePath\",\"status\":\"$context.status\",\"protocol\":\"$context.protocol\",\"responseLength\":\"$context.responseLength\"}"
                         },
                         "deploymentId": {
-                          "Ref": "ApiGWFanAPIDeployment98220019a78390f854370e7dec72c190a685215f"
+                          "Ref": "ApiGWFanAPIDeployment982200199ebe3861077aadc10eda253b3fbe75b1"
                         },
                         "methodSettings": [
                           {
@@ -3645,27 +3255,19 @@
                         "stageName": "prod",
                         "tags": [
                           {
-                            "key": "created-by",
+                            "key": "t_created-by",
                             "value": "aws-cdk"
                           },
                           {
-                            "key": "environment",
+                            "key": "t_environment",
                             "value": "dev"
                           },
                           {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
-                            "key": "owner",
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ],
@@ -3794,21 +3396,8 @@
                                 "authorizationType": "NONE",
                                 "httpMethod": "POST",
                                 "integration": {
-                                  "type": "HTTP_PROXY",
-                                  "uri": {
-                                    "Fn::Join": [
-                                      "",
-                                      [
-                                        "http://",
-                                        {
-                                          "Fn::GetAtt": [
-                                            "NLB55158F82",
-                                            "DNSName"
-                                          ]
-                                        }
-                                      ]
-                                    ]
-                                  },
+                                  "type": "AWS",
+                                  "uri": "arn:aws:apigateway:us-east-1:sns:action/Publish",
                                   "integrationHttpMethod": "POST",
                                   "requestParameters": {
                                     "integration.request.header.Content-Type": "'application/x-www-form-urlencoded'"
@@ -3850,13 +3439,9 @@
                                       "responseTemplates": {
                                         "application/json": "{\"state\":\"error\",\"message\":\"$util.escapeJavaScript($input.path('$.errorMessage'))\"}"
                                       },
-                                      "selectionPattern": "^\\[Error\\].*"
+                                      "selectionPattern": "^\\\\[Error\\\\].*"
                                     }
                                   ],
-                                  "connectionType": "VPC_LINK",
-                                  "connectionId": {
-                                    "Ref": "PrivateLinkE5A825BA"
-                                  },
                                   "credentials": {
                                     "Fn::GetAtt": [
                                       "ApiGatewaySNSRole1BAAAE75",
@@ -3983,27 +3568,19 @@
                         ],
                         "tags": [
                           {
-                            "key": "created-by",
+                            "key": "t_created-by",
                             "value": "aws-cdk"
                           },
                           {
-                            "key": "environment",
+                            "key": "t_environment",
                             "value": "dev"
                           },
                           {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
-                            "key": "owner",
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ]
@@ -4040,27 +3617,19 @@
                         "securityPolicy": "TLS_1_2",
                         "tags": [
                           {
-                            "key": "created-by",
+                            "key": "t_created-by",
                             "value": "aws-cdk"
                           },
                           {
-                            "key": "environment",
+                            "key": "t_environment",
                             "value": "dev"
                           },
                           {
-                            "key": "ManagedBy",
-                            "value": "AWS CDK"
-                          },
-                          {
-                            "key": "owner",
+                            "key": "t_owner",
                             "value": "cdk-deployment"
                           },
                           {
-                            "key": "project",
-                            "value": "apigw_fanout"
-                          },
-                          {
-                            "key": "Project",
+                            "key": "t_project",
                             "value": "apigw_fanout"
                           }
                         ]
@@ -4256,27 +3825,19 @@
                     },
                     "tags": [
                       {
-                        "key": "created-by",
+                        "key": "t_created-by",
                         "value": "aws-cdk"
                       },
                       {
-                        "key": "environment",
+                        "key": "t_environment",
                         "value": "dev"
                       },
                       {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
+                        "key": "t_owner",
                         "value": "cdk-deployment"
                       },
                       {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
+                        "key": "t_project",
                         "value": "apigw_fanout"
                       }
                     ],
@@ -4356,117 +3917,6 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_apigateway.BasePathMapping",
-              "version": "2.126.0"
-            }
-          },
-          "ApiGatewaySNSRole": {
-            "id": "ApiGatewaySNSRole",
-            "path": "ApiGatewayFanOut/ApiGatewaySNSRole",
-            "children": {
-              "ImportApiGatewaySNSRole": {
-                "id": "ImportApiGatewaySNSRole",
-                "path": "ApiGatewayFanOut/ApiGatewaySNSRole/ImportApiGatewaySNSRole",
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.Resource",
-                  "version": "2.126.0"
-                }
-              },
-              "Resource": {
-                "id": "Resource",
-                "path": "ApiGatewayFanOut/ApiGatewaySNSRole/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
-                  "aws:cdk:cloudformation:props": {
-                    "assumeRolePolicyDocument": {
-                      "Statement": [
-                        {
-                          "Action": "sts:AssumeRole",
-                          "Effect": "Allow",
-                          "Principal": {
-                            "Service": "apigateway.amazonaws.com"
-                          }
-                        }
-                      ],
-                      "Version": "2012-10-17"
-                    },
-                    "description": "Role for API Gateway to publish to SNS",
-                    "tags": [
-                      {
-                        "key": "created-by",
-                        "value": "aws-cdk"
-                      },
-                      {
-                        "key": "environment",
-                        "value": "dev"
-                      },
-                      {
-                        "key": "ManagedBy",
-                        "value": "AWS CDK"
-                      },
-                      {
-                        "key": "owner",
-                        "value": "cdk-deployment"
-                      },
-                      {
-                        "key": "project",
-                        "value": "apigw_fanout"
-                      },
-                      {
-                        "key": "Project",
-                        "value": "apigw_fanout"
-                      }
-                    ]
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
-                  "version": "2.126.0"
-                }
-              },
-              "DefaultPolicy": {
-                "id": "DefaultPolicy",
-                "path": "ApiGatewayFanOut/ApiGatewaySNSRole/DefaultPolicy",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "ApiGatewayFanOut/ApiGatewaySNSRole/DefaultPolicy/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
-                      "aws:cdk:cloudformation:props": {
-                        "policyDocument": {
-                          "Statement": [
-                            {
-                              "Action": "sns:Publish",
-                              "Effect": "Allow",
-                              "Resource": {
-                                "Ref": "ApiGWFanTopic683A97E9"
-                              }
-                            }
-                          ],
-                          "Version": "2012-10-17"
-                        },
-                        "policyName": "ApiGatewaySNSRoleDefaultPolicyCA5D0260",
-                        "roles": [
-                          {
-                            "Ref": "ApiGatewaySNSRole1BAAAE75"
-                          }
-                        ]
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
-                      "version": "2.126.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_iam.Policy",
-                  "version": "2.126.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_iam.Role",
               "version": "2.126.0"
             }
           },
@@ -4578,27 +4028,19 @@
                 "scope": "REGIONAL",
                 "tags": [
                   {
-                    "key": "created-by",
+                    "key": "t_created-by",
                     "value": "aws-cdk"
                   },
                   {
-                    "key": "environment",
+                    "key": "t_environment",
                     "value": "dev"
                   },
                   {
-                    "key": "ManagedBy",
-                    "value": "AWS CDK"
-                  },
-                  {
-                    "key": "owner",
+                    "key": "t_owner",
                     "value": "cdk-deployment"
                   },
                   {
-                    "key": "project",
-                    "value": "apigw_fanout"
-                  },
-                  {
-                    "key": "Project",
+                    "key": "t_project",
                     "value": "apigw_fanout"
                   }
                 ],
@@ -4819,7 +4261,7 @@
                         "name": "QueueName",
                         "value": {
                           "Fn::GetAtt": [
-                            "BigFanTopicStatusCreatedSubscriberQueue589E974E",
+                            "CreatedStatusQueue434CB044",
                             "QueueName"
                           ]
                         }
@@ -4862,7 +4304,7 @@
                         "name": "QueueName",
                         "value": {
                           "Fn::GetAtt": [
-                            "BigFanTopicAnyOtherStatusSubscriberQueue51F6CD76",
+                            "OtherStatusQueueA2AF92FA",
                             "QueueName"
                           ]
                         }

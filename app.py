@@ -31,9 +31,5 @@ props = {
 # Use the original stack implementation
 APIGWStack(app, "ApiGatewayFanOut", props=props, env=env_data)
 
-# Apply common tags to all resources
-Tags.of(app).add("Project", props["namespace"])
-Tags.of(app).add("ManagedBy", "AWS CDK")
-
 # Synthesize the CloudFormation template
 app.synth()

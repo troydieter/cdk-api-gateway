@@ -18,7 +18,7 @@ from aws_cdk import (
     aws_route53 as route53,
     aws_route53_targets as route53_targets,
     aws_sns as sns,
-    aws_sns_subscriptions as sns_subscriptions,
+    aws_sns_subscriptions as subscriptions,
     aws_sqs as sqs,
     aws_ec2 as ec2,
     aws_elasticloadbalancingv2 as elbv2,
@@ -67,7 +67,7 @@ class APIGWStack(Stack):
 
         # Create SQS Queues and Subscriptions
         created_status_queue, other_status_queue = self._create_sqs_queues_and_subscriptions(
-            topic, kms_key)
+            topic)
 
         # Create Lambda Functions
         self._create_lambda_functions(created_status_queue, other_status_queue)
@@ -260,68 +260,15 @@ class APIGWStack(Stack):
 
         return topic
 
-    def _create_sqs_queues_and_subscriptions(self, topic: sns.Topic, kms_key: kms.Key) -> tuple[sqs.Queue, sqs.Queue]:
-        created_status_dlq = sqs.Queue(
-            self, 'CreatedStatusDLQ',
-            queue_name='BigFanTopicStatusCreatedDLQ',
-            retention_period=Duration.days(14),
-            encryption=sqs.QueueEncryption.KMS,
-            encryption_master_key=kms_key
-        )
+    def _create_sqs_queues_and_subscriptions(self, topic: sns.ITopic):
+        created_status_queue = sqs.Queue(self, "CreatedStatusQueue")
+        other_status_queue = sqs.Queue(self, "OtherStatusQueue")
 
-        created_status_queue = sqs.Queue(
-            self, 'BigFanTopicStatusCreatedSubscriberQueue',
-            visibility_timeout=Duration.seconds(300),
-            queue_name='BigFanTopicStatusCreatedSubscriberQueue',
-            encryption=sqs.QueueEncryption.KMS,
-            encryption_master_key=kms_key,
-            dead_letter_queue=sqs.DeadLetterQueue(
-                max_receive_count=3,
-                queue=created_status_dlq
-            )
-        )
 
-        created_filter = sns.SubscriptionFilter.string_filter(allowlist=['created'])
-        topic.add_subscription(
-            sns_susbcriptions:=sns_subscriptions  # keep import alias used below
-        )
-        # fix: actually add the subscription properly
-        topic.add_subscription(
-            sns_subscriptions.SqsSubscription(
-                created_status_queue,
-                raw_message_delivery=True,
-                filter_policy={'status': created_filter}
-            )
-        )
+        # Correct SNS -> SQS subscriptions
+        topic.add_subscription(subscriptions.SqsSubscription(created_status_queue))
+        topic.add_subscription(subscriptions.SqsSubscription(other_status_queue))
 
-        other_status_dlq = sqs.Queue(
-            self, 'OtherStatusDLQ',
-            queue_name='BigFanTopicAnyOtherStatusDLQ',
-            retention_period=Duration.days(14),
-            encryption=sqs.QueueEncryption.KMS,
-            encryption_master_key=kms_key
-        )
-
-        other_status_queue = sqs.Queue(
-            self, 'BigFanTopicAnyOtherStatusSubscriberQueue',
-            visibility_timeout=Duration.seconds(300),
-            queue_name='BigFanTopicAnyOtherStatusSubscriberQueue',
-            encryption=sqs.QueueEncryption.KMS,
-            encryption_master_key=kms_key,
-            dead_letter_queue=sqs.DeadLetterQueue(
-                max_receive_count=3,
-                queue=other_status_dlq
-            )
-        )
-
-        other_filter = sns.SubscriptionFilter.string_filter(denylist=['created'])
-        topic.add_subscription(
-            sns_subscriptions.SqsSubscription(
-                other_status_queue,
-                raw_message_delivery=True,
-                filter_policy={'status': other_filter}
-            )
-        )
 
         return created_status_queue, other_status_queue
 
@@ -346,7 +293,8 @@ class APIGWStack(Stack):
             log_retention=lambda_log_retention
         )
 
-        created_status_queue.grant_consume_messages(sqs_created_status_subscriber)
+        created_status_queue.grant_consume_messages(
+            sqs_created_status_subscriber)
         sqs_created_status_subscriber.add_event_source(
             lambda_event_sources.SqsEventSource(
                 created_status_queue,
@@ -423,7 +371,8 @@ class APIGWStack(Stack):
                 metrics_enabled=True,
                 logging_level=apigw.MethodLoggingLevel.INFO,
                 data_trace_enabled=True,
-                access_log_destination=apigw.LogGroupLogDestination(access_log_group),
+                access_log_destination=apigw.LogGroupLogDestination(
+                    access_log_group),
                 access_log_format=apigw.AccessLogFormat.json_with_standard_fields(
                     caller=True,
                     http_method=True,
@@ -514,7 +463,8 @@ class APIGWStack(Stack):
                 schema=apigw.JsonSchemaVersion.DRAFT4,
                 title='pollResponse',
                 type=apigw.JsonSchemaType.OBJECT,
-                properties={'message': apigw.JsonSchema(type=apigw.JsonSchemaType.STRING)}
+                properties={'message': apigw.JsonSchema(
+                    type=apigw.JsonSchemaType.STRING)}
             )
         )
 
@@ -548,7 +498,8 @@ class APIGWStack(Stack):
             "state": 'error',
             "message": "$util.escapeJavaScript($input.path('$.errorMessage'))"
         }
-        error_template_string = json.dumps(error_template, separators=(',', ':'))
+        error_template_string = json.dumps(
+            error_template, separators=(',', ':'))
 
         # === Integration: AWS Service (SNS) — NO VPC LINK ===
         sns_integration = apigw.AwsIntegration(
@@ -688,7 +639,8 @@ class APIGWStack(Stack):
                 wafv2.CfnWebACL.RuleProperty(
                     name="AWSManagedRulesCommonRuleSet",
                     priority=2,
-                    override_action=wafv2.CfnWebACL.OverrideActionProperty(none={}),
+                    override_action=wafv2.CfnWebACL.OverrideActionProperty(
+                        none={}),
                     statement=wafv2.CfnWebACL.StatementProperty(
                         managed_rule_group_statement=wafv2.CfnWebACL.ManagedRuleGroupStatementProperty(
                             vendor_name="AWS",
@@ -704,7 +656,8 @@ class APIGWStack(Stack):
                 wafv2.CfnWebACL.RuleProperty(
                     name="AWSManagedRulesSQLiRuleSet",
                     priority=3,
-                    override_action=wafv2.CfnWebACL.OverrideActionProperty(none={}),
+                    override_action=wafv2.CfnWebACL.OverrideActionProperty(
+                        none={}),
                     statement=wafv2.CfnWebACL.StatementProperty(
                         managed_rule_group_statement=wafv2.CfnWebACL.ManagedRuleGroupStatementProperty(
                             vendor_name="AWS",
@@ -824,14 +777,17 @@ class APIGWStack(Stack):
         route53.ARecord(
             self, "AliasRecord",
             zone=route53_zone_creation,
-            target=route53.RecordTarget.from_alias(route53_targets.ApiGateway(gateway)),
+            target=route53.RecordTarget.from_alias(
+                route53_targets.ApiGateway(gateway)),
             record_name=props["custom_domain_name"],
             ttl=Duration.minutes(5)
         )
 
     def _create_outputs(self, vpc: ec2.Vpc, custom_domain_name: apigw.DomainName) -> None:
-        CfnOutput(self, "VPC_ID", description="VPC ID", export_name="vpcid", value=vpc.vpc_id)
-        CfnOutput(self, "VPC_ARN", description="VPC ARN", export_name="vpcarn", value=vpc.vpc_arn)
+        CfnOutput(self, "VPC_ID", description="VPC ID",
+                  export_name="vpcid", value=vpc.vpc_id)
+        CfnOutput(self, "VPC_ARN", description="VPC ARN",
+                  export_name="vpcarn", value=vpc.vpc_arn)
         CfnOutput(
             self, "CUSTOM_DOMAIN_ADDR",
             description="CUSTOM DOMAIN ADDRESS",
