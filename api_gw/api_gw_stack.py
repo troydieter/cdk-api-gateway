@@ -10,6 +10,7 @@ from aws_cdk import (
     aws_apigateway as apigw,
     aws_certificatemanager as acm,
     aws_iam as iam,
+    aws_kms as kms,
     aws_lambda as lambda_,
     aws_lambda_event_sources as lambda_event_sources,
     aws_route53 as route53,
@@ -26,7 +27,6 @@ from aws_cdk import (
 )
 from cdk_watchful import Watchful
 from constructs import Construct
-
 
 class APIGWStack(Stack):
     """
@@ -84,7 +84,7 @@ class APIGWStack(Stack):
         # Create CloudWatch Alarms
         self._create_cloudwatch_alarms(
             gateway, topic, created_status_queue, other_status_queue)
-
+        
         # Create Outputs
         self._create_outputs(vpc, custom_domain_name)
 
@@ -152,19 +152,19 @@ class APIGWStack(Stack):
     def _create_nlb_and_vpc_link(self, vpc: ec2.Vpc) -> tuple[elbv2.NetworkLoadBalancer, apigw.VpcLink]:
         """Create Network Load Balancer and VPC Link"""
         nlb = elbv2.NetworkLoadBalancer(
-            self, "NLB",
+            self, "NLB", 
             vpc=vpc,
             internet_facing=False,
             cross_zone_enabled=True
         )
-
+        
         # Add health check to NLB
         health_listener = nlb.add_listener(
             "HealthListener",
             port=80
         )
-
-        # Create a target group instead of using NetworkLoadBalancerTarget
+        
+        # Create a target group
         target_group = elbv2.NetworkTargetGroup(
             self, "HealthTargetGroup",
             vpc=vpc,
@@ -177,6 +177,17 @@ class APIGWStack(Stack):
                 unhealthy_threshold_count=2
             )
         )
+        
+        # Add the target group to the listener
+        health_listener.add_target_groups("HealthTargetGroup", target_group)
+        
+        vpc_link = apigw.VpcLink(
+            self, "PrivateLink", 
+            targets=[nlb],
+            description=f"VPC Link for Private API Gateway in {vpc.vpc_id}"
+        )
+        
+        return nlb, vpc_link
 
     def _create_vpc_endpoints(self, vpc: ec2.Vpc) -> None:
         """Create VPC Endpoints for AWS services"""
@@ -223,6 +234,7 @@ class APIGWStack(Stack):
             display_name='The Big Fan CDK Pattern Topic',
             topic_name='api-gateway-fan-out-topic',
             fifo=False,  # Standard SNS topic for better scalability
+            master_key=kms_key,
             content_based_deduplication=False
         )
 
@@ -244,14 +256,15 @@ class APIGWStack(Stack):
             self, 'CreatedStatusDLQ',
             queue_name='BigFanTopicStatusCreatedDLQ',
             retention_period=Duration.days(14),
-            encryption=sqs.QueueEncryption.KMS_MANAGED
+            encryption_master_key=kms_key,
         )
 
         created_status_queue = sqs.Queue(
             self, 'BigFanTopicStatusCreatedSubscriberQueue',
             visibility_timeout=Duration.seconds(300),
             queue_name='BigFanTopicStatusCreatedSubscriberQueue',
-            encryption=sqs.QueueEncryption.KMS_MANAGED,
+            encryption=sqs.QueueEncryption.KMS,
+            encryption_master_key=kms_key,
             dead_letter_queue=sqs.DeadLetterQueue(
                 max_receive_count=3,
                 queue=created_status_dlq
@@ -274,14 +287,14 @@ class APIGWStack(Stack):
             self, 'OtherStatusDLQ',
             queue_name='BigFanTopicAnyOtherStatusDLQ',
             retention_period=Duration.days(14),
-            encryption=sqs.QueueEncryption.KMS_MANAGED
+            encryption_master_key=kms_key,
         )
 
         other_status_queue = sqs.Queue(
             self, 'BigFanTopicAnyOtherStatusSubscriberQueue',
             visibility_timeout=Duration.seconds(300),
             queue_name='BigFanTopicAnyOtherStatusSubscriberQueue',
-            encryption=sqs.QueueEncryption.KMS_MANAGED,
+            encryption_master_key=kms_key,
             dead_letter_queue=sqs.DeadLetterQueue(
                 max_receive_count=3,
                 queue=other_status_dlq
