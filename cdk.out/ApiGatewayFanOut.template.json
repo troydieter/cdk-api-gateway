@@ -1,465 +1,5 @@
 {
  "Resources": {
-  "WatchfulAlarmTopic152D7EE5": {
-   "Type": "AWS::SNS::Topic",
-   "Properties": {
-    "DisplayName": "Watchful Alarms",
-    "Tags": [
-     {
-      "Key": "created-by",
-      "Value": "aws-cdk"
-     },
-     {
-      "Key": "environment",
-      "Value": "dev"
-     },
-     {
-      "Key": "ManagedBy",
-      "Value": "AWS CDK"
-     },
-     {
-      "Key": "owner",
-      "Value": "cdk-deployment"
-     },
-     {
-      "Key": "project",
-      "Value": "apigw_fanout"
-     },
-     {
-      "Key": "Project",
-      "Value": "apigw_fanout"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/AlarmTopic/Resource"
-   }
-  },
-  "WatchfulAlarmTopicexamplemecomDBF0636C": {
-   "Type": "AWS::SNS::Subscription",
-   "Properties": {
-    "Endpoint": "example@me.com",
-    "Protocol": "email",
-    "TopicArn": {
-     "Ref": "WatchfulAlarmTopic152D7EE5"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/AlarmTopic/example@me.com/Resource"
-   }
-  },
-  "WatchfulDashboard1A69A5BC": {
-   "Type": "AWS::CloudWatch::Dashboard",
-   "Properties": {
-    "DashboardBody": {
-     "Fn::Join": [
-      "",
-      [
-       "{\"widgets\":[{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":0,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/SQSCreatedStatusSubscribeLambdaHandler\\n\\n[button:AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/",
-       {
-        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-       },
-       "?tab=graph) [button:CloudWatch Logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEventViewer:group=/aws/lambda/",
-       {
-        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-       },
-       ")\"}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":0,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Invocations/5min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"metrics\":[[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"",
-       {
-        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-       },
-       "\",{\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":6,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Errors/5min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"",
-       {
-        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-       },
-       "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Errors > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":12,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Throttles/5min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"metrics\":[[\"AWS/Lambda\",\"Throttles\",\"FunctionName\",\"",
-       {
-        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-       },
-       "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Throttles > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":18,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Duration/5min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"metrics\":[[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
-       {
-        "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-       },
-       "\",{\"label\":\"p99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"p99 > 24000 for 3 datapoints within 15 minutes\",\"value\":24000,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":8,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/SQSAnyOtherStatusSubscribeLambdaHandler\\n\\n[button:AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/",
-       {
-        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-       },
-       "?tab=graph) [button:CloudWatch Logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEventViewer:group=/aws/lambda/",
-       {
-        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-       },
-       ")\"}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":0,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Invocations/5min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"metrics\":[[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"",
-       {
-        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-       },
-       "\",{\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":6,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Errors/5min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"",
-       {
-        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-       },
-       "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Errors > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":12,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Throttles/5min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"metrics\":[[\"AWS/Lambda\",\"Throttles\",\"FunctionName\",\"",
-       {
-        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-       },
-       "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Throttles > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":18,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Duration/5min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"metrics\":[[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
-       {
-        "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-       },
-       "\",{\"label\":\"p99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"p99 > 24000 for 3 datapoints within 15 minutes\",\"value\":24000,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":16,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/ApiGWFanAPI\\n\\n[button:Amazon API Gateway Console](https://console.aws.amazon.com/apigateway/home?region=us-east-1#/apis/",
-       {
-        "Ref": "ApiGWFanAPI1E1B22E5"
-       },
-       ")\"}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":0,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall Calls/min\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"Count\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"color\":\"#1f77b4\",\"label\":\"Calls\",\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ApiGateway\",\"4XXError\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"color\":\"#ff7f0e\",\"label\":\"4XX Errors\",\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ApiGateway\",\"5XXError\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"color\":\"#d62728\",\"label\":\"5XX Errors\",\"period\":60,\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"value\":1,\"color\":\"#ff0000\",\"label\":\"5XX Errors Alarm\",\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":12,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall (1-minute periods)\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"min\",\"period\":60,\"stat\":\"Minimum\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"avg\",\"period\":60}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"p90\",\"period\":60,\"stat\":\"p90\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"p95\",\"period\":60,\"stat\":\"p95\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"p99\",\"period\":60,\"stat\":\"p99\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"max\",\"period\":60,\"stat\":\"Maximum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":0,\"y\":24,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall Integration (1-minute periods)\",\"region\":\"",
-       {
-        "Ref": "AWS::Region"
-       },
-       "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"min\",\"period\":60,\"stat\":\"Minimum\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"avg\",\"period\":60}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"p90\",\"period\":60,\"stat\":\"p90\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"p95\",\"period\":60,\"stat\":\"p95\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"p99\",\"period\":60,\"stat\":\"p99\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"apigw_fanout-private-api\",\"Stage\",\"",
-       {
-        "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-       },
-       "\",{\"label\":\"max\",\"period\":60,\"stat\":\"Maximum\"}]],\"yAxis\":{}}}]}"
-      ]
-     ]
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/Dashboard/Resource"
-   }
-  },
-  "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DErrorsAlarmC4D4DB7F": {
-   "Type": "AWS::CloudWatch::Alarm",
-   "Properties": {
-    "AlarmActions": [
-     {
-      "Ref": "WatchfulAlarmTopic152D7EE5"
-     }
-    ],
-    "AlarmDescription": "Over 0 errors per minute",
-    "ComparisonOperator": "GreaterThanThreshold",
-    "Dimensions": [
-     {
-      "Name": "FunctionName",
-      "Value": {
-       "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-      }
-     }
-    ],
-    "EvaluationPeriods": 3,
-    "MetricName": "Errors",
-    "Namespace": "AWS/Lambda",
-    "Period": 300,
-    "Statistic": "Sum",
-    "Threshold": 0
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ErrorsAlarm/Resource"
-   }
-  },
-  "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DThrottlesAlarmD0324454": {
-   "Type": "AWS::CloudWatch::Alarm",
-   "Properties": {
-    "AlarmActions": [
-     {
-      "Ref": "WatchfulAlarmTopic152D7EE5"
-     }
-    ],
-    "AlarmDescription": "Over 0 throttles per minute",
-    "ComparisonOperator": "GreaterThanThreshold",
-    "Dimensions": [
-     {
-      "Name": "FunctionName",
-      "Value": {
-       "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-      }
-     }
-    ],
-    "EvaluationPeriods": 3,
-    "MetricName": "Throttles",
-    "Namespace": "AWS/Lambda",
-    "Period": 300,
-    "Statistic": "Sum",
-    "Threshold": 0
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ThrottlesAlarm/Resource"
-   }
-  },
-  "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DDurationAlarm00615B92": {
-   "Type": "AWS::CloudWatch::Alarm",
-   "Properties": {
-    "AlarmActions": [
-     {
-      "Ref": "WatchfulAlarmTopic152D7EE5"
-     }
-    ],
-    "AlarmDescription": "p99 latency >= 24s (80%)",
-    "ComparisonOperator": "GreaterThanThreshold",
-    "EvaluationPeriods": 3,
-    "Metrics": [
-     {
-      "Id": "m1",
-      "Label": "p99",
-      "MetricStat": {
-       "Metric": {
-        "Dimensions": [
-         {
-          "Name": "FunctionName",
-          "Value": {
-           "Ref": "SQSCreatedStatusSubscribeLambdaHandler0467DB95"
-          }
-         }
-        ],
-        "MetricName": "Duration",
-        "Namespace": "AWS/Lambda"
-       },
-       "Period": 300,
-       "Stat": "p99"
-      },
-      "ReturnData": true
-     }
-    ],
-    "Threshold": 24000
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/DurationAlarm/Resource"
-   }
-  },
-  "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FErrorsAlarm198D7108": {
-   "Type": "AWS::CloudWatch::Alarm",
-   "Properties": {
-    "AlarmActions": [
-     {
-      "Ref": "WatchfulAlarmTopic152D7EE5"
-     }
-    ],
-    "AlarmDescription": "Over 0 errors per minute",
-    "ComparisonOperator": "GreaterThanThreshold",
-    "Dimensions": [
-     {
-      "Name": "FunctionName",
-      "Value": {
-       "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-      }
-     }
-    ],
-    "EvaluationPeriods": 3,
-    "MetricName": "Errors",
-    "Namespace": "AWS/Lambda",
-    "Period": 300,
-    "Statistic": "Sum",
-    "Threshold": 0
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ErrorsAlarm/Resource"
-   }
-  },
-  "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FThrottlesAlarmE6472B76": {
-   "Type": "AWS::CloudWatch::Alarm",
-   "Properties": {
-    "AlarmActions": [
-     {
-      "Ref": "WatchfulAlarmTopic152D7EE5"
-     }
-    ],
-    "AlarmDescription": "Over 0 throttles per minute",
-    "ComparisonOperator": "GreaterThanThreshold",
-    "Dimensions": [
-     {
-      "Name": "FunctionName",
-      "Value": {
-       "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-      }
-     }
-    ],
-    "EvaluationPeriods": 3,
-    "MetricName": "Throttles",
-    "Namespace": "AWS/Lambda",
-    "Period": 300,
-    "Statistic": "Sum",
-    "Threshold": 0
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ThrottlesAlarm/Resource"
-   }
-  },
-  "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FDurationAlarmF63140B6": {
-   "Type": "AWS::CloudWatch::Alarm",
-   "Properties": {
-    "AlarmActions": [
-     {
-      "Ref": "WatchfulAlarmTopic152D7EE5"
-     }
-    ],
-    "AlarmDescription": "p99 latency >= 24s (80%)",
-    "ComparisonOperator": "GreaterThanThreshold",
-    "EvaluationPeriods": 3,
-    "Metrics": [
-     {
-      "Id": "m1",
-      "Label": "p99",
-      "MetricStat": {
-       "Metric": {
-        "Dimensions": [
-         {
-          "Name": "FunctionName",
-          "Value": {
-           "Ref": "SQSAnyOtherStatusSubscribeLambdaHandler4037E293"
-          }
-         }
-        ],
-        "MetricName": "Duration",
-        "Namespace": "AWS/Lambda"
-       },
-       "Period": 300,
-       "Stat": "p99"
-      },
-      "ReturnData": true
-     }
-    ],
-    "Threshold": 24000
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/DurationAlarm/Resource"
-   }
-  },
-  "WatchfulApiGatewayFanOutApiGWFanAPID0FF20CE5XXErrorAlarm83D6498C": {
-   "Type": "AWS::CloudWatch::Alarm",
-   "Properties": {
-    "AlarmActions": [
-     {
-      "Ref": "WatchfulAlarmTopic152D7EE5"
-     }
-    ],
-    "AlarmDescription": "at 1",
-    "ComparisonOperator": "GreaterThanOrEqualToThreshold",
-    "EvaluationPeriods": 1,
-    "Metrics": [
-     {
-      "Id": "m1",
-      "Label": "5XX Errors",
-      "MetricStat": {
-       "Metric": {
-        "Dimensions": [
-         {
-          "Name": "ApiName",
-          "Value": "apigw_fanout-private-api"
-         },
-         {
-          "Name": "Stage",
-          "Value": {
-           "Ref": "ApiGWFanAPIDeploymentStageprod03A9DB9D"
-          }
-         }
-        ],
-        "MetricName": "5XXError",
-        "Namespace": "AWS/ApiGateway"
-       },
-       "Period": 300,
-       "Stat": "Sum"
-      },
-      "ReturnData": true
-     }
-    ],
-    "Threshold": 1
-   },
-   "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutApiGWFanAPID0FF20CE/5XXErrorAlarm/Resource"
-   }
-  },
   "VpcFlowLogsE6FFDEF9": {
    "Type": "AWS::Logs::LogGroup",
    "Properties": {
@@ -3469,7 +3009,7 @@
     "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/RequestValidator/Resource"
    }
   },
-  "ApiGWFanAPIapiexamplecomD40F936F": {
+  "ApiGWFanAPIapiwellarchitectedonlineD1B3F9B4": {
    "Type": "AWS::ApiGateway::ApiKey",
    "Properties": {
     "Description": "apigw_fanout-private-api-apikey",
@@ -3512,13 +3052,13 @@
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/api.example.com/Resource"
+    "aws:cdk:path": "ApiGatewayFanOut/ApiGWFanAPI/api.well-architected.online/Resource"
    }
   },
   "ApiGWFanAPIDomainName6128E02F": {
    "Type": "AWS::ApiGateway::DomainName",
    "Properties": {
-    "DomainName": "api.example.com",
+    "DomainName": "api.well-architected.online",
     "EndpointConfiguration": {
      "Types": [
       "REGIONAL"
@@ -3697,11 +3237,11 @@
     "aws:cdk:path": "ApiGatewayFanOut/GWUsagePlan/Resource"
    }
   },
-  "GWUsagePlanUsagePlanKeyResourceApiGatewayFanOutApiGWFanAPIapiexamplecom9153D56CFB061BEC": {
+  "GWUsagePlanUsagePlanKeyResourceApiGatewayFanOutApiGWFanAPIapiwellarchitectedonline0916B16E6ED465CA": {
    "Type": "AWS::ApiGateway::UsagePlanKey",
    "Properties": {
     "KeyId": {
-     "Ref": "ApiGWFanAPIapiexamplecomD40F936F"
+     "Ref": "ApiGWFanAPIapiwellarchitectedonlineD1B3F9B4"
     },
     "KeyType": "API_KEY",
     "UsagePlanId": {
@@ -3709,7 +3249,7 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "ApiGatewayFanOut/GWUsagePlan/UsagePlanKeyResource:ApiGatewayFanOutApiGWFanAPIapiexamplecom9153D56C"
+    "aws:cdk:path": "ApiGatewayFanOut/GWUsagePlan/UsagePlanKeyResource:ApiGatewayFanOutApiGWFanAPIapiwellarchitectedonline0916B16E"
    }
   },
   "APIGwMappingB7C2CB83": {
@@ -3820,8 +3360,8 @@
       ]
      }
     },
-    "HostedZoneId": "ZZ4353459fghEXAMPLE",
-    "Name": "api.example.com.",
+    "HostedZoneId": "Z0206636MX51EV5WZCOL",
+    "Name": "api.well-architected.online.",
     "Type": "A"
    },
    "Metadata": {
@@ -4109,7 +3649,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/21UTXOjMAz9Lb273m0yu3um6cd0mnZZ6KbHjjAK8cbY1JaTyTD89x0bCEnbC3rvSQjJkpnxq9lP/v0C9u5SlNtLJQve5gRiy2Dv3lqnHW9fTCMFW6x1D3JfOGFlQ9LooJ7xGJIaJcXh+EZPOyaU8eUeSGx4ewNuUxiwZYiaSKLA1kGKoGPKVI63S1PdW+Ob4DjipakyJNThsx1DMePtqollrtIFS32hpMh9oZGGIgeUGU/4AoXCSZ+0xDkjJIy9RUcAtw9pMM9A90C4hwNLrdwB4ZT4QRNajceAvpKBJUQgNjVqYnfK7JemCv4R5ii8lXQ4dnkuxMxrELhqxK0uGyM1DelH2jEJNW8z07cV7TSGcQLO1WG8VuoqBQs1EtroH0nHUIEjKZSBsgAFWkhd7Wa8fUbaG7tdGiivo96/ecbHGOkI9eAf8eB7AVshHfs8oR2DRlb9acVRLqXexi4HmKGjpJGxvQHeYKPMIZ5qWKOJ5QRVP98IMnTGW4HX4CYyJOrxE9LGxGUcUIbvHh2tQMkSyNg++oOWNPIR4wkP6MbUIPUz1DH7CQtfToE2T9A0Usfhf5SeTIkqVhDBXwcVpgriHn5NHvHQsW3teDtUEUyiJLj+CklwHXPvjrd/PPpYUg/ic1qPE9oxBXVRAm/vvBbjNTji2x1qetA7s8WF0WsZG/ksRiWPJ3vS8Ge1Y27+Bs4hOZ4Ew9ycX3uxRYqjsuH6/ZjzNslQmP5n0aMcqWN7WIfVXKz1KxbJYsmO6OQad12Qf3tqPJ3M3jsy9ZercO5KrdnJEm2sJ9YYVirWnh5oY/S3Ob+64r8u/jkpL63XJGvkWW//AxDQAZlfBQAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/21U23KbMBD9lr4ramNP22fiXCYTJ6U4dR8zi1hj1UIi0soeD6N/70hgQy4v7DlnxbI3MeOXsx/82xc4uAtR7S6ULHm3IhA7Bgf30ilTO94tTX1njW/ZYqPPeGnqAgk1SaMDQzHj3boV8cg6X7Dcl0qKlS81UtRGVBhP+AylwlEftcw5IyTEoOfDEdzc59E8Ad0B4QGOLLdyD4Rj4HtNaDWeD/SZDCwjArFtUBO7VeawNHX0n+AKhbeSjucq3wop8gYErltxo6vWSE1D+BMNTELDu8L0ZSWbGyVFyqNHgTnXxPZaqescLDRIaJP/RAJDBY6kUAaqEhRoIXW9n/HuCelg7G5poLpKev/mG346Ix2hHvwnPPiewdZI5zonNDBoZd13K41yKfUuVTnAAh1lrUzlDfAaW2WOqauLjZ6wFUHdzzeBAp3xVuAVuJEMgXr8iLQ1VZQGVOCrR0drULICMrY//U7LWvmAqcMDujYNSP0ETYo+YfHLOdD2EdpW6jT899KjqVClDBL446DGXEHaw8/JAx4D2zWOd0MW0WRKgkspRRCY0453z6aV6W70ID3H9ZjSlS+dsLI93YApD8y9Ot799uhTfT1IzzHYhAamoCkr4N2t1+IU8Yxv9qjpXu/NDhdGb2TqykcxKas0pkn3PqqBufkLOIfkeBYNc3N+5cUOKc3dxrv8fc67rEBhbNVPNKIVUmAH2MQ9X2z0XyyzxZKd0eSfEJhQxlcHILHlXabANn2rwTYhTFbLOzLNp5v21pVbs5cV2pRhyjpu7FDjL0+tp8DyI22N/jrnl5f855d/TsoL6zXJBnnR2/+YFzhhSAUAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "ApiGatewayFanOut/CDKMetadata/Default"
@@ -4117,19 +3657,6 @@
   }
  },
  "Outputs": {
-  "WatchfulWatchfulDashboardCB42D1D6": {
-   "Value": {
-    "Fn::Join": [
-     "",
-     [
-      "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards:name=",
-      {
-       "Ref": "WatchfulDashboard1A69A5BC"
-      }
-     ]
-    ]
-   }
-  },
   "ApiGWFanAPIEndpoint3ECBB6BC": {
    "Value": {
     "Fn::Join": [

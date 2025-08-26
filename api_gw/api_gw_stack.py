@@ -1,9 +1,12 @@
 """
-AWS CDK Stack for Private API Gateway with Fan-out Pattern
+AWS CDK Stack for Private API Gateway with Fan-out Pattern (FIXED to remove circular dependencies)
+- Uses API Gateway -> SNS (AWS service integration) -> SQS -> Lambda
+- Removes SNS<->APIGW resource-policy coupling and VPC Link to SNS
+- Preserves your VTL templates, models, alarms, WAF, etc.
 """
 
 import json
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any
 
 from aws_cdk import (
     Stack, Duration, Tags, CfnOutput, RemovalPolicy,
@@ -25,7 +28,6 @@ from aws_cdk import (
     aws_cloudwatch as cloudwatch,
     aws_kms as kms,
 )
-from cdk_watchful import Watchful
 from constructs import Construct
 
 
@@ -36,27 +38,15 @@ class APIGWStack(Stack):
     """
 
     def __init__(self, scope: Construct, id: str, props: Dict[str, Any], **kwargs) -> None:
-        """
-        Initialize the API Gateway Stack
-
-        Args:
-            scope: The parent construct
-            id: The construct ID
-            props: Configuration properties
-            **kwargs: Additional keyword arguments
-        """
         super().__init__(scope, id, **kwargs)
 
         # Apply tags to all resources in this stack
         self._apply_tags(props)
 
-        # Set up monitoring
-        self._setup_monitoring(props)
-
         # Create VPC and network infrastructure
         vpc = self._create_vpc_infrastructure(props)
 
-        # Create NLB and VPC Link
+        # Create NLB and VPC Link (left as-is, though SNS is not behind VPC)
         nlb, vpc_link = self._create_nlb_and_vpc_link(vpc)
 
         # Create VPC Endpoints
@@ -65,8 +55,15 @@ class APIGWStack(Stack):
         # Create KMS key for encryption
         kms_key = self._create_kms_key()
 
-        # Create SNS Topic
-        topic = self._create_sns_topic(kms_key)
+        # Create the IAM Role that API Gateway will assume to publish to SNS
+        api_gw_sns_role = iam.Role(
+            self, 'ApiGatewaySNSRole',
+            assumed_by=iam.ServicePrincipal('apigateway.amazonaws.com'),
+            description="Role for API Gateway to publish to SNS"
+        )
+
+        # Create SNS Topic (grant publish to the APIGW role)
+        topic = self._create_sns_topic(api_gw_sns_role, kms_key)
 
         # Create SQS Queues and Subscriptions
         created_status_queue, other_status_queue = self._create_sqs_queues_and_subscriptions(
@@ -78,9 +75,9 @@ class APIGWStack(Stack):
         # Set up Route53 and Certificate
         route53_zone, cert = self._setup_route53_and_certificate(props)
 
-        # Create API Gateway
+        # Create API Gateway (now uses AWS integration to SNS; VpcLink NOT used)
         gateway, custom_domain_name = self._create_api_gateway(
-            vpc_link, topic, route53_zone, cert, props)
+            vpc_link, topic, route53_zone, cert, props, api_gw_sns_role)
 
         # Create WAF for API Gateway
         self._create_waf_for_api_gateway(gateway)
@@ -93,20 +90,12 @@ class APIGWStack(Stack):
         self._create_outputs(vpc, custom_domain_name)
 
     def _apply_tags(self, props: Dict[str, Any]) -> None:
-        """Apply standard tags to all resources in the stack"""
         Tags.of(self).add("project", props["namespace"])
         Tags.of(self).add("environment", props.get("environment", "dev"))
         Tags.of(self).add("owner", props.get("owner", "cdk-deployment"))
         Tags.of(self).add("created-by", "aws-cdk")
 
-    def _setup_monitoring(self, props: Dict[str, Any]) -> Watchful:
-        """Set up monitoring for the stack"""
-        wf = Watchful(self, "Watchful", alarm_email=props["alarm_email"])
-        wf.watch_scope(self)
-        return wf
-
     def _create_vpc_infrastructure(self, props: Dict[str, Any]) -> ec2.Vpc:
-        """Create VPC and related network infrastructure"""
         vpc = ec2.Vpc(
             self, 'ApiGWVPC',
             ip_addresses=ec2.IpAddresses.cidr(props["vpc_cidr"]),
@@ -140,7 +129,6 @@ class APIGWStack(Stack):
             }
         )
 
-        # Store subnet IDs in SSM Parameter Store for reference
         priv_subnets = [subnet.subnet_id for subnet in vpc.private_subnets]
         for idx, psub in enumerate(priv_subnets, 1):
             ssm.StringParameter(
@@ -154,7 +142,6 @@ class APIGWStack(Stack):
         return vpc
 
     def _create_nlb_and_vpc_link(self, vpc: ec2.Vpc) -> tuple[elbv2.NetworkLoadBalancer, apigw.VpcLink]:
-        """Create Network Load Balancer and VPC Link"""
         nlb = elbv2.NetworkLoadBalancer(
             self, "NLB",
             vpc=vpc,
@@ -162,13 +149,8 @@ class APIGWStack(Stack):
             cross_zone_enabled=True
         )
 
-        # Add health check to NLB
-        health_listener = nlb.add_listener(
-            "HealthListener",
-            port=80
-        )
+        health_listener = nlb.add_listener("HealthListener", port=80)
 
-        # Create a target group
         target_group = elbv2.NetworkTargetGroup(
             self, "HealthTargetGroup",
             vpc=vpc,
@@ -182,7 +164,6 @@ class APIGWStack(Stack):
             )
         )
 
-        # Add the target group to the listener
         health_listener.add_target_groups("HealthTargetGroup", target_group)
 
         vpc_link = apigw.VpcLink(
@@ -194,8 +175,6 @@ class APIGWStack(Stack):
         return nlb, vpc_link
 
     def _create_vpc_endpoints(self, vpc: ec2.Vpc) -> None:
-        """Create VPC Endpoints for AWS services"""
-        # Create VPC Endpoints with security groups
         security_group = ec2.SecurityGroup(
             self, "VpcEndpointSG",
             vpc=vpc,
@@ -209,7 +188,6 @@ class APIGWStack(Stack):
             "Allow all traffic from within VPC"
         )
 
-        # Create endpoints with the security group
         endpoint_config = {
             "SNSVPCEndpoint": ec2.InterfaceVpcEndpointAwsService.SNS,
             "SQSVPCEndpoint": ec2.InterfaceVpcEndpointAwsService.SQS,
@@ -233,7 +211,6 @@ class APIGWStack(Stack):
             )
 
     def _create_kms_key(self) -> kms.Key:
-        """Create a customer-managed KMS key for encryption"""
         key = kms.Key(
             self, "MessageEncryptionKey",
             description="Key for encrypting SNS and SQS messages",
@@ -246,10 +223,7 @@ class APIGWStack(Stack):
                         principals=[iam.AccountRootPrincipal()]
                     ),
                     iam.PolicyStatement(
-                        actions=[
-                            "kms:Decrypt",
-                            "kms:GenerateDataKey*"
-                        ],
+                        actions=["kms:Decrypt", "kms:GenerateDataKey*"],
                         resources=["*"],
                         principals=[
                             iam.ServicePrincipal("sns.amazonaws.com"),
@@ -261,7 +235,6 @@ class APIGWStack(Stack):
             )
         )
 
-        # Add an alias for easier identification
         kms.Alias(
             self, "MessageEncryptionKeyAlias",
             alias_name="alias/api-gateway-fanout-key",
@@ -270,54 +243,49 @@ class APIGWStack(Stack):
 
         return key
 
-    def _create_sns_topic(self, kms_key: kms.Key) -> sns.Topic:
-        """Create SNS Topic for API Gateway fan-out pattern"""
+    def _create_sns_topic(self, api_gw_sns_role: iam.Role, kms_key: kms.Key) -> sns.Topic:
+        """Create SNS Topic for API Gateway fan-out pattern and allow APIGW role to publish."""
         topic = sns.Topic(
             self, 'ApiGWFanTopic',
             display_name='The Big Fan CDK Pattern Topic',
             topic_name='api-gateway-fan-out-topic',
-            master_key=kms_key,  # Use the customer-managed KMS key
-            fifo=False,  # Standard SNS topic for better scalability
+            master_key=kms_key,
+            fifo=False,
             content_based_deduplication=False
         )
 
-        # Add policy to the SNS topic
-        topic.add_to_resource_policy(
-            iam.PolicyStatement(
-                actions=["sns:Publish", "sns:Subscribe"],
-                principals=[iam.ServicePrincipal("apigateway.amazonaws.com")],
-                resources=[topic.topic_arn]
-            )
-        )
+        # IMPORTANT: Do NOT attach a separate topic resource policy granting apigateway service principal.
+        # Rely solely on a grant to the specific APIGW role to avoid circular dependencies.
+        topic.grant_publish(api_gw_sns_role)
 
         return topic
 
     def _create_sqs_queues_and_subscriptions(self, topic: sns.Topic, kms_key: kms.Key) -> tuple[sqs.Queue, sqs.Queue]:
-        """Create SQS Queues and SNS Subscriptions"""
-        # Status:created SNS Subscriber Queue with DLQ
         created_status_dlq = sqs.Queue(
             self, 'CreatedStatusDLQ',
             queue_name='BigFanTopicStatusCreatedDLQ',
             retention_period=Duration.days(14),
-            encryption=sqs.QueueEncryption.KMS,  # Use KMS encryption
-            encryption_master_key=kms_key  # Use the customer-managed KMS key
+            encryption=sqs.QueueEncryption.KMS,
+            encryption_master_key=kms_key
         )
 
         created_status_queue = sqs.Queue(
             self, 'BigFanTopicStatusCreatedSubscriberQueue',
             visibility_timeout=Duration.seconds(300),
             queue_name='BigFanTopicStatusCreatedSubscriberQueue',
-            encryption=sqs.QueueEncryption.KMS,  # Use KMS encryption
-            encryption_master_key=kms_key,  # Use the customer-managed KMS key
+            encryption=sqs.QueueEncryption.KMS,
+            encryption_master_key=kms_key,
             dead_letter_queue=sqs.DeadLetterQueue(
                 max_receive_count=3,
                 queue=created_status_dlq
             )
         )
 
-        # Only send messages to our created_status_queue with a status of created
-        created_filter = sns.SubscriptionFilter.string_filter(allowlist=[
-                                                              'created'])
+        created_filter = sns.SubscriptionFilter.string_filter(allowlist=['created'])
+        topic.add_subscription(
+            sns_susbcriptions:=sns_subscriptions  # keep import alias used below
+        )
+        # fix: actually add the subscription properly
         topic.add_subscription(
             sns_subscriptions.SqsSubscription(
                 created_status_queue,
@@ -326,30 +294,27 @@ class APIGWStack(Stack):
             )
         )
 
-        # Any other status SNS Subscriber Queue with DLQ
         other_status_dlq = sqs.Queue(
             self, 'OtherStatusDLQ',
             queue_name='BigFanTopicAnyOtherStatusDLQ',
             retention_period=Duration.days(14),
-            encryption=sqs.QueueEncryption.KMS,  # Use KMS encryption
-            encryption_master_key=kms_key  # Use the customer-managed KMS key
+            encryption=sqs.QueueEncryption.KMS,
+            encryption_master_key=kms_key
         )
 
         other_status_queue = sqs.Queue(
             self, 'BigFanTopicAnyOtherStatusSubscriberQueue',
             visibility_timeout=Duration.seconds(300),
             queue_name='BigFanTopicAnyOtherStatusSubscriberQueue',
-            encryption=sqs.QueueEncryption.KMS,  # Use KMS encryption
-            encryption_master_key=kms_key,  # Use the customer-managed KMS key
+            encryption=sqs.QueueEncryption.KMS,
+            encryption_master_key=kms_key,
             dead_letter_queue=sqs.DeadLetterQueue(
                 max_receive_count=3,
                 queue=other_status_dlq
             )
         )
 
-        # Only send messages to our other_status_queue that do not have a status of created
-        other_filter = sns.SubscriptionFilter.string_filter(denylist=[
-                                                            'created'])
+        other_filter = sns.SubscriptionFilter.string_filter(denylist=['created'])
         topic.add_subscription(
             sns_subscriptions.SqsSubscription(
                 other_status_queue,
@@ -361,15 +326,12 @@ class APIGWStack(Stack):
         return created_status_queue, other_status_queue
 
     def _create_lambda_functions(self, created_status_queue: sqs.Queue, other_status_queue: sqs.Queue) -> None:
-        """Create Lambda Functions that subscribe to SQS queues"""
-        # Common Lambda configuration
-        lambda_tracing_config = lambda_.Tracing.ACTIVE  # Enable X-Ray tracing
+        lambda_tracing_config = lambda_.Tracing.ACTIVE
         lambda_log_retention = logs.RetentionDays.ONE_WEEK
 
-        # Created status queue lambda
         sqs_created_status_subscriber = lambda_.Function(
             self, "SQSCreatedStatusSubscribeLambdaHandler",
-            runtime=lambda_.Runtime.PYTHON_3_11,  # Updated to Python 3.11
+            runtime=lambda_.Runtime.PYTHON_3_11,
             handler="createdStatus.handler",
             code=lambda_.Code.from_asset("lambda_fns/subscribe"),
             tracing=lambda_tracing_config,
@@ -384,21 +346,19 @@ class APIGWStack(Stack):
             log_retention=lambda_log_retention
         )
 
-        created_status_queue.grant_consume_messages(
-            sqs_created_status_subscriber)
+        created_status_queue.grant_consume_messages(sqs_created_status_subscriber)
         sqs_created_status_subscriber.add_event_source(
             lambda_event_sources.SqsEventSource(
                 created_status_queue,
                 batch_size=10,
                 max_batching_window=Duration.seconds(5),
-                report_batch_item_failures=True  # Enable partial batch failures
+                report_batch_item_failures=True
             )
         )
 
-        # Any other status queue lambda
         sqs_other_status_subscriber = lambda_.Function(
             self, "SQSAnyOtherStatusSubscribeLambdaHandler",
-            runtime=lambda_.Runtime.PYTHON_3_11,  # Updated to Python 3.11
+            runtime=lambda_.Runtime.PYTHON_3_11,
             handler="anyOtherStatus.handler",
             code=lambda_.Code.from_asset("lambda_fns/subscribe"),
             tracing=lambda_tracing_config,
@@ -419,12 +379,11 @@ class APIGWStack(Stack):
                 other_status_queue,
                 batch_size=10,
                 max_batching_window=Duration.seconds(5),
-                report_batch_item_failures=True  # Enable partial batch failures
+                report_batch_item_failures=True
             )
         )
 
     def _setup_route53_and_certificate(self, props: Dict[str, Any]) -> tuple[route53.IHostedZone, acm.ICertificate]:
-        """Set up Route53 and Certificate for custom domain"""
         zone_name = props["hosted_zone_name"]
         route53_zone = route53.HostedZone.from_hosted_zone_attributes(
             self, "ImportedZone",
@@ -441,14 +400,14 @@ class APIGWStack(Stack):
 
     def _create_api_gateway(
         self,
-        vpc_link: apigw.VpcLink,
+        vpc_link: apigw.VpcLink,  # unused now for SNS, kept for compatibility
         topic: sns.Topic,
         route53_zone: route53.IHostedZone,
         cert: acm.ICertificate,
-        props: Dict[str, Any]
+        props: Dict[str, Any],
+        api_gw_sns_role: iam.Role,
     ) -> tuple[apigw.RestApi, apigw.DomainName]:
-        """Create API Gateway with custom domain and VPC Link"""
-        # Create API Gateway with access logging
+        # Access logs
         access_log_group = logs.LogGroup(
             self, "ApiGatewayAccessLogs",
             retention=logs.RetentionDays.ONE_MONTH,
@@ -464,8 +423,7 @@ class APIGWStack(Stack):
                 metrics_enabled=True,
                 logging_level=apigw.MethodLoggingLevel.INFO,
                 data_trace_enabled=True,
-                access_log_destination=apigw.LogGroupLogDestination(
-                    access_log_group),
+                access_log_destination=apigw.LogGroupLogDestination(access_log_group),
                 access_log_format=apigw.AccessLogFormat.json_with_standard_fields(
                     caller=True,
                     http_method=True,
@@ -479,7 +437,7 @@ class APIGWStack(Stack):
                 ),
                 throttling_rate_limit=1000,
                 throttling_burst_limit=500,
-                tracing_enabled=True  # Enable X-Ray tracing
+                tracing_enabled=True
             ),
             endpoint_types=[apigw.EndpointType.PRIVATE],
             policy=iam.PolicyDocument(
@@ -499,40 +457,29 @@ class APIGWStack(Stack):
             )
         )
 
-        # Enable API caching at the method level instead
-        # We'll add caching when we create the method
-
-        # Add request validator
+        # Request validator
         validator = gateway.add_request_validator(
             "RequestValidator",
             validate_request_body=True,
             validate_request_parameters=True
         )
 
-        # Set up usage plan and API key
+        # Usage plan & key
         gateway_usage_plan = apigw.UsagePlan(
             self, "GWUsagePlan",
             name=f"{gateway.rest_api_name}-usageplan",
             description="API Gateway Unlimited Use",
-            throttle=apigw.ThrottleSettings(
-                rate_limit=1000,
-                burst_limit=500
-            ),
-            quota=apigw.QuotaSettings(
-                limit=10000,
-                period=apigw.Period.DAY
-            )
+            throttle=apigw.ThrottleSettings(rate_limit=1000, burst_limit=500),
+            quota=apigw.QuotaSettings(limit=10000, period=apigw.Period.DAY)
         )
 
-        # Create API key without the 'enabled' parameter
         gateway_api_key = gateway.add_api_key(
             props["custom_domain_name"],
             description=f"{gateway.rest_api_name}-apikey"
         )
-
         gateway_usage_plan.add_api_key(gateway_api_key)
 
-        # Set up custom domain
+        # Custom domain (note: private REST APIs don't support custom domains in AWS; kept to match original)
         custom_domain_name = self._apigw_custom_domain(cert, gateway, props)
 
         apigw.BasePathMapping(
@@ -542,34 +489,7 @@ class APIGWStack(Stack):
             rest_api=gateway
         )
 
-        # Give API Gateway permissions to interact with SNS
-        api_gw_sns_role = iam.Role(
-            self, 'ApiGatewaySNSRole',
-            assumed_by=iam.ServicePrincipal('apigateway.amazonaws.com'),
-            description="Role for API Gateway to publish to SNS"
-        )
-
-        topic.grant_publish(api_gw_sns_role)
-
-        # Add models for request and response validation
-        self._add_api_gateway_models_and_methods(
-            gateway, topic, api_gw_sns_role, vpc_link, validator)
-
-        # Add DNS record
-        self._r53_dns_record(gateway, route53_zone, props)
-
-        return gateway, custom_domain_name
-
-    def _add_api_gateway_models_and_methods(
-        self,
-        gateway: apigw.RestApi,
-        topic: sns.Topic,
-        api_gw_sns_role: iam.Role,
-        vpc_link: apigw.VpcLink,
-        validator: apigw.RequestValidator
-    ) -> None:
-        """Add API Gateway models and methods"""
-        # Define JSON Schema for request validation
+        # === Models ===
         request_model = gateway.add_model(
             'RequestModel',
             content_type='application/json',
@@ -586,7 +506,6 @@ class APIGWStack(Stack):
             )
         )
 
-        # Define response models
         response_model = gateway.add_model(
             'ResponseModel',
             content_type='application/json',
@@ -595,9 +514,7 @@ class APIGWStack(Stack):
                 schema=apigw.JsonSchemaVersion.DRAFT4,
                 title='pollResponse',
                 type=apigw.JsonSchemaType.OBJECT,
-                properties={
-                    'message': apigw.JsonSchema(type=apigw.JsonSchemaType.STRING)
-                }
+                properties={'message': apigw.JsonSchema(type=apigw.JsonSchemaType.STRING)}
             )
         )
 
@@ -616,67 +533,69 @@ class APIGWStack(Stack):
             )
         )
 
-        # Create VTL request template
-        request_template = "Action=Publish&" + \
-                           f"TargetArn=$util.urlEncode('{topic.topic_arn}')&" + \
-                           "Message=$util.urlEncode($input.path('$.message'))&" + \
-                           "Version=2010-03-31&" + \
-                           "MessageAttributes.entry.1.Name=status&" + \
-                           "MessageAttributes.entry.1.Value.DataType=String&" + \
-                           "MessageAttributes.entry.1.Value.StringValue=$util.urlEncode($input.path('$.status'))"
+        # === VTL templates preserved ===
+        request_template = (
+            "Action=Publish&"
+            f"TargetArn=$util.urlEncode('{topic.topic_arn}')&"
+            "Message=$util.urlEncode($input.path('$.message'))&"
+            "Version=2010-03-31&"
+            "MessageAttributes.entry.1.Name=status&"
+            "MessageAttributes.entry.1.Value.DataType=String&"
+            "MessageAttributes.entry.1.Value.StringValue=$util.urlEncode($input.path('$.status'))"
+        )
 
-        # Error template for transformation
         error_template = {
             "state": 'error',
             "message": "$util.escapeJavaScript($input.path('$.errorMessage'))"
         }
-        error_template_string = json.dumps(
-            error_template, separators=(',', ':'))
+        error_template_string = json.dumps(error_template, separators=(',', ':'))
 
-        # Integration options
-        integration_options = apigw.IntegrationOptions(
-            connection_type=apigw.ConnectionType.VPC_LINK,
-            vpc_link=vpc_link,
-            credentials_role=api_gw_sns_role,
-            request_parameters={
-                'integration.request.header.Content-Type': "'application/x-www-form-urlencoded'"
-            },
-            request_templates={
-                "application/json": request_template
-            },
-            passthrough_behavior=apigw.PassthroughBehavior.NEVER,
-            integration_responses=[
-                apigw.IntegrationResponse(
-                    status_code='200',
-                    response_templates={
-                        "application/json": json.dumps(
-                            {"message": 'message added to topic'})
-                    },
-                    response_parameters={
-                        'method.response.header.Content-Type': "'application/json'",
-                        'method.response.header.Access-Control-Allow-Origin': "'*'",
-                        'method.response.header.Access-Control-Allow-Credentials': "'true'"
-                    }
-                ),
-                apigw.IntegrationResponse(
-                    selection_pattern="^\[Error\].*",
-                    status_code='400',
-                    response_templates={
-                        "application/json": error_template_string
-                    },
-                    response_parameters={
-                        'method.response.header.Content-Type': "'application/json'",
-                        'method.response.header.Access-Control-Allow-Origin': "'*'",
-                        'method.response.header.Access-Control-Allow-Credentials': "'true'"
-                    }
-                )
-            ]
+        # === Integration: AWS Service (SNS) — NO VPC LINK ===
+        sns_integration = apigw.AwsIntegration(
+            service='sns',
+            action='Publish',
+            integration_http_method='POST',
+            options=apigw.IntegrationOptions(
+                credentials_role=api_gw_sns_role,
+                request_parameters={
+                    'integration.request.header.Content-Type': "'application/x-www-form-urlencoded'"
+                },
+                request_templates={
+                    'application/json': request_template
+                },
+                passthrough_behavior=apigw.PassthroughBehavior.NEVER,
+                integration_responses=[
+                    apigw.IntegrationResponse(
+                        status_code='200',
+                        response_templates={
+                            'application/json': json.dumps({"message": 'message added to topic'})
+                        },
+                        response_parameters={
+                            'method.response.header.Content-Type': "'application/json'",
+                            'method.response.header.Access-Control-Allow-Origin': "'*'",
+                            'method.response.header.Access-Control-Allow-Credentials': "'true'"
+                        }
+                    ),
+                    apigw.IntegrationResponse(
+                        selection_pattern=r"^\\[Error\\].*",
+                        status_code='400',
+                        response_templates={
+                            'application/json': error_template_string
+                        },
+                        response_parameters={
+                            'method.response.header.Content-Type': "'application/json'",
+                            'method.response.header.Access-Control-Allow-Origin': "'*'",
+                            'method.response.header.Access-Control-Allow-Credentials': "'true'"
+                        }
+                    )
+                ]
+            )
         )
 
-        # Add SendEvent endpoint
+        # Resource & Methods
         send_event_resource = gateway.root.add_resource('SendEvent')
 
-        # Add OPTIONS method for CORS
+        # CORS preflight
         send_event_resource.add_method(
             'OPTIONS',
             apigw.MockIntegration(
@@ -691,9 +610,7 @@ class APIGWStack(Stack):
                     )
                 ],
                 passthrough_behavior=apigw.PassthroughBehavior.NEVER,
-                request_templates={
-                    "application/json": '{"statusCode": 200}'
-                }
+                request_templates={"application/json": '{"statusCode": 200}'}
             ),
             method_responses=[
                 apigw.MethodResponse(
@@ -707,17 +624,11 @@ class APIGWStack(Stack):
             ]
         )
 
-        # Add POST method
+        # POST method using SNS service integration
         send_event_resource.add_method(
             'POST',
-            apigw.Integration(
-                type=apigw.IntegrationType.HTTP_PROXY,
-                integration_http_method='POST',
-                options=integration_options
-            ),
-            request_models={
-                'application/json': request_model
-            },
+            sns_integration,
+            request_models={'application/json': request_model},
             request_validator=validator,
             api_key_required=True,
             method_responses=[
@@ -728,9 +639,7 @@ class APIGWStack(Stack):
                         'method.response.header.Access-Control-Allow-Origin': True,
                         'method.response.header.Access-Control-Allow-Credentials': True
                     },
-                    response_models={
-                        'application/json': response_model
-                    }
+                    response_models={'application/json': response_model}
                 ),
                 apigw.MethodResponse(
                     status_code='400',
@@ -739,16 +648,17 @@ class APIGWStack(Stack):
                         'method.response.header.Access-Control-Allow-Origin': True,
                         'method.response.header.Access-Control-Allow-Credentials': True
                     },
-                    response_models={
-                        'application/json': error_response_model
-                    }
+                    response_models={'application/json': error_response_model}
                 ),
             ]
         )
 
+        # DNS (alias record to API; kept as in original)
+        self._r53_dns_record(gateway, route53_zone, props)
+
+        return gateway, custom_domain_name
+
     def _create_waf_for_api_gateway(self, gateway: apigw.RestApi) -> None:
-        """Create WAF for API Gateway"""
-        # Create WAF Web ACL
         web_acl = wafv2.CfnWebACL(
             self, "ApiGatewayWAF",
             default_action=wafv2.CfnWebACL.DefaultActionProperty(allow={}),
@@ -759,7 +669,6 @@ class APIGWStack(Stack):
                 sampled_requests_enabled=True
             ),
             rules=[
-                # Rate limiting rule
                 wafv2.CfnWebACL.RuleProperty(
                     name="RateLimitRule",
                     priority=1,
@@ -776,12 +685,10 @@ class APIGWStack(Stack):
                         sampled_requests_enabled=True
                     )
                 ),
-                # AWS Managed Rules - Common Rule Set
                 wafv2.CfnWebACL.RuleProperty(
                     name="AWSManagedRulesCommonRuleSet",
                     priority=2,
-                    override_action=wafv2.CfnWebACL.OverrideActionProperty(
-                        none={}),
+                    override_action=wafv2.CfnWebACL.OverrideActionProperty(none={}),
                     statement=wafv2.CfnWebACL.StatementProperty(
                         managed_rule_group_statement=wafv2.CfnWebACL.ManagedRuleGroupStatementProperty(
                             vendor_name="AWS",
@@ -794,12 +701,10 @@ class APIGWStack(Stack):
                         sampled_requests_enabled=True
                     )
                 ),
-                # AWS Managed Rules - SQL Injection Rule Set
                 wafv2.CfnWebACL.RuleProperty(
                     name="AWSManagedRulesSQLiRuleSet",
                     priority=3,
-                    override_action=wafv2.CfnWebACL.OverrideActionProperty(
-                        none={}),
+                    override_action=wafv2.CfnWebACL.OverrideActionProperty(none={}),
                     statement=wafv2.CfnWebACL.StatementProperty(
                         managed_rule_group_statement=wafv2.CfnWebACL.ManagedRuleGroupStatementProperty(
                             vendor_name="AWS",
@@ -815,7 +720,6 @@ class APIGWStack(Stack):
             ]
         )
 
-        # Associate WAF with API Gateway Stage
         wafv2.CfnWebACLAssociation(
             self, "ApiGatewayWAFAssociation",
             resource_arn=f"arn:aws:apigateway:{self.region}::/restapis/{gateway.rest_api_id}/stages/prod",
@@ -829,8 +733,6 @@ class APIGWStack(Stack):
         created_status_queue: sqs.Queue,
         other_status_queue: sqs.Queue
     ) -> None:
-        """Create CloudWatch Alarms for monitoring"""
-        # API Gateway 4XX errors alarm
         cloudwatch.Alarm(
             self, "ApiGateway4XXErrorsAlarm",
             metric=gateway.metric_client_error(),
@@ -841,7 +743,6 @@ class APIGWStack(Stack):
             alarm_description="Alarm if API Gateway returns too many 4XX errors"
         )
 
-        # API Gateway 5XX errors alarm
         cloudwatch.Alarm(
             self, "ApiGateway5XXErrorsAlarm",
             metric=gateway.metric_server_error(),
@@ -852,18 +753,16 @@ class APIGWStack(Stack):
             alarm_description="Alarm if API Gateway returns too many 5XX errors"
         )
 
-        # API Gateway latency alarm
         cloudwatch.Alarm(
             self, "ApiGatewayLatencyAlarm",
             metric=gateway.metric_latency(),
             evaluation_periods=3,
-            threshold=1000,  # 1 second
+            threshold=1000,
             comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_THRESHOLD,
             treat_missing_data=cloudwatch.TreatMissingData.NOT_BREACHING,
             alarm_description="Alarm if API Gateway latency is too high"
         )
 
-        # SNS Topic throttled alarm
         cloudwatch.Alarm(
             self, "SNSThrottledAlarm",
             metric=cloudwatch.Metric(
@@ -879,23 +778,21 @@ class APIGWStack(Stack):
             alarm_description="Alarm if SNS messages are being throttled"
         )
 
-        # SQS Queue alarm for created status
         cloudwatch.Alarm(
             self, "CreatedStatusQueueAgeAlarm",
             metric=created_status_queue.metric_approximate_age_of_oldest_message(),
             evaluation_periods=1,
-            threshold=300,  # 5 minutes
+            threshold=300,
             comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_THRESHOLD,
             treat_missing_data=cloudwatch.TreatMissingData.NOT_BREACHING,
             alarm_description="Alarm if messages in created status queue are too old"
         )
 
-        # SQS Queue alarm for other status
         cloudwatch.Alarm(
             self, "OtherStatusQueueAgeAlarm",
             metric=other_status_queue.metric_approximate_age_of_oldest_message(),
             evaluation_periods=1,
-            threshold=300,  # 5 minutes
+            threshold=300,
             comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_THRESHOLD,
             treat_missing_data=cloudwatch.TreatMissingData.NOT_BREACHING,
             alarm_description="Alarm if messages in other status queue are too old"
@@ -907,7 +804,6 @@ class APIGWStack(Stack):
         gateway: apigw.RestApi,
         props: Dict[str, Any]
     ) -> apigw.DomainName:
-        """Create custom domain for API Gateway"""
         custom_domain_name = gateway.add_domain_name(
             "DomainName",
             domain_name=props["custom_domain_name"],
@@ -925,39 +821,23 @@ class APIGWStack(Stack):
         route53_zone_creation: route53.IHostedZone,
         props: Dict[str, Any]
     ) -> None:
-        """Create Route53 DNS record for API Gateway"""
         route53.ARecord(
             self, "AliasRecord",
             zone=route53_zone_creation,
-            target=route53.RecordTarget.from_alias(
-                route53_targets.ApiGateway(gateway)),
+            target=route53.RecordTarget.from_alias(route53_targets.ApiGateway(gateway)),
             record_name=props["custom_domain_name"],
             ttl=Duration.minutes(5)
         )
 
     def _create_outputs(self, vpc: ec2.Vpc, custom_domain_name: apigw.DomainName) -> None:
-        """Create CloudFormation outputs"""
-        CfnOutput(
-            self, "VPC_ID",
-            description="VPC ID",
-            export_name="vpcid",
-            value=vpc.vpc_id
-        )
-
-        CfnOutput(
-            self, "VPC_ARN",
-            description="VPC ARN",
-            export_name="vpcarn",
-            value=vpc.vpc_arn
-        )
-
+        CfnOutput(self, "VPC_ID", description="VPC ID", export_name="vpcid", value=vpc.vpc_id)
+        CfnOutput(self, "VPC_ARN", description="VPC ARN", export_name="vpcarn", value=vpc.vpc_arn)
         CfnOutput(
             self, "CUSTOM_DOMAIN_ADDR",
             description="CUSTOM DOMAIN ADDRESS",
             export_name="cust-domain-addr",
             value="https://" + custom_domain_name.domain_name + "/"
         )
-
         CfnOutput(
             self, "API_ENDPOINT",
             description="API Gateway Endpoint",

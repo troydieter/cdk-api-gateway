@@ -26,7 +26,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::550767824695:role/cdk-hnb659fds-deploy-role-550767824695-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::550767824695:role/cdk-hnb659fds-cfn-exec-role-550767824695-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-550767824695-us-east-1/35a2be04cb12b93a3052b3631ac9d7912ac5ad5e5cfb041a62a3cf7273f3d4dc.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-550767824695-us-east-1/1e5eb2b54c626c6a17e6a4ff1f1b293f76816324a701754f0e613f218d6c0d89.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -71,72 +71,6 @@
                 "Value": "apigw_fanout"
               }
             ]
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/AlarmTopic/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulAlarmTopic152D7EE5"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/AlarmTopic/example@me.com/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulAlarmTopicexamplemecomDBF0636C"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/Dashboard/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulDashboard1A69A5BC"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/WatchfulDashboard": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulWatchfulDashboardCB42D1D6"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ErrorsAlarm/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DErrorsAlarmC4D4DB7F"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/ThrottlesAlarm/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DThrottlesAlarmD0324454"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9D/DurationAlarm/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulApiGatewayFanOutSQSCreatedStatusSubscribeLambdaHandler71408C9DDurationAlarm00615B92"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ErrorsAlarm/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FErrorsAlarm198D7108"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/ThrottlesAlarm/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FThrottlesAlarmE6472B76"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4F/DurationAlarm/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulApiGatewayFanOutSQSAnyOtherStatusSubscribeLambdaHandler8A53ED4FDurationAlarmF63140B6"
-          }
-        ],
-        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutApiGWFanAPID0FF20CE/5XXErrorAlarm/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "WatchfulApiGatewayFanOutApiGWFanAPID0FF20CE5XXErrorAlarm83D6498C"
           }
         ],
         "/ApiGatewayFanOut/VpcFlowLogs/Resource": [
@@ -336,27 +270,27 @@
             "type": "aws:cdk:warning",
             "data": "When creating an empty TargetGroup, you should specify a 'targetType' (this warning may become an error in the future). [ack: @aws-cdk/aws-elbv2:targetGroupSpecifyTargetTypeForEmptyTargetGroup]",
             "trace": [
-              "Annotations.addMessage (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1608)",
-              "Annotations.addWarningV2 (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:825)",
-              "NetworkTargetGroup.validateTargetGroup (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\shared\\base-target-group.js:1:4578)",
-              "NetworkTargetGroup.validateTargetGroup (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\nlb\\network-target-group.js:1:4924)",
-              "Object.validate (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\shared\\base-target-group.js:1:3279)",
-              "C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\constructs\\lib\\construct.js:333:49",
+              "Annotations.addMessage (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1608)",
+              "Annotations.addWarningV2 (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:825)",
+              "NetworkTargetGroup.validateTargetGroup (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\shared\\base-target-group.js:1:4578)",
+              "NetworkTargetGroup.validateTargetGroup (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\nlb\\network-target-group.js:1:4924)",
+              "Object.validate (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\aws-elasticloadbalancingv2\\lib\\shared\\base-target-group.js:1:3279)",
+              "C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\constructs\\lib\\construct.js:333:49",
               "Array.flatMap (<anonymous>)",
-              "Node.validate (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\constructs\\lib\\construct.js:333:34)",
-              "C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:2:3675",
-              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:255)",
-              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:334)",
-              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:334)",
-              "validateTree (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:2:3610)",
-              "synthesize (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:1:1561)",
-              "App.synth (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-4NrBdV\\node_modules\\aws-cdk-lib\\core\\lib\\stage.js:1:2263)",
-              "C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpyg2cl8ba\\lib\\program.js:294:171",
-              "Kernel._Kernel_ensureSync (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpyg2cl8ba\\lib\\program.js:916:24)",
-              "Kernel.invoke (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpyg2cl8ba\\lib\\program.js:294:102)",
-              "KernelHost.processRequest (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpyg2cl8ba\\lib\\program.js:15464:36)",
-              "KernelHost.run (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpyg2cl8ba\\lib\\program.js:15424:22)",
-              "Immediate._onImmediate (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmpyg2cl8ba\\lib\\program.js:15425:45)",
+              "Node.validate (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\constructs\\lib\\construct.js:333:34)",
+              "C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:2:3675",
+              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:255)",
+              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:334)",
+              "visit (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:4:334)",
+              "validateTree (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:2:3610)",
+              "synthesize (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\private\\synthesis.js:1:1561)",
+              "App.synth (C:\\Users\\troyd\\AppData\\Local\\Temp\\jsii-kernel-FNp66K\\node_modules\\aws-cdk-lib\\core\\lib\\stage.js:1:2263)",
+              "C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:294:171",
+              "Kernel._Kernel_ensureSync (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:916:24)",
+              "Kernel.invoke (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:294:102)",
+              "KernelHost.processRequest (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:15464:36)",
+              "KernelHost.run (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:15424:22)",
+              "Immediate._onImmediate (C:\\Users\\troyd\\AppData\\Local\\Temp\\tmp9rv74f_1\\lib\\program.js:15425:45)",
               "process.processImmediate (node:internal/timers:478:21)"
             ]
           }
@@ -643,10 +577,10 @@
             "data": "ApiGWFanAPIRequestValidator67F0867C"
           }
         ],
-        "/ApiGatewayFanOut/ApiGWFanAPI/api.example.com/Resource": [
+        "/ApiGatewayFanOut/ApiGWFanAPI/api.well-architected.online/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ApiGWFanAPIapiexamplecomD40F936F"
+            "data": "ApiGWFanAPIapiwellarchitectedonlineD1B3F9B4"
           }
         ],
         "/ApiGatewayFanOut/ApiGWFanAPI/DomainName/Resource": [
@@ -685,10 +619,10 @@
             "data": "GWUsagePlanB7D9547B"
           }
         ],
-        "/ApiGatewayFanOut/GWUsagePlan/UsagePlanKeyResource:ApiGatewayFanOutApiGWFanAPIapiexamplecom9153D56C": [
+        "/ApiGatewayFanOut/GWUsagePlan/UsagePlanKeyResource:ApiGatewayFanOutApiGWFanAPIapiwellarchitectedonline0916B16E": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "GWUsagePlanUsagePlanKeyResourceApiGatewayFanOutApiGWFanAPIapiexamplecom9153D56CFB061BEC"
+            "data": "GWUsagePlanUsagePlanKeyResourceApiGatewayFanOutApiGWFanAPIapiwellarchitectedonline0916B16E6ED465CA"
           }
         ],
         "/ApiGatewayFanOut/APIGwMapping/Resource": [

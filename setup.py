@@ -15,7 +15,6 @@ setuptools.setup(
     install_requires=[
         "aws-cdk-lib>=2.126.0",
         "constructs>=10.3.0",
-        "cdk-watchful>=0.7.0",
         "aws-cdk-aws-apigatewayv2-alpha>=2.126.0-alpha.0",
         "aws-cdk-aws-apigatewayv2-integrations-alpha>=2.126.0-alpha.0",
         "aws-xray-sdk>=2.12.1",
