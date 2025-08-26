@@ -214,9 +214,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-cdk.out/
-cdk.out/*
-cdk.out/ApiGatewayFanOut.assets.json
-cdk.out/ApiGatewayFanOut.template.json
-cdk.out/manifest.json
-cdk.out/tree.json
+cdk.out
