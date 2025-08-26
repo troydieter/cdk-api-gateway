@@ -673,9 +673,11 @@ class APIGWStack(Stack):
             ]
         )
 
+        api_arn = f"arn:aws:apigateway:{Stack.of(self).region}::/restapis/{gateway.rest_api_id}/stages/{gateway.deployment_stage.stage_name}"
+
         web_acl_association = wafv2.CfnWebACLAssociation(
             self, "ApiGatewayWAFAssociation",
-            resource_arn=gateway.rest_api_arn,
+            resource_arn=api_arn,
             web_acl_arn=web_acl.attr_arn
         )
         web_acl_association.node.add_dependency(gateway)
