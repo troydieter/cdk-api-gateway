@@ -1,0 +1,2987 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "ApiGatewayFanOut": {
+        "id": "ApiGatewayFanOut",
+        "path": "ApiGatewayFanOut",
+        "children": {
+          "Watchful": {
+            "id": "Watchful",
+            "path": "ApiGatewayFanOut/Watchful",
+            "children": {
+              "AlarmTopic": {
+                "id": "AlarmTopic",
+                "path": "ApiGatewayFanOut/Watchful/AlarmTopic",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/Watchful/AlarmTopic/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SNS::Topic",
+                      "aws:cdk:cloudformation:props": {
+                        "displayName": "Watchful Alarms",
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sns.CfnTopic",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "troydieter@gmail.com": {
+                    "id": "troydieter@gmail.com",
+                    "path": "ApiGatewayFanOut/Watchful/AlarmTopic/troydieter@gmail.com",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/Watchful/AlarmTopic/troydieter@gmail.com/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::SNS::Subscription",
+                          "aws:cdk:cloudformation:props": {
+                            "endpoint": "troydieter@gmail.com",
+                            "protocol": "email",
+                            "topicArn": {
+                              "Ref": "WatchfulAlarmTopic152D7EE5"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_sns.CfnSubscription",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sns.Subscription",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_sns.Topic",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "Dashboard": {
+                "id": "Dashboard",
+                "path": "ApiGatewayFanOut/Watchful/Dashboard",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/Watchful/Dashboard/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::CloudWatch::Dashboard",
+                      "aws:cdk:cloudformation:props": {
+                        "dashboardBody": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "{\"widgets\":[{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":0,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber\\n\\n[button:AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "#/functions/",
+                              {
+                                "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                              },
+                              "?tab=graph) [button:CloudWatch Logs](https://console.aws.amazon.com/cloudwatch/home?region=",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "#logEventViewer:group=/aws/lambda/",
+                              {
+                                "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                              },
+                              ")\"}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":0,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Invocations/5min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"metrics\":[[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"",
+                              {
+                                "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                              },
+                              "\",{\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":6,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Errors/5min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"",
+                              {
+                                "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                              },
+                              "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Errors > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":12,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Throttles/5min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"metrics\":[[\"AWS/Lambda\",\"Throttles\",\"FunctionName\",\"",
+                              {
+                                "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                              },
+                              "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Throttles > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":18,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Duration/5min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"metrics\":[[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
+                              {
+                                "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                              },
+                              "\",{\"label\":\"p99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"p99 > 2000 for 3 datapoints within 15 minutes\",\"value\":2000,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":8,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber\\n\\n[button:AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "#/functions/",
+                              {
+                                "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                              },
+                              "?tab=graph) [button:CloudWatch Logs](https://console.aws.amazon.com/cloudwatch/home?region=",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "#logEventViewer:group=/aws/lambda/",
+                              {
+                                "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                              },
+                              ")\"}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":0,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Invocations/5min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"metrics\":[[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"",
+                              {
+                                "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                              },
+                              "\",{\"stat\":\"Sum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":6,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Errors/5min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"",
+                              {
+                                "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                              },
+                              "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Errors > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":12,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Throttles/5min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"metrics\":[[\"AWS/Lambda\",\"Throttles\",\"FunctionName\",\"",
+                              {
+                                "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                              },
+                              "\",{\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"Throttles > 0 for 3 datapoints within 15 minutes\",\"value\":0,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":6,\"height\":6,\"x\":18,\"y\":10,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Duration/5min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"metrics\":[[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
+                              {
+                                "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                              },
+                              "\",{\"label\":\"p99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"p99 > 2000 for 3 datapoints within 15 minutes\",\"value\":2000,\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"text\",\"width\":24,\"height\":2,\"x\":0,\"y\":16,\"properties\":{\"markdown\":\"# ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI\\n\\n[button:Amazon API Gateway Console](https://console.aws.amazon.com/apigateway/home?region=",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "#/apis/",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                              },
+                              ")\"}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":0,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall Calls/min\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"Count\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"color\":\"#1f77b4\",\"label\":\"Calls\",\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ApiGateway\",\"4XXError\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"color\":\"#ff7f0e\",\"label\":\"4XX Errors\",\"period\":60,\"stat\":\"Sum\"}],[\"AWS/ApiGateway\",\"5XXError\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"color\":\"#d62728\",\"label\":\"5XX Errors\",\"period\":60,\"stat\":\"Sum\"}]],\"annotations\":{\"horizontal\":[{\"value\":1,\"color\":\"#ff0000\",\"label\":\"5XX Errors Alarm\",\"yAxis\":\"left\"}]},\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":12,\"y\":18,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall (1-minute periods)\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"min\",\"period\":60,\"stat\":\"Minimum\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"avg\",\"period\":60}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"p90\",\"period\":60,\"stat\":\"p90\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"p95\",\"period\":60,\"stat\":\"p95\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"p99\",\"period\":60,\"stat\":\"p99\"}],[\"AWS/ApiGateway\",\"Latency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"max\",\"period\":60,\"stat\":\"Maximum\"}]],\"yAxis\":{}}},{\"type\":\"metric\",\"width\":12,\"height\":6,\"x\":0,\"y\":24,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Overall Integration (1-minute periods)\",\"region\":\"",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              "\",\"stacked\":false,\"metrics\":[[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"min\",\"period\":60,\"stat\":\"Minimum\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"avg\",\"period\":60}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"p90\",\"period\":60,\"stat\":\"p90\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"p95\",\"period\":60,\"stat\":\"p95\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"p99\",\"period\":60,\"stat\":\"p99\"}],[\"AWS/ApiGateway\",\"IntegrationLatency\",\"ApiName\",\"ApiGWFanAPI\",\"Stage\",\"",
+                              {
+                                "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                              },
+                              "\",{\"label\":\"max\",\"period\":60,\"stat\":\"Maximum\"}]],\"yAxis\":{}}}]}"
+                            ]
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.CfnDashboard",
+                      "version": "2.184.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cloudwatch.Dashboard",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "WatchfulDashboard": {
+                "id": "WatchfulDashboard",
+                "path": "ApiGatewayFanOut/Watchful/WatchfulDashboard",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.184.1"
+                }
+              },
+              "ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56": {
+                "id": "ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56",
+                "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56",
+                "children": {
+                  "ErrorsAlarm": {
+                    "id": "ErrorsAlarm",
+                    "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ErrorsAlarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ErrorsAlarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "alarmActions": [
+                              {
+                                "Ref": "WatchfulAlarmTopic152D7EE5"
+                              }
+                            ],
+                            "alarmDescription": "Over 0 errors per minute",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "comparisonOperator": "GreaterThanThreshold",
+                            "dimensions": [
+                              {
+                                "name": "FunctionName",
+                                "value": {
+                                  "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                                }
+                              }
+                            ],
+                            "evaluationPeriods": 3,
+                            "metricName": "Errors",
+                            "namespace": "AWS/Lambda",
+                            "period": 300,
+                            "statistic": "Sum",
+                            "threshold": 0
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "ThrottlesAlarm": {
+                    "id": "ThrottlesAlarm",
+                    "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ThrottlesAlarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ThrottlesAlarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "alarmActions": [
+                              {
+                                "Ref": "WatchfulAlarmTopic152D7EE5"
+                              }
+                            ],
+                            "alarmDescription": "Over 0 throttles per minute",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "comparisonOperator": "GreaterThanThreshold",
+                            "dimensions": [
+                              {
+                                "name": "FunctionName",
+                                "value": {
+                                  "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                                }
+                              }
+                            ],
+                            "evaluationPeriods": 3,
+                            "metricName": "Throttles",
+                            "namespace": "AWS/Lambda",
+                            "period": 300,
+                            "statistic": "Sum",
+                            "threshold": 0
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "DurationAlarm": {
+                    "id": "DurationAlarm",
+                    "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/DurationAlarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/DurationAlarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "alarmActions": [
+                              {
+                                "Ref": "WatchfulAlarmTopic152D7EE5"
+                              }
+                            ],
+                            "alarmDescription": "p99 latency >= 2s (80%)",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "comparisonOperator": "GreaterThanThreshold",
+                            "evaluationPeriods": 3,
+                            "metrics": [
+                              {
+                                "metricStat": {
+                                  "metric": {
+                                    "metricName": "Duration",
+                                    "namespace": "AWS/Lambda",
+                                    "dimensions": [
+                                      {
+                                        "name": "FunctionName",
+                                        "value": {
+                                          "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "period": 300,
+                                  "stat": "p99"
+                                },
+                                "id": "m1",
+                                "label": "p99",
+                                "returnData": true
+                              }
+                            ],
+                            "threshold": 2000
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "cdk-watchful.WatchLambdaFunction",
+                  "version": "0.6.458"
+                }
+              },
+              "ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908": {
+                "id": "ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908",
+                "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908",
+                "children": {
+                  "ErrorsAlarm": {
+                    "id": "ErrorsAlarm",
+                    "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ErrorsAlarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ErrorsAlarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "alarmActions": [
+                              {
+                                "Ref": "WatchfulAlarmTopic152D7EE5"
+                              }
+                            ],
+                            "alarmDescription": "Over 0 errors per minute",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "comparisonOperator": "GreaterThanThreshold",
+                            "dimensions": [
+                              {
+                                "name": "FunctionName",
+                                "value": {
+                                  "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                                }
+                              }
+                            ],
+                            "evaluationPeriods": 3,
+                            "metricName": "Errors",
+                            "namespace": "AWS/Lambda",
+                            "period": 300,
+                            "statistic": "Sum",
+                            "threshold": 0
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "ThrottlesAlarm": {
+                    "id": "ThrottlesAlarm",
+                    "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ThrottlesAlarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ThrottlesAlarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "alarmActions": [
+                              {
+                                "Ref": "WatchfulAlarmTopic152D7EE5"
+                              }
+                            ],
+                            "alarmDescription": "Over 0 throttles per minute",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "comparisonOperator": "GreaterThanThreshold",
+                            "dimensions": [
+                              {
+                                "name": "FunctionName",
+                                "value": {
+                                  "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                                }
+                              }
+                            ],
+                            "evaluationPeriods": 3,
+                            "metricName": "Throttles",
+                            "namespace": "AWS/Lambda",
+                            "period": 300,
+                            "statistic": "Sum",
+                            "threshold": 0
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "DurationAlarm": {
+                    "id": "DurationAlarm",
+                    "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/DurationAlarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/DurationAlarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "alarmActions": [
+                              {
+                                "Ref": "WatchfulAlarmTopic152D7EE5"
+                              }
+                            ],
+                            "alarmDescription": "p99 latency >= 2s (80%)",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "comparisonOperator": "GreaterThanThreshold",
+                            "evaluationPeriods": 3,
+                            "metrics": [
+                              {
+                                "metricStat": {
+                                  "metric": {
+                                    "metricName": "Duration",
+                                    "namespace": "AWS/Lambda",
+                                    "dimensions": [
+                                      {
+                                        "name": "FunctionName",
+                                        "value": {
+                                          "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "period": 300,
+                                  "stat": "p99"
+                                },
+                                "id": "m1",
+                                "label": "p99",
+                                "returnData": true
+                              }
+                            ],
+                            "threshold": 2000
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "cdk-watchful.WatchLambdaFunction",
+                  "version": "0.6.458"
+                }
+              },
+              "ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82": {
+                "id": "ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82",
+                "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82",
+                "children": {
+                  "5XXErrorAlarm": {
+                    "id": "5XXErrorAlarm",
+                    "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/5XXErrorAlarm",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/Watchful/ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/5XXErrorAlarm/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                          "aws:cdk:cloudformation:props": {
+                            "alarmActions": [
+                              {
+                                "Ref": "WatchfulAlarmTopic152D7EE5"
+                              }
+                            ],
+                            "alarmDescription": "at 1",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                            "evaluationPeriods": 1,
+                            "metrics": [
+                              {
+                                "metricStat": {
+                                  "metric": {
+                                    "metricName": "5XXError",
+                                    "namespace": "AWS/ApiGateway",
+                                    "dimensions": [
+                                      {
+                                        "name": "ApiName",
+                                        "value": "ApiGWFanAPI"
+                                      },
+                                      {
+                                        "name": "Stage",
+                                        "value": {
+                                          "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "period": 300,
+                                  "stat": "Sum"
+                                },
+                                "id": "m1",
+                                "label": "5XX Errors",
+                                "returnData": true
+                              }
+                            ],
+                            "threshold": 1
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "cdk-watchful.WatchApiGateway",
+                  "version": "0.6.458"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "cdk-watchful.Watchful",
+              "version": "0.6.458"
+            }
+          },
+          "SNSConstruct": {
+            "id": "SNSConstruct",
+            "path": "ApiGatewayFanOut/SNSConstruct",
+            "children": {
+              "ApiGWFanTopic": {
+                "id": "ApiGWFanTopic",
+                "path": "ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SNS::Topic",
+                      "aws:cdk:cloudformation:props": {
+                        "displayName": "APIGW Incoming SNS Topic",
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sns.CfnTopic",
+                      "version": "2.184.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_sns.Topic",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "SNSDLQ": {
+                "id": "SNSDLQ",
+                "path": "ApiGatewayFanOut/SNSConstruct/SNSDLQ",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/SNSConstruct/SNSDLQ/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
+                      "aws:cdk:cloudformation:props": {
+                        "messageRetentionPeriod": 1209600,
+                        "queueName": "SNSDLQ",
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
+                      "version": "2.184.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_sqs.Queue",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "BigFanStatusCreatedQueue": {
+                "id": "BigFanStatusCreatedQueue",
+                "path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
+                      "aws:cdk:cloudformation:props": {
+                        "redrivePolicy": {
+                          "deadLetterTargetArn": {
+                            "Fn::GetAtt": [
+                              "SNSConstructSNSDLQ52513367",
+                              "Arn"
+                            ]
+                          },
+                          "maxReceiveCount": 5
+                        },
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ],
+                        "visibilityTimeout": 300
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "Policy": {
+                    "id": "Policy",
+                    "path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/Policy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/Policy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::SQS::QueuePolicy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sqs:SendMessage",
+                                  "Condition": {
+                                    "ArnEquals": {
+                                      "aws:SourceArn": {
+                                        "Ref": "SNSConstructApiGWFanTopic58631C38"
+                                      }
+                                    }
+                                  },
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "sns.amazonaws.com"
+                                  },
+                                  "Resource": {
+                                    "Fn::GetAtt": [
+                                      "SNSConstructBigFanStatusCreatedQueue6881EDC0",
+                                      "Arn"
+                                    ]
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "queues": [
+                              {
+                                "Ref": "SNSConstructBigFanStatusCreatedQueue6881EDC0"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_sqs.CfnQueuePolicy",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sqs.QueuePolicy",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1": {
+                    "id": "ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1",
+                    "path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::SNS::Subscription",
+                          "aws:cdk:cloudformation:props": {
+                            "endpoint": {
+                              "Fn::GetAtt": [
+                                "SNSConstructBigFanStatusCreatedQueue6881EDC0",
+                                "Arn"
+                              ]
+                            },
+                            "filterPolicy": {
+                              "status": [
+                                "created"
+                              ]
+                            },
+                            "protocol": "sqs",
+                            "rawMessageDelivery": true,
+                            "topicArn": {
+                              "Ref": "SNSConstructApiGWFanTopic58631C38"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_sns.CfnSubscription",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sns.Subscription",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_sqs.Queue",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "BigFanAnyOtherStatusQueue": {
+                "id": "BigFanAnyOtherStatusQueue",
+                "path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
+                      "aws:cdk:cloudformation:props": {
+                        "redrivePolicy": {
+                          "deadLetterTargetArn": {
+                            "Fn::GetAtt": [
+                              "SNSConstructSNSDLQ52513367",
+                              "Arn"
+                            ]
+                          },
+                          "maxReceiveCount": 5
+                        },
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ],
+                        "visibilityTimeout": 300
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sqs.CfnQueue",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "Policy": {
+                    "id": "Policy",
+                    "path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/Policy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/Policy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::SQS::QueuePolicy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sqs:SendMessage",
+                                  "Condition": {
+                                    "ArnEquals": {
+                                      "aws:SourceArn": {
+                                        "Ref": "SNSConstructApiGWFanTopic58631C38"
+                                      }
+                                    }
+                                  },
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "sns.amazonaws.com"
+                                  },
+                                  "Resource": {
+                                    "Fn::GetAtt": [
+                                      "SNSConstructBigFanAnyOtherStatusQueueD2B0033D",
+                                      "Arn"
+                                    ]
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "queues": [
+                              {
+                                "Ref": "SNSConstructBigFanAnyOtherStatusQueueD2B0033D"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_sqs.CfnQueuePolicy",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sqs.QueuePolicy",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1": {
+                    "id": "ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1",
+                    "path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::SNS::Subscription",
+                          "aws:cdk:cloudformation:props": {
+                            "endpoint": {
+                              "Fn::GetAtt": [
+                                "SNSConstructBigFanAnyOtherStatusQueueD2B0033D",
+                                "Arn"
+                              ]
+                            },
+                            "filterPolicy": {
+                              "status": [
+                                {
+                                  "anything-but": [
+                                    "created"
+                                  ]
+                                }
+                              ]
+                            },
+                            "protocol": "sqs",
+                            "rawMessageDelivery": true,
+                            "topicArn": {
+                              "Ref": "SNSConstructApiGWFanTopic58631C38"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_sns.CfnSubscription",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sns.Subscription",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_sqs.Queue",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "LambdaConstruct": {
+            "id": "LambdaConstruct",
+            "path": "ApiGatewayFanOut/LambdaConstruct",
+            "children": {
+              "SQSCreatedStatusSubscriber": {
+                "id": "SQSCreatedStatusSubscriber",
+                "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber",
+                "children": {
+                  "ServiceRole": {
+                    "id": "ServiceRole",
+                    "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole",
+                    "children": {
+                      "ImportServiceRole": {
+                        "id": "ImportServiceRole",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole/ImportServiceRole",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.Resource",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "lambda.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                                  ]
+                                ]
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                          "version": "2.184.1"
+                        }
+                      },
+                      "DefaultPolicy": {
+                        "id": "DefaultPolicy",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole/DefaultPolicy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole/DefaultPolicy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": [
+                                        "sqs:ReceiveMessage",
+                                        "sqs:ChangeMessageVisibility",
+                                        "sqs:GetQueueUrl",
+                                        "sqs:DeleteMessage",
+                                        "sqs:GetQueueAttributes"
+                                      ],
+                                      "Effect": "Allow",
+                                      "Resource": {
+                                        "Fn::GetAtt": [
+                                          "SNSConstructBigFanStatusCreatedQueue6881EDC0",
+                                          "Arn"
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "policyName": "LambdaConstructSQSCreatedStatusSubscriberServiceRoleDefaultPolicy38B1A3C6",
+                                "roles": [
+                                  {
+                                    "Ref": "LambdaConstructSQSCreatedStatusSubscriberServiceRole9A1F391F"
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                              "version": "2.184.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.Policy",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Role",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "Code": {
+                    "id": "Code",
+                    "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.184.1"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": {
+                            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                          },
+                          "s3Key": "75d027e594cff42ee3153e2634a15c4b9599cb076ec24e8c853d05619a12bc63.zip"
+                        },
+                        "handler": "createdStatus.handler",
+                        "role": {
+                          "Fn::GetAtt": [
+                            "LambdaConstructSQSCreatedStatusSubscriberServiceRole9A1F391F",
+                            "Arn"
+                          ]
+                        },
+                        "runtime": "python3.11",
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "SqsEventSource:ApiGatewayFanOutSNSConstructBigFanStatusCreatedQueueFCF0F6C0": {
+                    "id": "SqsEventSource:ApiGatewayFanOutSNSConstructBigFanStatusCreatedQueueFCF0F6C0",
+                    "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/SqsEventSource:ApiGatewayFanOutSNSConstructBigFanStatusCreatedQueueFCF0F6C0",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/SqsEventSource:ApiGatewayFanOutSNSConstructBigFanStatusCreatedQueueFCF0F6C0/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::EventSourceMapping",
+                          "aws:cdk:cloudformation:props": {
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "eventSourceArn": {
+                              "Fn::GetAtt": [
+                                "SNSConstructBigFanStatusCreatedQueue6881EDC0",
+                                "Arn"
+                              ]
+                            },
+                            "functionName": {
+                              "Ref": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnEventSourceMapping",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.EventSourceMapping",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.Function",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "SQSOtherStatusSubscriber": {
+                "id": "SQSOtherStatusSubscriber",
+                "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber",
+                "children": {
+                  "ServiceRole": {
+                    "id": "ServiceRole",
+                    "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole",
+                    "children": {
+                      "ImportServiceRole": {
+                        "id": "ImportServiceRole",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole/ImportServiceRole",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.Resource",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "lambda.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                                  ]
+                                ]
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                          "version": "2.184.1"
+                        }
+                      },
+                      "DefaultPolicy": {
+                        "id": "DefaultPolicy",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole/DefaultPolicy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole/DefaultPolicy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": [
+                                        "sqs:ReceiveMessage",
+                                        "sqs:ChangeMessageVisibility",
+                                        "sqs:GetQueueUrl",
+                                        "sqs:DeleteMessage",
+                                        "sqs:GetQueueAttributes"
+                                      ],
+                                      "Effect": "Allow",
+                                      "Resource": {
+                                        "Fn::GetAtt": [
+                                          "SNSConstructBigFanAnyOtherStatusQueueD2B0033D",
+                                          "Arn"
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "policyName": "LambdaConstructSQSOtherStatusSubscriberServiceRoleDefaultPolicyD9640CCE",
+                                "roles": [
+                                  {
+                                    "Ref": "LambdaConstructSQSOtherStatusSubscriberServiceRole95C39C6B"
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                              "version": "2.184.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.Policy",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Role",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "Code": {
+                    "id": "Code",
+                    "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.184.1"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": {
+                            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                          },
+                          "s3Key": "75d027e594cff42ee3153e2634a15c4b9599cb076ec24e8c853d05619a12bc63.zip"
+                        },
+                        "handler": "anyOtherStatus.handler",
+                        "role": {
+                          "Fn::GetAtt": [
+                            "LambdaConstructSQSOtherStatusSubscriberServiceRole95C39C6B",
+                            "Arn"
+                          ]
+                        },
+                        "runtime": "python3.11",
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "SqsEventSource:ApiGatewayFanOutSNSConstructBigFanAnyOtherStatusQueue49A97B16": {
+                    "id": "SqsEventSource:ApiGatewayFanOutSNSConstructBigFanAnyOtherStatusQueue49A97B16",
+                    "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/SqsEventSource:ApiGatewayFanOutSNSConstructBigFanAnyOtherStatusQueue49A97B16",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/SqsEventSource:ApiGatewayFanOutSNSConstructBigFanAnyOtherStatusQueue49A97B16/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::EventSourceMapping",
+                          "aws:cdk:cloudformation:props": {
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ],
+                            "eventSourceArn": {
+                              "Fn::GetAtt": [
+                                "SNSConstructBigFanAnyOtherStatusQueueD2B0033D",
+                                "Arn"
+                              ]
+                            },
+                            "functionName": {
+                              "Ref": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnEventSourceMapping",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.EventSourceMapping",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.Function",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "APIGatewayConstruct": {
+            "id": "APIGatewayConstruct",
+            "path": "ApiGatewayFanOut/APIGatewayConstruct",
+            "children": {
+              "ApiGWFanAPI": {
+                "id": "ApiGWFanAPI",
+                "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                      "aws:cdk:cloudformation:props": {
+                        "description": "API GW Fanout Example",
+                        "name": "ApiGWFanAPI",
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "CloudWatchRole": {
+                    "id": "CloudWatchRole",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CloudWatchRole",
+                    "children": {
+                      "ImportCloudWatchRole": {
+                        "id": "ImportCloudWatchRole",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CloudWatchRole/ImportCloudWatchRole",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.Resource",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CloudWatchRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "apigateway.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                                  ]
+                                ]
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Role",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "Account": {
+                    "id": "Account",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Account",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                      "aws:cdk:cloudformation:props": {
+                        "cloudWatchRoleArn": {
+                          "Fn::GetAtt": [
+                            "APIGatewayConstructApiGWFanAPICloudWatchRole722A9082",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnAccount",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "Deployment": {
+                    "id": "Deployment",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Deployment",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Deployment/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                          "aws:cdk:cloudformation:props": {
+                            "description": "API GW Fanout Example",
+                            "restApiId": {
+                              "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "DeploymentStage.prod": {
+                    "id": "DeploymentStage.prod",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/DeploymentStage.prod",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/DeploymentStage.prod/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                          "aws:cdk:cloudformation:props": {
+                            "deploymentId": {
+                              "Ref": "APIGatewayConstructApiGWFanAPIDeploymentD1732884c123b61605290780fec35be840e5b8c2"
+                            },
+                            "methodSettings": [
+                              {
+                                "httpMethod": "*",
+                                "resourcePath": "/*",
+                                "dataTraceEnabled": true,
+                                "loggingLevel": "INFO",
+                                "metricsEnabled": true
+                              }
+                            ],
+                            "restApiId": {
+                              "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                            },
+                            "stageName": "prod",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "Endpoint": {
+                    "id": "Endpoint",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Endpoint",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnOutput",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "Default": {
+                    "id": "Default",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default",
+                    "children": {
+                      "SendEvent": {
+                        "id": "SendEvent",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default/SendEvent",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default/SendEvent/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                              "aws:cdk:cloudformation:props": {
+                                "parentId": {
+                                  "Fn::GetAtt": [
+                                    "APIGatewayConstructApiGWFanAPI5DC6EA23",
+                                    "RootResourceId"
+                                  ]
+                                },
+                                "pathPart": "SendEvent",
+                                "restApiId": {
+                                  "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                              "version": "2.184.1"
+                            }
+                          },
+                          "POST": {
+                            "id": "POST",
+                            "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default/SendEvent/POST",
+                            "children": {
+                              "Resource": {
+                                "id": "Resource",
+                                "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default/SendEvent/POST/Resource",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                                  "aws:cdk:cloudformation:props": {
+                                    "apiKeyRequired": true,
+                                    "authorizationType": "NONE",
+                                    "httpMethod": "POST",
+                                    "integration": {
+                                      "type": "AWS",
+                                      "uri": {
+                                        "Fn::Join": [
+                                          "",
+                                          [
+                                            "arn:aws:apigateway:",
+                                            {
+                                              "Ref": "AWS::Region"
+                                            },
+                                            ":sns:path//"
+                                          ]
+                                        ]
+                                      },
+                                      "integrationHttpMethod": "POST",
+                                      "requestParameters": {
+                                        "integration.request.header.Content-Type": "'application/x-www-form-urlencoded'"
+                                      },
+                                      "requestTemplates": {
+                                        "application/json": {
+                                          "Fn::Join": [
+                                            "",
+                                            [
+                                              "Action=Publish&\n            TargetArn=$util.urlEncode('",
+                                              {
+                                                "Ref": "SNSConstructApiGWFanTopic58631C38"
+                                              },
+                                              "')&\n            Message=$util.urlEncode($input.path('$.message'))&\n            Version=2010-03-31&\n            MessageAttributes.entry.1.Name=status&\n            MessageAttributes.entry.1.Value.DataType=String&\n            MessageAttributes.entry.1.Value.StringValue=$util.urlEncode($input.path('$.status'))"
+                                            ]
+                                          ]
+                                        }
+                                      },
+                                      "passthroughBehavior": "NEVER",
+                                      "integrationResponses": [
+                                        {
+                                          "statusCode": "200",
+                                          "responseTemplates": {
+                                            "application/json": "{\"message\": \"message added to topic\"}"
+                                          }
+                                        },
+                                        {
+                                          "statusCode": "400",
+                                          "responseTemplates": {
+                                            "application/json": "{\"state\": \"error\", \"message\": \"$util.escapeJavaScript($input.path('$.errorMessage'))\"}"
+                                          },
+                                          "selectionPattern": "^\\[Error\\].*"
+                                        }
+                                      ],
+                                      "credentials": {
+                                        "Fn::GetAtt": [
+                                          "APIGatewayConstructAPIGatewaySNSRole7DEAD9A8",
+                                          "Arn"
+                                        ]
+                                      }
+                                    },
+                                    "methodResponses": [
+                                      {
+                                        "statusCode": "200"
+                                      },
+                                      {
+                                        "statusCode": "400"
+                                      }
+                                    ],
+                                    "resourceId": {
+                                      "Ref": "APIGatewayConstructApiGWFanAPISendEvent3800DDB1"
+                                    },
+                                    "restApiId": {
+                                      "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                                    }
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                                  "version": "2.184.1"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                              "version": "2.184.1",
+                              "metadata": []
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "api.troydieter.com": {
+                    "id": "api.troydieter.com",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/api.troydieter.com",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/api.troydieter.com/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::ApiKey",
+                          "aws:cdk:cloudformation:props": {
+                            "description": "ApiGWFanAPI-apikey",
+                            "enabled": true,
+                            "stageKeys": [
+                              {
+                                "restApiId": {
+                                  "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                                },
+                                "stageName": {
+                                  "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                                }
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnApiKey",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.ApiKey",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "CustomDomain": {
+                    "id": "CustomDomain",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CustomDomain",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CustomDomain/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::DomainName",
+                          "aws:cdk:cloudformation:props": {
+                            "domainName": "api.troydieter.com",
+                            "endpointConfiguration": {
+                              "types": [
+                                "REGIONAL"
+                              ]
+                            },
+                            "regionalCertificateArn": "arn:aws:acm:us-east-1:550767824695:certificate/bf155d92-d495-4ac2-afe7-b2db396c1182",
+                            "securityPolicy": "TLS_1_2",
+                            "tags": [
+                              {
+                                "key": "api_endpoint",
+                                "value": "api.troydieter.com"
+                              },
+                              {
+                                "key": "project",
+                                "value": "apigw_fanout"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnDomainName",
+                          "version": "2.184.1"
+                        }
+                      },
+                      "Map:--=>ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82": {
+                        "id": "Map:--=>ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CustomDomain/Map:--=>ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CustomDomain/Map:--=>ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::BasePathMapping",
+                              "aws:cdk:cloudformation:props": {
+                                "domainName": {
+                                  "Ref": "APIGatewayConstructApiGWFanAPICustomDomain0D18E659"
+                                },
+                                "restApiId": {
+                                  "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                                },
+                                "stage": {
+                                  "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnBasePathMapping",
+                              "version": "2.184.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.BasePathMapping",
+                          "version": "2.184.1",
+                          "metadata": []
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.DomainName",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.RestApi",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "GWUsagePlan": {
+                "id": "GWUsagePlan",
+                "path": "ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::UsagePlan",
+                      "aws:cdk:cloudformation:props": {
+                        "description": "API Gateway Unlimited Use",
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ],
+                        "usagePlanName": "ApiGWFanAPI-usageplan"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnUsagePlan",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "UsagePlanKeyResource:ApiGatewayFanOutAPIGatewayConstructApiGWFanAPIapitroydietercom9E48BC50": {
+                    "id": "UsagePlanKeyResource:ApiGatewayFanOutAPIGatewayConstructApiGWFanAPIapitroydietercom9E48BC50",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan/UsagePlanKeyResource:ApiGatewayFanOutAPIGatewayConstructApiGWFanAPIapitroydietercom9E48BC50",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::UsagePlanKey",
+                      "aws:cdk:cloudformation:props": {
+                        "keyId": {
+                          "Ref": "APIGatewayConstructApiGWFanAPIapitroydietercomF9BF3FF4"
+                        },
+                        "keyType": "API_KEY",
+                        "usagePlanId": {
+                          "Ref": "APIGatewayConstructGWUsagePlan7281BC4C"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnUsagePlanKey",
+                      "version": "2.184.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.UsagePlan",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "APIGatewaySNSRole": {
+                "id": "APIGatewaySNSRole",
+                "path": "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole",
+                "children": {
+                  "ImportAPIGatewaySNSRole": {
+                    "id": "ImportAPIGatewaySNSRole",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole/ImportAPIGatewaySNSRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "tags": [
+                          {
+                            "key": "api_endpoint",
+                            "value": "api.troydieter.com"
+                          },
+                          {
+                            "key": "project",
+                            "value": "apigw_fanout"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sns:Publish",
+                                  "Effect": "Allow",
+                                  "Resource": {
+                                    "Ref": "SNSConstructApiGWFanTopic58631C38"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "APIGatewayConstructAPIGatewaySNSRoleDefaultPolicy83C97BAB",
+                            "roles": [
+                              {
+                                "Ref": "APIGatewayConstructAPIGatewaySNSRole7DEAD9A8"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "ImportedWildcardCert": {
+                "id": "ImportedWildcardCert",
+                "path": "ApiGatewayFanOut/APIGatewayConstruct/ImportedWildcardCert",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "APIGwMapping": {
+                "id": "APIGwMapping",
+                "path": "ApiGatewayFanOut/APIGatewayConstruct/APIGwMapping",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ApiGatewayFanOut/APIGatewayConstruct/APIGwMapping/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::BasePathMapping",
+                      "aws:cdk:cloudformation:props": {
+                        "basePath": "apigw_fanout",
+                        "domainName": {
+                          "Ref": "APIGatewayConstructApiGWFanAPICustomDomain0D18E659"
+                        },
+                        "restApiId": {
+                          "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                        },
+                        "stage": {
+                          "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnBasePathMapping",
+                      "version": "2.184.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.BasePathMapping",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "ApiWebACL": {
+                "id": "ApiWebACL",
+                "path": "ApiGatewayFanOut/APIGatewayConstruct/ApiWebACL",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::WAFv2::WebACL",
+                  "aws:cdk:cloudformation:props": {
+                    "defaultAction": {
+                      "allow": {}
+                    },
+                    "description": "API Gateway WAF WEB ACL",
+                    "rules": [
+                      {
+                        "name": "AWSManagedRulesCommonRuleSet",
+                        "priority": 1,
+                        "statement": {
+                          "managedRuleGroupStatement": {
+                            "name": "AWSManagedRulesCommonRuleSet",
+                            "vendorName": "AWS"
+                          }
+                        },
+                        "visibilityConfig": {
+                          "cloudWatchMetricsEnabled": true,
+                          "metricName": "AWSManagedRulesCommonRuleSetMetric",
+                          "sampledRequestsEnabled": true
+                        },
+                        "overrideAction": {
+                          "none": {}
+                        }
+                      },
+                      {
+                        "name": "LimitRequests100",
+                        "priority": 2,
+                        "statement": {
+                          "rateBasedStatement": {
+                            "aggregateKeyType": "IP",
+                            "limit": 100
+                          }
+                        },
+                        "visibilityConfig": {
+                          "cloudWatchMetricsEnabled": true,
+                          "metricName": "LimitRequests100Metric",
+                          "sampledRequestsEnabled": true
+                        },
+                        "action": {
+                          "block": {}
+                        }
+                      }
+                    ],
+                    "scope": "REGIONAL",
+                    "tags": [
+                      {
+                        "key": "api_endpoint",
+                        "value": "api.troydieter.com"
+                      },
+                      {
+                        "key": "project",
+                        "value": "apigw_fanout"
+                      }
+                    ],
+                    "visibilityConfig": {
+                      "cloudWatchMetricsEnabled": true,
+                      "metricName": "ApiWebACLMetric",
+                      "sampledRequestsEnabled": true
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_wafv2.CfnWebACL",
+                  "version": "2.184.1"
+                }
+              },
+              "WafAssociation": {
+                "id": "WafAssociation",
+                "path": "ApiGatewayFanOut/APIGatewayConstruct/WafAssociation",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::WAFv2::WebACLAssociation",
+                  "aws:cdk:cloudformation:props": {
+                    "resourceArn": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:",
+                          {
+                            "Ref": "AWS::Partition"
+                          },
+                          ":apigateway:",
+                          {
+                            "Ref": "AWS::Region"
+                          },
+                          "::/restapis/",
+                          {
+                            "Ref": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+                          },
+                          "/stages/",
+                          {
+                            "Ref": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+                          }
+                        ]
+                      ]
+                    },
+                    "webAclArn": {
+                      "Fn::GetAtt": [
+                        "APIGatewayConstructApiWebACL2C7C8E5D",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_wafv2.CfnWebACLAssociation",
+                  "version": "2.184.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "ImportedZone": {
+            "id": "ImportedZone",
+            "path": "ApiGatewayFanOut/ImportedZone",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.184.1",
+              "metadata": []
+            }
+          },
+          "AliasRecord": {
+            "id": "AliasRecord",
+            "path": "ApiGatewayFanOut/AliasRecord",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "ApiGatewayFanOut/AliasRecord/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
+                  "aws:cdk:cloudformation:props": {
+                    "aliasTarget": {
+                      "dnsName": {
+                        "Fn::GetAtt": [
+                          "APIGatewayConstructApiGWFanAPICustomDomain0D18E659",
+                          "RegionalDomainName"
+                        ]
+                      },
+                      "hostedZoneId": {
+                        "Fn::GetAtt": [
+                          "APIGatewayConstructApiGWFanAPICustomDomain0D18E659",
+                          "RegionalHostedZoneId"
+                        ]
+                      }
+                    },
+                    "hostedZoneId": "Z10057183MLGVY8QQ2VGK",
+                    "name": "api.troydieter.com.",
+                    "type": "A"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_route53.CfnRecordSet",
+                  "version": "2.184.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_route53.ARecord",
+              "version": "2.184.1",
+              "metadata": []
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "ApiGatewayFanOut/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "ApiGatewayFanOut/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.184.1"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "ApiGatewayFanOut/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.184.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "ApiGatewayFanOut/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.184.1"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "ApiGatewayFanOut/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.184.1"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.184.1"
+        }
+      },
+      "UrlShortenerStack": {
+        "id": "UrlShortenerStack",
+        "path": "UrlShortenerStack",
+        "children": {
+          "UrlShortenerTable": {
+            "id": "UrlShortenerTable",
+            "path": "UrlShortenerStack/UrlShortenerTable",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "UrlShortenerStack/UrlShortenerTable/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DynamoDB::Table",
+                  "aws:cdk:cloudformation:props": {
+                    "attributeDefinitions": [
+                      {
+                        "attributeName": "shortCode",
+                        "attributeType": "S"
+                      }
+                    ],
+                    "keySchema": [
+                      {
+                        "attributeName": "shortCode",
+                        "keyType": "HASH"
+                      }
+                    ],
+                    "provisionedThroughput": {
+                      "readCapacityUnits": 5,
+                      "writeCapacityUnits": 5
+                    },
+                    "timeToLiveSpecification": {
+                      "attributeName": "ttl",
+                      "enabled": true
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_dynamodb.CfnTable",
+                  "version": "2.184.1"
+                }
+              },
+              "ScalingRole": {
+                "id": "ScalingRole",
+                "path": "UrlShortenerStack/UrlShortenerTable/ScalingRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_dynamodb.Table",
+              "version": "2.184.1",
+              "metadata": []
+            }
+          },
+          "ShortenUrlFunction": {
+            "id": "ShortenUrlFunction",
+            "path": "UrlShortenerStack/ShortenUrlFunction",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "UrlShortenerStack/ShortenUrlFunction/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "UrlShortenerStack/ShortenUrlFunction/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "UrlShortenerStack/ShortenUrlFunction/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "UrlShortenerStack/ShortenUrlFunction/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "UrlShortenerStack/ShortenUrlFunction/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "dynamodb:BatchWriteItem",
+                                    "dynamodb:PutItem",
+                                    "dynamodb:UpdateItem",
+                                    "dynamodb:DeleteItem",
+                                    "dynamodb:DescribeTable"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "UrlShortenerTableE47991EF",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Ref": "AWS::NoValue"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "ShortenUrlFunctionServiceRoleDefaultPolicy8E6FBAA5",
+                            "roles": [
+                              {
+                                "Ref": "ShortenUrlFunctionServiceRoleD8E32B56"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "UrlShortenerStack/ShortenUrlFunction/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "UrlShortenerStack/ShortenUrlFunction/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "UrlShortenerStack/ShortenUrlFunction/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.184.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "UrlShortenerStack/ShortenUrlFunction/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "63a9a580c0ed0ecea18d64f7b0c56b523928aec6b3eb1872de7362cd677d746a.zip"
+                    },
+                    "environment": {
+                      "variables": {
+                        "TABLE_NAME": {
+                          "Ref": "UrlShortenerTableE47991EF"
+                        },
+                        "DOMAIN": "api.troydieter.com",
+                        "TTL_DAYS": "30"
+                      }
+                    },
+                    "handler": "generate.handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "ShortenUrlFunctionServiceRoleD8E32B56",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.11"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.184.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.184.1",
+              "metadata": []
+            }
+          },
+          "RedirectFunction": {
+            "id": "RedirectFunction",
+            "path": "UrlShortenerStack/RedirectFunction",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "UrlShortenerStack/RedirectFunction/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "UrlShortenerStack/RedirectFunction/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "UrlShortenerStack/RedirectFunction/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "UrlShortenerStack/RedirectFunction/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "UrlShortenerStack/RedirectFunction/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "dynamodb:BatchGetItem",
+                                    "dynamodb:GetRecords",
+                                    "dynamodb:GetShardIterator",
+                                    "dynamodb:Query",
+                                    "dynamodb:GetItem",
+                                    "dynamodb:Scan",
+                                    "dynamodb:ConditionCheckItem",
+                                    "dynamodb:DescribeTable"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "UrlShortenerTableE47991EF",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Ref": "AWS::NoValue"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "RedirectFunctionServiceRoleDefaultPolicy92D89BB5",
+                            "roles": [
+                              {
+                                "Ref": "RedirectFunctionServiceRole098A3D15"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.184.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.184.1",
+                  "metadata": []
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "UrlShortenerStack/RedirectFunction/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "UrlShortenerStack/RedirectFunction/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.184.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "UrlShortenerStack/RedirectFunction/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.184.1",
+                      "metadata": []
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.184.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "UrlShortenerStack/RedirectFunction/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "63a9a580c0ed0ecea18d64f7b0c56b523928aec6b3eb1872de7362cd677d746a.zip"
+                    },
+                    "environment": {
+                      "variables": {
+                        "TABLE_NAME": {
+                          "Ref": "UrlShortenerTableE47991EF"
+                        }
+                      }
+                    },
+                    "handler": "redirect.handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "RedirectFunctionServiceRole098A3D15",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.11"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.184.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.184.1",
+              "metadata": []
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "UrlShortenerStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "UrlShortenerStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.184.1"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "UrlShortenerStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.184.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "UrlShortenerStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.184.1"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "UrlShortenerStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.184.1"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.184.1"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.4.2"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.184.1"
+    }
+  }
+}

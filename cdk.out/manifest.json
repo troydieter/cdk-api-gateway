@@ -1,0 +1,468 @@
+{
+  "version": "40.0.0",
+  "artifacts": {
+    "ApiGatewayFanOut.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "ApiGatewayFanOut.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "ApiGatewayFanOut": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "ApiGatewayFanOut.template.json",
+        "terminationProtection": false,
+        "tags": {
+          "api_endpoint": "api.troydieter.com",
+          "project": "apigw_fanout"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3ef1d9b63c5111ebc575eeee787aa544e9c685342411dae407c16694501b61bb.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "ApiGatewayFanOut.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "ApiGatewayFanOut.assets"
+      ],
+      "metadata": {
+        "/ApiGatewayFanOut": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "api_endpoint",
+                "Value": "api.troydieter.com"
+              },
+              {
+                "Key": "project",
+                "Value": "apigw_fanout"
+              }
+            ]
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/AlarmTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulAlarmTopic152D7EE5"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/AlarmTopic/troydieter@gmail.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulAlarmTopictroydietergmailcom74531F45"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/Dashboard/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulDashboard1A69A5BC"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/WatchfulDashboard": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulWatchfulDashboardCB42D1D6"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ErrorsAlarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56ErrorsAlarmC2127C0E"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/ThrottlesAlarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56ThrottlesAlarm01558829"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56/DurationAlarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulApiGatewayFanOutLambdaConstructSQSCreatedStatusSubscriber16F4FC56DurationAlarm5E13B581"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ErrorsAlarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908ErrorsAlarmE413D9DA"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/ThrottlesAlarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908ThrottlesAlarmB53F81B7"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908/DurationAlarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulApiGatewayFanOutLambdaConstructSQSOtherStatusSubscriberCCA20908DurationAlarm619A6513"
+          }
+        ],
+        "/ApiGatewayFanOut/Watchful/ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/5XXErrorAlarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "WatchfulApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D825XXErrorAlarm2E538A72"
+          }
+        ],
+        "/ApiGatewayFanOut/SNSConstruct/ApiGWFanTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SNSConstructApiGWFanTopic58631C38"
+          }
+        ],
+        "/ApiGatewayFanOut/SNSConstruct/SNSDLQ/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SNSConstructSNSDLQ52513367"
+          }
+        ],
+        "/ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SNSConstructBigFanStatusCreatedQueue6881EDC0"
+          }
+        ],
+        "/ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SNSConstructBigFanStatusCreatedQueuePolicyABAF1B37"
+          }
+        ],
+        "/ApiGatewayFanOut/SNSConstruct/BigFanStatusCreatedQueue/ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SNSConstructBigFanStatusCreatedQueueApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1FDECEBBE"
+          }
+        ],
+        "/ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SNSConstructBigFanAnyOtherStatusQueueD2B0033D"
+          }
+        ],
+        "/ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SNSConstructBigFanAnyOtherStatusQueuePolicy7C8CB668"
+          }
+        ],
+        "/ApiGatewayFanOut/SNSConstruct/BigFanAnyOtherStatusQueue/ApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B1/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SNSConstructBigFanAnyOtherStatusQueueApiGatewayFanOutSNSConstructApiGWFanTopic4D54B4B15B4DB8EE"
+          }
+        ],
+        "/ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaConstructSQSCreatedStatusSubscriberServiceRole9A1F391F"
+          }
+        ],
+        "/ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaConstructSQSCreatedStatusSubscriberServiceRoleDefaultPolicy38B1A3C6"
+          }
+        ],
+        "/ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaConstructSQSCreatedStatusSubscriber3E301D30"
+          }
+        ],
+        "/ApiGatewayFanOut/LambdaConstruct/SQSCreatedStatusSubscriber/SqsEventSource:ApiGatewayFanOutSNSConstructBigFanStatusCreatedQueueFCF0F6C0/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaConstructSQSCreatedStatusSubscriberSqsEventSourceApiGatewayFanOutSNSConstructBigFanStatusCreatedQueueFCF0F6C0659DF0E7"
+          }
+        ],
+        "/ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaConstructSQSOtherStatusSubscriberServiceRole95C39C6B"
+          }
+        ],
+        "/ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaConstructSQSOtherStatusSubscriberServiceRoleDefaultPolicyD9640CCE"
+          }
+        ],
+        "/ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaConstructSQSOtherStatusSubscriberD6485005"
+          }
+        ],
+        "/ApiGatewayFanOut/LambdaConstruct/SQSOtherStatusSubscriber/SqsEventSource:ApiGatewayFanOutSNSConstructBigFanAnyOtherStatusQueue49A97B16/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaConstructSQSOtherStatusSubscriberSqsEventSourceApiGatewayFanOutSNSConstructBigFanAnyOtherStatusQueue49A97B16FEE74F17"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPI5DC6EA23"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPICloudWatchRole722A9082"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPIAccount5F3AFA68"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPIDeploymentD1732884c123b61605290780fec35be840e5b8c2"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPIDeploymentStageprod7C53A894"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPIEndpoint193A9589"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default/SendEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPISendEvent3800DDB1"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/Default/SendEvent/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPISendEventPOST72B443D1"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/api.troydieter.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPIapitroydietercomF9BF3FF4"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CustomDomain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPICustomDomain0D18E659"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiGWFanAPI/CustomDomain/Map:--=>ApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiGWFanAPICustomDomainMapApiGatewayFanOutAPIGatewayConstructApiGWFanAPI42100D82B77D62BA"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructGWUsagePlan7281BC4C"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/GWUsagePlan/UsagePlanKeyResource:ApiGatewayFanOutAPIGatewayConstructApiGWFanAPIapitroydietercom9E48BC50": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructGWUsagePlanUsagePlanKeyResourceApiGatewayFanOutAPIGatewayConstructApiGWFanAPIapitroydietercom9E48BC50EA0F17BD"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructAPIGatewaySNSRole7DEAD9A8"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/APIGatewaySNSRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructAPIGatewaySNSRoleDefaultPolicy83C97BAB"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/APIGwMapping/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructAPIGwMapping738BFB8C"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/ApiWebACL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructApiWebACL2C7C8E5D"
+          }
+        ],
+        "/ApiGatewayFanOut/APIGatewayConstruct/WafAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIGatewayConstructWafAssociation442667EB"
+          }
+        ],
+        "/ApiGatewayFanOut/AliasRecord/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AliasRecord851000D2"
+          }
+        ],
+        "/ApiGatewayFanOut/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/ApiGatewayFanOut/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/ApiGatewayFanOut/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/ApiGatewayFanOut/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "ApiGatewayFanOut"
+    },
+    "UrlShortenerStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "UrlShortenerStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "UrlShortenerStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "UrlShortenerStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/762ca9bd3b44d994448fab784cb39a16197f88c21e9751cc158a390fdf6a4ab8.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "UrlShortenerStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "UrlShortenerStack.assets"
+      ],
+      "metadata": {
+        "/UrlShortenerStack/UrlShortenerTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UrlShortenerTableE47991EF"
+          }
+        ],
+        "/UrlShortenerStack/ShortenUrlFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShortenUrlFunctionServiceRoleD8E32B56"
+          }
+        ],
+        "/UrlShortenerStack/ShortenUrlFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShortenUrlFunctionServiceRoleDefaultPolicy8E6FBAA5"
+          }
+        ],
+        "/UrlShortenerStack/ShortenUrlFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ShortenUrlFunction485958C4"
+          }
+        ],
+        "/UrlShortenerStack/RedirectFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RedirectFunctionServiceRole098A3D15"
+          }
+        ],
+        "/UrlShortenerStack/RedirectFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RedirectFunctionServiceRoleDefaultPolicy92D89BB5"
+          }
+        ],
+        "/UrlShortenerStack/RedirectFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RedirectFunction7849A310"
+          }
+        ],
+        "/UrlShortenerStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/UrlShortenerStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/UrlShortenerStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/UrlShortenerStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "UrlShortenerStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
